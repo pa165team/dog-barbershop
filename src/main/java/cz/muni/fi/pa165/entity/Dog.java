@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author Martin Kuchár 433499
@@ -75,7 +75,7 @@ public class Dog {
         this.breed = breed;
     }
 
-    public void setAge(Date dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
