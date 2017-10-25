@@ -2,7 +2,6 @@ package cz.muni.fi.pa165.entity;
 
 import cz.muni.fi.pa165.enums.Gender;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.cglib.core.Local;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
