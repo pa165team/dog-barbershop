@@ -2,9 +2,11 @@ package cz.muni.fi.pa165.entity;
 
 import cz.muni.fi.pa165.enums.Gender;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.cglib.core.Local;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * @author Martin Kuchár 433499
@@ -29,7 +31,7 @@ public class Dog {
 
     @NotNull
     @Column(nullable = false)
-    private int age;
+    private Date dateOfBirth;
 
     @NotNull
     @Column(nullable = false)
@@ -39,10 +41,10 @@ public class Dog {
 
     public Dog(){}
 
-    public Dog(String name, String breed, int age, Gender gender) {
+    public Dog(String name, String breed, Date dateOfBirth, Gender gender) {
         this.name = name;
         this.breed = breed;
-        this.age = age;
+        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
     }
 
@@ -58,8 +60,8 @@ public class Dog {
         return breed;
     }
 
-    public int getAge() {
-        return age;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public Gender getGender() {
@@ -74,8 +76,8 @@ public class Dog {
         this.breed = breed;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAge(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public void setGender(Gender gender) {
@@ -85,12 +87,12 @@ public class Dog {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || !(o instanceof Dog)) return false;
 
         Dog dog = (Dog) o;
 
         return
-            getAge() == dog.getAge() &&
+            getDateOfBirth() == dog.getDateOfBirth() &&
             getName().equals(dog.getName()) &&
             getName().equals(dog.getName()) &&
             getBreed().equals(dog.getBreed()) &&
@@ -101,7 +103,7 @@ public class Dog {
     public int hashCode() {
         int result = getName().hashCode();
         result = 31 * result + getBreed().hashCode();
-        result = 31 * result + getAge();
+        result = 31 * result + getDateOfBirth().hashCode();
         result = 31 * result + getGender().hashCode();
         return result;
     }
