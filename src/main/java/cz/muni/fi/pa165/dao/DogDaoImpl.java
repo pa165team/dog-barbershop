@@ -8,6 +8,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+/**
+ * @author Martin Kuchár 433499
+ */
+
 @Repository
 public class DogDaoImpl implements DogDao{
 
@@ -15,26 +19,25 @@ public class DogDaoImpl implements DogDao{
     private EntityManager em;
 
     public Dog findById(Long id) {
-        return null;
+        return em.find(Dog.class, id);
     }
 
     public void create(Dog dog) {
-        //
+        em.persist(dog);
     }
 
     public void delete(Dog dog) {
-        //
+        em.remove(dog);
     }
 
     public List<Dog> findAll() {
-        return null;
-    }
-
-    public Dog findByName(String name) {
-        return null;
+        return em.createQuery("select dog from Dog dog", Dog.class)
+            .getResultList();
     }
 
     public List<Dog> findAllOfGender(Gender gender) {
-        return null;
+        return em.createQuery("select dog from Dog dog where gender = :gender",
+            Dog.class).setParameter(":gender", gender)
+            .getResultList();
     }
 }

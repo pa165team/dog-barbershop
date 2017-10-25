@@ -2,77 +2,84 @@ package cz.muni.fi.pa165.entity;
 
 import cz.muni.fi.pa165.enums.Gender;
 import org.hibernate.validator.constraints.Length;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+/**
+ * @author Martin Kuchár 433499
+ */
 
 @Entity
 public class Dog {
-
     @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @NotNull
     @Length(min = 2, max = 30)
-    private String Name;
+    @Column(nullable = false)
+    private String name;
 
     @NotNull
     @Length(min = 1, max = 30)
-    private String Breed;
+    @Column(nullable = false)
+    private String breed;
 
     @NotNull
-    private int Age;
+    @Column(nullable = false)
+    private int age;
 
     @NotNull
-    private Gender Gender;
+    @Column(nullable = false)
+    private Gender gender;
+
+    //TODO: Add dependencies on other classes when they are ready!
 
     public Dog(){}
 
     public Dog(String name, String breed, int age, Gender gender) {
-        Name = name;
-        Breed = breed;
-        Age = age;
-        Gender = gender;
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        this.gender = gender;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getBreed() {
-        return Breed;
+        return breed;
     }
 
     public int getAge() {
-        return Age;
+        return age;
     }
 
     public Gender getGender() {
-        return Gender;
+        return gender;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public void setBreed(String breed) {
-        Breed = breed;
+        this.breed = breed;
     }
 
     public void setAge(int age) {
-        Age = age;
+        this.age = age;
     }
 
     public void setGender(Gender gender) {
-        Gender = gender;
+        this.gender = gender;
     }
 
     @Override
@@ -84,7 +91,6 @@ public class Dog {
 
         return
             getAge() == dog.getAge() &&
-            getId().equals(dog.getId()) &&
             getName().equals(dog.getName()) &&
             getName().equals(dog.getName()) &&
             getBreed().equals(dog.getBreed()) &&
@@ -93,8 +99,7 @@ public class Dog {
 
     @Override
     public int hashCode() {
-        int result = getId().hashCode();
-        result = 31 * result + getName().hashCode();
+        int result = getName().hashCode();
         result = 31 * result + getBreed().hashCode();
         result = 31 * result + getAge();
         result = 31 * result + getGender().hashCode();
