@@ -28,7 +28,7 @@ public class Employee {
     
     @NotNull
     @Column(nullable = false)
-    private String address;
+    private Address address;
     
     @NotNull
     @Column(nullable = false)
