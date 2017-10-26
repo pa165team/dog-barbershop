@@ -1,5 +1,6 @@
 package cz.muni.fi.pa165.entity;
 
+
 import cz.muni.fi.pa165.utils.Address;
 import java.math.BigDecimal;
 import javax.persistence.Column;
@@ -58,6 +59,7 @@ public class Employee {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
 
     public Address getAddress() {
         return address;
