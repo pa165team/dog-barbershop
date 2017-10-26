@@ -1,5 +1,7 @@
 package cz.muni.fi.pa165.entity;
 
+
+import cz.muni.fi.pa165.utils.Address;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +30,7 @@ public class Employee {
     
     @NotNull
     @Column(nullable = false)
-    private String address;
+    private Address address;
     
     @NotNull
     @Column(nullable = false)
@@ -58,11 +60,12 @@ public class Employee {
         this.surname = surname;
     }
 
-    public String getAddress() {
+
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
