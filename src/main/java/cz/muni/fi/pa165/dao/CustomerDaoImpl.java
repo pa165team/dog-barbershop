@@ -31,7 +31,7 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public void delete(Customer customer) {
-        em.remove(customer)
+        em.remove(customer);
     }
 
     @Override
