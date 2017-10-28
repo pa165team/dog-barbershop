@@ -2,16 +2,15 @@ package cz.muni.fi.pa165.entity;
 
 
 import cz.muni.fi.pa165.utils.Address;
+
 import java.math.BigDecimal;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Set;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
  * Employee entity class
+ *
  * @author Daniel Mudrik (433655)
  */
 @Entity
@@ -19,26 +18,29 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @NotNull
     @Column(nullable = false)
     private String name;
-    
+
     @NotNull
     @Column(nullable = false)
     private String surname;
-    
+
     @NotNull
     @Column(nullable = false)
     private Address address;
-    
+
     @NotNull
     @Column(nullable = false)
     private BigDecimal salary;
-    
+
     @NotNull
     @Column(nullable = false)
     private String phoneNumber;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<Service> services;
 
     public Long getId() {
         return id;
@@ -84,11 +86,19 @@ public class Employee {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
-    public Employee(){
-        
+
+    public Set<Service> getServices() {
+        return services;
     }
-    
+
+    public void setServices(Set<Service> services) {
+        this.services = services;
+    }
+
+    public Employee() {
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -99,13 +109,13 @@ public class Employee {
         }
         Employee emp = (Employee) o;
         return getName().equals(emp.getName()) &&
-                getSurname().equals(emp.getSurname()) &&
-                getAddress().equals(emp.getAddress()) &&
-                getSalary().equals(emp.getSalary()) &&
-                getPhoneNumber().equals(emp.getPhoneNumber());
-        
+            getSurname().equals(emp.getSurname()) &&
+            getAddress().equals(emp.getAddress()) &&
+            getSalary().equals(emp.getSalary()) &&
+            getPhoneNumber().equals(emp.getPhoneNumber());
+
     }
-    
+
     @Override
     public int hashCode() {
         int result = getName().hashCode();

@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author Jan Kalfus
@@ -33,12 +34,17 @@ public class Service {
     @Column(nullable = false)
     private Time length;
 
-    //TODO: Martin here, this might be what you want for association with dog. Finish pls :)
-    /*@NotNull
+    @NotNull
     @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "dog_id")
-    private Dog dog;*/
+    private Dog dog;
+
+    @NotNull
+    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
     public Service() {
     }
@@ -79,25 +85,37 @@ public class Service {
         this.length = length;
     }
 
+    public Dog getDog() {
+        return dog;
+    }
+
+    public void setDog(Dog dog) {
+        this.dog = dog;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || !(o instanceof Service)) return false;
-
         Service service = (Service) o;
-
-        return getDescription().equals(service.getDescription()) &&
-            getPrice().equals(service.getPrice()) &&
-            getDateProvided().equals(service.getDateProvided()) &&
-            getLength().equals(service.getLength());
+        return Objects.equals(getDescription(), service.getDescription()) &&
+            Objects.equals(getPrice(), service.getPrice()) &&
+            Objects.equals(getDateProvided(), service.getDateProvided()) &&
+            Objects.equals(getLength(), service.getLength()) &&
+            Objects.equals(dog, service.dog) &&
+            Objects.equals(employee, service.employee);
     }
 
     @Override
     public int hashCode() {
-        int result = description.hashCode();
-        result = 31 * result + price.hashCode();
-        result = 31 * result + dateProvided.hashCode();
-        result = 31 * result + length.hashCode();
-        return result;
+        return Objects.hash(getDescription(), getPrice(), getDateProvided(), getLength(), dog, employee);
     }
 }

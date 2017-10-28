@@ -38,18 +38,15 @@ public class Dog {
     @Column(nullable = false)
     private Gender gender;
 
-    @NotNull
-    @Column(nullable = false)
     @OneToMany(mappedBy = "dog")
     private Set<Service> services;
 
-    @NotNull
-    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer owner;
 
-    public Dog(){}
+    public Dog() {
+    }
 
     public Dog(String name, String breed, Date dateOfBirth, Gender gender, Set<Service> services, Customer owner) {
         this.name = name;
@@ -96,13 +93,21 @@ public class Dog {
         this.gender = gender;
     }
 
-    public Set<Service> getServices() { return services; }
+    public Set<Service> getServices() {
+        return services;
+    }
 
-    public void setServices(Set<Service> services) { this.services = services; }
+    public void setServices(Set<Service> services) {
+        this.services = services;
+    }
 
-    public Customer getOwner(){ return owner; }
+    public Customer getOwner() {
+        return owner;
+    }
 
-    public void setOwner(Customer owner){ this.owner = owner; }
+    public void setOwner(Customer owner) {
+        this.owner = owner;
+    }
 
     @Override
     public boolean equals(Object o) {

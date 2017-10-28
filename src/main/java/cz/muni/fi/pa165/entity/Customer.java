@@ -9,6 +9,7 @@ import java.util.Set;
 
 /**
  * Class for customer of the Dog barbershop
+ *
  * @author Lucie Kolarikova
  */
 @Entity
@@ -34,17 +35,16 @@ public class Customer {
     @Column(nullable = false)
     private String phoneNumber;
 
-    //TODO: Martin here, this might be what you want to add for association with dog. Finish pls :)
-    /*@NotNull
     @Column(nullable = false)
     @OneToMany(mappedBy = "owner")
-    private Set<Dog> dogs;*/
+    private Set<Dog> dogs;
 
-    public Customer(){
+    public Customer() {
     }
 
     /**
      * Equals
+     *
      * @param o Given object
      * @return True if this and given object are equal.
      */
@@ -65,6 +65,7 @@ public class Customer {
 
     /**
      * Hashcode
+     *
      * @return Hashcode as integer
      */
     @Override
