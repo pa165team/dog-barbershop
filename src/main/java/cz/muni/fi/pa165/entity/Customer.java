@@ -1,10 +1,9 @@
 package cz.muni.fi.pa165.entity;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
 import cz.muni.fi.pa165.utils.Address;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 /**
@@ -29,6 +28,7 @@ public class Customer {
 
     @NotNull
     @Column(nullable = false)
+    @Embedded
     private Address address;
 
     @NotNull

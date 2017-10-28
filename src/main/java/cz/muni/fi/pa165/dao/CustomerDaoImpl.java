@@ -1,20 +1,18 @@
 package cz.muni.fi.pa165.dao;
 
 import cz.muni.fi.pa165.entity.Customer;
-
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
 /**
  * @author Lucie Kolarikova
  */
 @Repository
-public class CustomerDaoImpl implements CustomerDao{
+public class CustomerDaoImpl implements CustomerDao {
 
     @PersistenceContext
     private EntityManager em;
@@ -46,7 +44,7 @@ public class CustomerDaoImpl implements CustomerDao{
             return em.createQuery("SELECT c FROM Customer c WHERE c.surname LIKE :surname", Customer.class)
                 .setParameter("surname", "%" + surname + "%")
                 .getResultList();
-        } catch(NoResultException exception) {
+        } catch (NoResultException exception) {
             return null;
         }
 
@@ -59,7 +57,7 @@ public class CustomerDaoImpl implements CustomerDao{
             return em.createQuery("SELECT c FROM Customer c WHERE c.phoneNumber LIKE :phoneNumber", Customer.class)
                 .setParameter("phoneNumber", "%" + phoneNumber + "%")
                 .getResultList();
-        } catch(NoResultException exception) {
+        } catch (NoResultException exception) {
             return null;
         }
 

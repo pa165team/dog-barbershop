@@ -2,6 +2,7 @@ package cz.muni.fi.pa165.dao;
 
 import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.enums.Gender;
+
 import java.util.List;
 
 /**
@@ -12,6 +13,7 @@ public interface DogDao {
 
     /**
      * Finds dog by given ID.
+     *
      * @param id - id to obtain.
      * @return Dog.
      */
@@ -19,24 +21,28 @@ public interface DogDao {
 
     /**
      * Creates dog in DB.
+     *
      * @param dog - dog to create.
      */
     void create(Dog dog);
 
     /**
      * Deletes dog from DB.
+     *
      * @param dog - dog to delete.
      */
     void delete(Dog dog);
 
     /**
      * Finds all stored dogs.
+     *
      * @return List of Dogs.
      */
     List<Dog> findAll();
 
     /**
      * Finds all dogs of given Gender
+     *
      * @param gender - gender to obtain.
      * @return List of Dogs.
      */

@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 @Repository
-public class DogDaoImpl implements DogDao{
+public class DogDaoImpl implements DogDao {
 
     @PersistenceContext
     private EntityManager em;

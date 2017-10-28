@@ -1,14 +1,25 @@
 package cz.muni.fi.pa165.utils;
 
+import javax.persistence.Embeddable;
+
 /**
  * @author Lucie Kolarikova
  */
+@Embeddable
 public class Address {
     private Long id;
     private String city;
     private String street;
     private int number;
 
+    public Address(String city, String street, int number) {
+        this.city = city;
+        this.street = street;
+        this.number = number;
+    }
+
+    public Address() {
+    }
 
     //Getters and setters
     public Long getId() {
