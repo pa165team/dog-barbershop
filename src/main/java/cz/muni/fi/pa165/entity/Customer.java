@@ -4,6 +4,8 @@ import com.sun.istack.internal.NotNull;
 import javax.persistence.*;
 import cz.muni.fi.pa165.utils.Address;
 
+import java.util.Set;
+
 /**
  * Class for customer of the Dog barbershop
  * @author Lucie Kolarikova
@@ -30,6 +32,12 @@ public class Customer {
     @NotNull
     @Column(nullable = false)
     private String phoneNumber;
+
+    //TODO: Martin here, this might be what you want to add for association with dog. Finish pls :)
+    /*@NotNull
+    @Column(nullable = false)
+    @OneToMany(mappedBy = "owner")
+    private Set<Dog> dogs;*/
 
     public Customer(){
     }

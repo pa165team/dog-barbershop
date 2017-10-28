@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author Martin Kuchár 433499
@@ -33,23 +33,25 @@ public class Dog {
     @Column(nullable = false)
     private Date dateOfBirth;
 
+    @Enumerated
     @NotNull
     @Column(nullable = false)
     private Gender gender;
 
     @NotNull
     @Column(nullable = false)
-    @OneToMany
-    private List<Service> services;
+    @OneToMany(mappedBy = "dog")
+    private Set<Service> services;
 
     @NotNull
     @Column(nullable = false)
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer owner;
 
     public Dog(){}
 
-    public Dog(String name, String breed, Date dateOfBirth, Gender gender, List<Service> services, Customer owner) {
+    public Dog(String name, String breed, Date dateOfBirth, Gender gender, Set<Service> services, Customer owner) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
@@ -94,9 +96,9 @@ public class Dog {
         this.gender = gender;
     }
 
-    public List<Service> getServices() { return services; }
+    public Set<Service> getServices() { return services; }
 
-    public void setServices(List<Service> services) { this.services = services; }
+    public void setServices(Set<Service> services) { this.services = services; }
 
     public Customer getOwner(){ return owner; }
 
