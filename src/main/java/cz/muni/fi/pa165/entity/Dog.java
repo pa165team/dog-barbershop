@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
+import java.util.List;
 
 /**
  * @author Martin Kuchár 433499
@@ -36,15 +37,25 @@ public class Dog {
     @Column(nullable = false)
     private Gender gender;
 
-    //TODO: Add dependencies on other classes when they are ready!
+    @NotNull
+    @Column(nullable = false)
+    @OneToMany
+    private List<Service> services;
+
+    @NotNull
+    @Column(nullable = false)
+    @ManyToOne
+    private Customer owner;
 
     public Dog(){}
 
-    public Dog(String name, String breed, Date dateOfBirth, Gender gender) {
+    public Dog(String name, String breed, Date dateOfBirth, Gender gender, List<Service> services, Customer owner) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+        this.services = services;
+        this.owner = owner;
     }
 
     public Long getId() {
@@ -83,7 +94,41 @@ public class Dog {
         this.gender = gender;
     }
 
+    public List<Service> getServices() { return services; }
+
+    public void setServices(List<Service> services) { this.services = services; }
+
+    public Customer getOwner(){ return owner; }
+
+    public void setOwner(Customer owner){ this.owner = owner; }
+
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof Dog)) return false;
+
+        Dog dog = (Dog) o;
+
+        if (!getName().equals(dog.getName())) return false;
+        if (!getBreed().equals(dog.getBreed())) return false;
+        if (!getDateOfBirth().equals(dog.getDateOfBirth())) return false;
+        if (getGender() != dog.getGender()) return false;
+        if (!getServices().equals(dog.getServices())) return false;
+        return getOwner().equals(dog.getOwner());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + getBreed().hashCode();
+        result = 31 * result + getDateOfBirth().hashCode();
+        result = 31 * result + getGender().hashCode();
+        result = 31 * result + getServices().hashCode();
+        result = 31 * result + getOwner().hashCode();
+        return result;
+    }
+
+    /*@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || !(o instanceof Dog)) return false;
@@ -105,5 +150,5 @@ public class Dog {
         result = 31 * result + getDateOfBirth().hashCode();
         result = 31 * result + getGender().hashCode();
         return result;
-    }
+    }*/
 }
