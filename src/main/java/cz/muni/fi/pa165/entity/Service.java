@@ -33,6 +33,13 @@ public class Service {
     @Column(nullable = false)
     private Time length;
 
+    //TODO: Martin here, this might be what you want for association with dog. Finish pls :)
+    /*@NotNull
+    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "dog_id")
+    private Dog dog;*/
+
     public Service() {
     }
 
