@@ -15,6 +15,7 @@ import java.util.Set;
 public class Customer {
 
     @Id
+    @Column(name = "customer_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -35,7 +36,6 @@ public class Customer {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "owner")
     private Set<Dog> dogs;
 

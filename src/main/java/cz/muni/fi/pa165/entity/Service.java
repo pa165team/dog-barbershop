@@ -14,6 +14,7 @@ import java.util.Objects;
 public class Service {
 
     @Id
+    @Column(name = "service_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -34,14 +35,10 @@ public class Service {
     @Column(nullable = false)
     private Time length;
 
-    @NotNull
-    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "dog_id")
     private Dog dog;
 
-    @NotNull
-    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;

@@ -14,8 +14,9 @@ import java.util.Set;
 
 @Entity
 public class Dog {
-    @NotNull
+
     @Id
+    @Column(name = "dog_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

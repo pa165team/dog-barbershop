@@ -3,10 +3,10 @@ package cz.muni.fi.pa165.entity;
 
 import cz.muni.fi.pa165.utils.Address;
 
-import java.math.BigDecimal;
-import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.util.Set;
 
 /**
  * Employee entity class
@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Employee {
     @Id
+    @Column(name = "employee_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
