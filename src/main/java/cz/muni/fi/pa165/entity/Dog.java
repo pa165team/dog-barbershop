@@ -135,27 +135,4 @@ public class Dog {
         return result;
     }
 
-    /*@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || !(o instanceof Dog)) return false;
-
-        Dog dog = (Dog) o;
-
-        return
-            getDateOfBirth() == dog.getDateOfBirth() &&
-            getName().equals(dog.getName()) &&
-            getName().equals(dog.getName()) &&
-            getBreed().equals(dog.getBreed()) &&
-            getGender() == dog.getGender();
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getName().hashCode();
-        result = 31 * result + getBreed().hashCode();
-        result = 31 * result + getDateOfBirth().hashCode();
-        result = 31 * result + getGender().hashCode();
-        return result;
-    }*/
 }
