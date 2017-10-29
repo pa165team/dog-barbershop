@@ -36,12 +36,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     public List<Employee> findAllBelowSalary(BigDecimal salary) {
-        try {
-            return em.createQuery("SELECT emp FROM Employee emp WHERE emp.salary < :salary", Employee.class)
-                .setParameter("salary", salary)
-                .getResultList();
-        } catch (NoResultException ex) {
-            return null;
-        }
+
+        return em.createQuery("SELECT emp FROM Employee emp WHERE emp.salary < :salary", Employee.class)
+            .setParameter("salary", salary)
+            .getResultList();
     }
 }
