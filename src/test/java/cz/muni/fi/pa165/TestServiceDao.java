@@ -31,11 +31,6 @@ public class TestServiceDao extends AbstractTestNGSpringContextTests {
     @Autowired
     private ServiceDao serviceDao;
     
-    @Autowired
-    private EmployeeDao employeeDao;
-    
-    @Autowired DogDao dogDao;
-    
     @Test
     public void storesAndReceivesSingleService() {
         Service service = createSingleService();
