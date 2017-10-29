@@ -37,7 +37,7 @@ public class DogDaoImpl implements DogDao {
 
     public List<Dog> findAllOfGender(Gender gender) {
         return em.createQuery("select dog from Dog dog where gender = :gender",
-            Dog.class).setParameter(":gender", gender)
+            Dog.class).setParameter("gender", gender)
             .getResultList();
     }
 }

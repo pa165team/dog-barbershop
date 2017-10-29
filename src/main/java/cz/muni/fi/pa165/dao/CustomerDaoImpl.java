@@ -40,26 +40,16 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public List<Customer> getAllMatchingSurname(String surname) {
-        try {
-            return em.createQuery("SELECT c FROM Customer c WHERE c.surname LIKE :surname", Customer.class)
-                .setParameter("surname", "%" + surname + "%")
-                .getResultList();
-        } catch (NoResultException exception) {
-            return null;
-        }
-
-
+        return em.createQuery("SELECT c FROM Customer c WHERE c.surname LIKE :surname", Customer.class)
+            .setParameter("surname", "%" + surname + "%")
+            .getResultList();
     }
 
     @Override
     public List<Customer> getAllMatchingPhoneNumber(String phoneNumber) {
-        try {
-            return em.createQuery("SELECT c FROM Customer c WHERE c.phoneNumber LIKE :phoneNumber", Customer.class)
-                .setParameter("phoneNumber", "%" + phoneNumber + "%")
-                .getResultList();
-        } catch (NoResultException exception) {
-            return null;
-        }
+        return em.createQuery("SELECT c FROM Customer c WHERE c.phoneNumber LIKE :phoneNumber", Customer.class)
+            .setParameter("phoneNumber", "%" + phoneNumber + "%")
+            .getResultList();
 
     }
 }
