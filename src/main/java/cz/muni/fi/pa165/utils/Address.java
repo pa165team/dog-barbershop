@@ -7,7 +7,6 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class Address {
-    private Long id;
     private String city;
     private String street;
     private int number;
@@ -19,15 +18,6 @@ public class Address {
     }
 
     public Address() {
-    }
-
-    //Getters and setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getCity() {
