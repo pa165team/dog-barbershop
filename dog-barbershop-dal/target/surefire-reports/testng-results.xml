@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="26" passed="26">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="9034" started-at="2017-11-08T19:35:40Z" finished-at="2017-11-08T19:35:49Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="9034" started-at="2017-11-08T19:35:40Z" finished-at="2017-11-08T19:35:49Z">
+      <class name="cz.muni.fi.pa165.TestServiceDao">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="1" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="5" started-at="2017-11-08T20:35:49Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.doesntFindNonExistentService()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="doesntFindNonExistentService()[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="doesntFindNonExistentService" duration-ms="39" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doesntFindNonExistentService -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.doesntFindNonExistentService()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.findsAllServicesMatchingDescription()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findsAllServicesMatchingDescription()[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="findsAllServicesMatchingDescription" duration-ms="22" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findsAllServicesMatchingDescription -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="7" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.findsAllServicesMatchingDescription()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.findsAllServicesProvidedBetweenTwoDates()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findsAllServicesProvidedBetweenTwoDates()[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="findsAllServicesProvidedBetweenTwoDates" duration-ms="35" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findsAllServicesProvidedBetweenTwoDates -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="7" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.findsAllServicesProvidedBetweenTwoDates()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.findsNoServicesMatchingDescription()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findsNoServicesMatchingDescription()[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="findsNoServicesMatchingDescription" duration-ms="12" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findsNoServicesMatchingDescription -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="8" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.findsNoServicesMatchingDescription()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.findsServiceById()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findsServiceById()[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="findsServiceById" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findsServiceById -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.findsServiceById()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.storesAndDeletesSingleService()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="storesAndDeletesSingleService()[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="storesAndDeletesSingleService" duration-ms="24" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storesAndDeletesSingleService -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="7" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.storesAndDeletesSingleService()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="2" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.storesAndReceivesSingleService()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="storesAndReceivesSingleService()[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="storesAndReceivesSingleService" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storesAndReceivesSingleService -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestServiceDao.storesAndReceivesSingleService()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:cz.muni.fi.pa165.TestServiceDao@133e16fd]" name="springTestContextAfterTestClass" is-config="true" duration-ms="1" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- cz.muni.fi.pa165.TestServiceDao -->
+      <class name="cz.muni.fi.pa165.TestCustomerDao">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="11" started-at="2017-11-08T20:35:40Z" finished-at="2017-11-08T20:35:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="7159" started-at="2017-11-08T20:35:40Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-11-08T20:35:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="327" started-at="2017-11-08T20:35:48Z" finished-at="2017-11-08T20:35:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.doesntFindNonExistentCustomer()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="doesntFindNonExistentCustomer()[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="doesntFindNonExistentCustomer" duration-ms="296" started-at="2017-11-08T20:35:48Z" finished-at="2017-11-08T20:35:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doesntFindNonExistentCustomer -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="56" started-at="2017-11-08T20:35:48Z" finished-at="2017-11-08T20:35:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.doesntFindNonExistentCustomer()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="8" started-at="2017-11-08T20:35:48Z" finished-at="2017-11-08T20:35:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.findsAllCustomersWithCertainPhoneNumber()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findsAllCustomersWithCertainPhoneNumber()[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="findsAllCustomersWithCertainPhoneNumber" duration-ms="315" started-at="2017-11-08T20:35:48Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findsAllCustomersWithCertainPhoneNumber -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="8" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.findsAllCustomersWithCertainPhoneNumber()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.findsAllCustomersWithCertainSurname()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findsAllCustomersWithCertainSurname()[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="findsAllCustomersWithCertainSurname" duration-ms="23" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findsAllCustomersWithCertainSurname -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="10" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.findsAllCustomersWithCertainSurname()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.findsCustomerById()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findsCustomerById()[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="findsCustomerById" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findsCustomerById -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="8" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.findsCustomerById()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.gettingAllCustomersWithSurnameWhichIsNotStoredReturnsNull()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="gettingAllCustomersWithSurnameWhichIsNotStoredReturnsNull()[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="gettingAllCustomersWithSurnameWhichIsNotStoredReturnsNull" duration-ms="15" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- gettingAllCustomersWithSurnameWhichIsNotStoredReturnsNull -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="8" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.gettingAllCustomersWithSurnameWhichIsNotStoredReturnsNull()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.storesAndDeletesSingleCustomer()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="storesAndDeletesSingleCustomer()[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="storesAndDeletesSingleCustomer" duration-ms="81" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storesAndDeletesSingleCustomer -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="7" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.storesAndDeletesSingleCustomer()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.storesAndReceivesSingleCustomer()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="storesAndReceivesSingleCustomer()[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="storesAndReceivesSingleCustomer" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storesAndReceivesSingleCustomer -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="7" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestCustomerDao.storesAndReceivesSingleCustomer()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:cz.muni.fi.pa165.TestCustomerDao@4f51b3e0]" name="springTestContextAfterTestClass" is-config="true" duration-ms="1" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- cz.muni.fi.pa165.TestCustomerDao -->
+      <class name="cz.muni.fi.pa165.TestDogDao">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="0" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="7" started-at="2017-11-08T20:35:49Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.findAllFemaleDogs()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findAllFemaleDogs()[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="findAllFemaleDogs" duration-ms="31" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findAllFemaleDogs -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="10" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.findAllFemaleDogs()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.findAllMaleDogs()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findAllMaleDogs()[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="findAllMaleDogs" duration-ms="11" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findAllMaleDogs -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="7" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.findAllMaleDogs()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="6" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.findDogById()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findDogById()[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="findDogById" duration-ms="3" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findDogById -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.findDogById()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="3" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.findNonexistentDog()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findNonexistentDog()[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="findNonexistentDog" duration-ms="26" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findNonexistentDog -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="13" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.findNonexistentDog()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="9" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.storeAndDeleteADog()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="storeAndDeleteADog()[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="storeAndDeleteADog" duration-ms="32" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storeAndDeleteADog -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="6" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.storeAndDeleteADog()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="3" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.storeAndReceiveADog()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="storeAndReceiveADog()[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="storeAndReceiveADog" duration-ms="8" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storeAndReceiveADog -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="7" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestDogDao.storeAndReceiveADog()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:cz.muni.fi.pa165.TestDogDao@4b9e255]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- cz.muni.fi.pa165.TestDogDao -->
+      <class name="cz.muni.fi.pa165.TestEmployeeDao">
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="7" started-at="2017-11-08T20:35:49Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="0" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.doesntFindNoEmployeeBelowMinimumSalary()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="doesntFindNoEmployeeBelowMinimumSalary()[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="doesntFindNoEmployeeBelowMinimumSalary" duration-ms="74" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doesntFindNoEmployeeBelowMinimumSalary -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="11" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.doesntFindNoEmployeeBelowMinimumSalary()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="3" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.doesntFindNonExistentEmployee()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="doesntFindNonExistentEmployee()[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="doesntFindNonExistentEmployee" duration-ms="12" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doesntFindNonExistentEmployee -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="6" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.doesntFindNonExistentEmployee()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="6" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.findAllBelowCertainSalary()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findAllBelowCertainSalary()[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="findAllBelowCertainSalary" duration-ms="10" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findAllBelowCertainSalary -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="10" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.findAllBelowCertainSalary()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.findsEmployeeById()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="findsEmployeeById()[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="findsEmployeeById" duration-ms="3" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findsEmployeeById -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="7" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.findsEmployeeById()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.storesAndDeletesSingleEmployee()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="storesAndDeletesSingleEmployee()[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="storesAndDeletesSingleEmployee" duration-ms="21" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storesAndDeletesSingleEmployee -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="6" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.storesAndDeletesSingleEmployee()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.storesAndReceivesSingleEmployee()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="storesAndReceivesSingleEmployee()[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="storesAndReceivesSingleEmployee" duration-ms="6" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storesAndReceivesSingleEmployee -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="5" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void cz.muni.fi.pa165.TestEmployeeDao.storesAndReceivesSingleEmployee()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:cz.muni.fi.pa165.TestEmployeeDao@5e57643e]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2017-11-08T20:35:49Z" finished-at="2017-11-08T20:35:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- cz.muni.fi.pa165.TestEmployeeDao -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>
