@@ -41,4 +41,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
             .setParameter("salary", salary)
             .getResultList();
     }
+
+    @Override
+    public void update(Employee employee) {
+        em.merge(employee);
+    }
 }

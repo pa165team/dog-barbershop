@@ -134,4 +134,13 @@ public class TestCustomerDao extends AbstractTestNGSpringContextTests {
         Assert.assertTrue(customers.contains(customersWithMatchingPhoneNumbers.get(0)));
         Assert.assertTrue(customers.contains(customersWithMatchingPhoneNumbers.get(1)));
     }
+    
+    @Test
+    public void updateCustomerSurname() {
+        Customer customer = createSingleCustomer();
+        customer.setSurname("Nemozny");
+        customerDao.update(customer);
+        List<Customer> novaks = customerDao.getAllMatchingSurname("Nemozny");
+        Assert.assertTrue(novaks.size() == 1);
+    }
 }

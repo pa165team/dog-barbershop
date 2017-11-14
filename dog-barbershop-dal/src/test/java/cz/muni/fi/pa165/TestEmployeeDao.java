@@ -125,4 +125,12 @@ public class TestEmployeeDao extends AbstractTestNGSpringContextTests {
         List<Employee> foundEmployees = employeeDao.findAllBelowSalary(new BigDecimal("1000"));
         Assert.assertEquals(foundEmployees.size(), 0);
     }
+    
+    @Test
+    public void updateEmployeeSalary() {
+        Employee employee = createRandomEmployee();
+        employee.setSalary(new BigDecimal("50"));
+        List<Employee> foundEmployees = employeeDao.findAllBelowSalary(new BigDecimal("60"));
+        Assert.assertEquals(foundEmployees.size(), 1);
+    }
 }

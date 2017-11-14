@@ -16,28 +16,34 @@ public interface EmployeeDao {
      * @param id
      * @return Employee with ID 'id'
      */
-    public Employee findById(Long id);
+    Employee findById(Long id);
 
     /**
      * Persist employee in DB
      *
      * @param employee
      */
-    public void create(Employee employee);
+    void create(Employee employee);
+    
+    /**
+     * Update employee in DB
+     * @param employee
+     */
+    void update(Employee employee);
 
     /**
      * Delete employee from DB
      *
      * @param employee
      */
-    public void delete(Employee employee);
+    void delete(Employee employee);
 
     /**
      * Find all employees in DB
      *
      * @return All employees
      */
-    public List<Employee> findAll();
+    List<Employee> findAll();
 
     /**
      * Find employees with salary under specified value
@@ -45,5 +51,5 @@ public interface EmployeeDao {
      * @param salary
      * @return Employees with salary below 'salary'
      */
-    public List<Employee> findAllBelowSalary(BigDecimal salary);
+    List<Employee> findAllBelowSalary(BigDecimal salary);
 }

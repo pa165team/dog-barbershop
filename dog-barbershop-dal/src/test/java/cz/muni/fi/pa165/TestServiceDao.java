@@ -132,4 +132,13 @@ public class TestServiceDao extends AbstractTestNGSpringContextTests {
         List<Service> services = serviceDao.getServicesProvidedBetween(Date.valueOf("2017-10-20"), Date.valueOf("2017-10-30"));
         Assert.assertEquals(services.size(), 2);
     }
+    
+    @Test
+    public void updatesServiceDescription() {
+        Service service = createSingleService();
+        service.setDescription("Great value haircut");
+        serviceDao.update(service);
+        List<Service> services = serviceDao.getAllMatchingDescription("Great value haircut");
+        Assert.assertTrue(services.size() == 1);
+    }
 }

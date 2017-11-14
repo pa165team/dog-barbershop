@@ -47,4 +47,9 @@ public class ServiceDaoImpl implements ServiceDao {
             .setParameter("endDate", end)
             .getResultList();
     }
+
+    @Override
+    public void update(Service service) {
+        em.merge(service);
+    }
 }
