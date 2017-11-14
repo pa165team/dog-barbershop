@@ -40,4 +40,9 @@ public class DogDaoImpl implements DogDao {
             Dog.class).setParameter("gender", gender)
             .getResultList();
     }
+
+    @Override
+    public void update(Dog dog) {
+        em.merge(dog);
+    }
 }

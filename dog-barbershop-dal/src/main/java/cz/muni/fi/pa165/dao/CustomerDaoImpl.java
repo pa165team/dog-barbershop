@@ -52,4 +52,9 @@ public class CustomerDaoImpl implements CustomerDao {
             .getResultList();
 
     }
+
+    @Override
+    public void update(Customer customer) {
+        em.merge(customer);
+    }
 }
