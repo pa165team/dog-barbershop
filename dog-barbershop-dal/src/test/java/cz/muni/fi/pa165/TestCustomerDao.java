@@ -15,6 +15,8 @@ import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * @author Jan Kalfus
@@ -27,6 +29,9 @@ public class TestCustomerDao extends AbstractTestNGSpringContextTests {
     @Autowired
     private CustomerDao customerDao;
 
+    @PersistenceContext
+    private EntityManager em;
+    
     @Test
     public void storesAndReceivesSingleCustomer() {
         Customer customer = createSingleCustomer();
@@ -138,6 +143,7 @@ public class TestCustomerDao extends AbstractTestNGSpringContextTests {
     @Test
     public void updateCustomerSurname() {
         Customer customer = createSingleCustomer();
+        em.detach(customer);
         customer.setSurname("Nemozny");
         customerDao.update(customer);
         List<Customer> novaks = customerDao.getAllMatchingSurname("Nemozny");
