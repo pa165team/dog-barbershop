@@ -135,6 +135,7 @@ public class TestDogDao extends AbstractTestNGSpringContextTests {
     public void updateDogGender() {
         Dog maleDog = createADog();
         maleDog.setGender(Gender.FEMALE);
+        dogDao.update(maleDog);
         List<Dog> dogs = dogDao.findAllOfGender(Gender.FEMALE);
         Assert.assertEquals(dogs.size(), 1);
     }
