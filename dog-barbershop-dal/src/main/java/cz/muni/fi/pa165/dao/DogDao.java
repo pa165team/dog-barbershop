@@ -25,6 +25,12 @@ public interface DogDao {
      * @param dog - dog to create.
      */
     void create(Dog dog);
+    
+    /**
+     * Updates dog in DB
+     * @param dog
+     */
+    void update(Dog dog);
 
     /**
      * Deletes dog from DB.

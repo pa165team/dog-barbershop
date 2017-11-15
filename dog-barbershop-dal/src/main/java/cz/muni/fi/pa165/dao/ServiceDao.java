@@ -12,6 +12,8 @@ public interface ServiceDao {
     Service findById(Long id);
 
     void create(Service service);
+    
+    void update(Service service);
 
     void delete(Service service);
 

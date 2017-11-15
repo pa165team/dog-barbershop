@@ -33,6 +33,12 @@ public interface CustomerDao {
      */
     void delete(Customer customer);
 
+    /**
+     * Updates customer in database.
+     * @param customer
+     */
+    void update(Customer customer);
+    
 
     /**
      * Finds all customers in database.

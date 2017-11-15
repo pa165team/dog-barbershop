@@ -15,6 +15,8 @@ import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * @author Martin Kuchár 433499
@@ -27,6 +29,9 @@ public class TestEmployeeDao extends AbstractTestNGSpringContextTests {
     @Autowired
     private EmployeeDao employeeDao;
 
+    @PersistenceContext
+    private EntityManager em;
+    
     private void createInitialEmployees(){
         addThreeEmployees();
     }
@@ -124,5 +129,15 @@ public class TestEmployeeDao extends AbstractTestNGSpringContextTests {
 
         List<Employee> foundEmployees = employeeDao.findAllBelowSalary(new BigDecimal("1000"));
         Assert.assertEquals(foundEmployees.size(), 0);
+    }
+    
+    @Test
+    public void updateEmployeeSalary() {
+        Employee employee = createRandomEmployee();
+        em.detach(employee);
+        employee.setSalary(new BigDecimal("50"));
+        employeeDao.update(employee);
+        List<Employee> foundEmployees = employeeDao.findAllBelowSalary(new BigDecimal("60"));
+        Assert.assertEquals(foundEmployees.size(), 1);
     }
 }

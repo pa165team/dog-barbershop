@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import cz.muni.fi.pa165.enums.Gender;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -29,6 +31,9 @@ public class TestDogDao extends AbstractTestNGSpringContextTests {
     @Autowired
     private DogDao dogDao;
 
+    @PersistenceContext
+    private EntityManager em;
+    
     /**
      * Creates a dog
      * @return dog
@@ -128,6 +133,16 @@ public class TestDogDao extends AbstractTestNGSpringContextTests {
         createThreeDogs();
 
         List<Dog> dogs = dogDao.findAllOfGender(Gender.MALE);
+        Assert.assertEquals(dogs.size(), 1);
+    }
+    
+    @Test
+    public void updateDogGender() {
+        Dog maleDog = createADog();
+        em.detach(maleDog);
+        maleDog.setGender(Gender.FEMALE);
+        dogDao.update(maleDog);
+        List<Dog> dogs = dogDao.findAllOfGender(Gender.FEMALE);
         Assert.assertEquals(dogs.size(), 1);
     }
 
