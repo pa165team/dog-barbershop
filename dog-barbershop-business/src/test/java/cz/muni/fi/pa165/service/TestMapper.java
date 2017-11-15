@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165;
+package cz.muni.fi.pa165.service;
 
 
 import cz.muni.fi.pa165.dto.DogDTO;
@@ -17,6 +17,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @ContextConfiguration(classes = MappingServiceConfiguration.class)
 public class TestMapper extends AbstractTestNGSpringContextTests {
@@ -26,18 +28,37 @@ public class TestMapper extends AbstractTestNGSpringContextTests {
 
     private Dog dog;
     private DogDTO dogDTO;
-    private Customer customer;
-    private Employee employee;
-    private Service service;
+    private List<Dog> dogs;
+    private List<DogDTO> dogDTOs;
 
     @BeforeClass
     public void createEntities(){
         this.dog = new Dog("Rex", "Golden Retriever", new Date(2017, 11, 11), Gender.MALE, null, null);
         this.dogDTO = new DogDTO("Cody", "Golden Retriever", new Date(2016,1,22), Gender.MALE);
-        this.customer = new Customer();
-        this.employee = new Employee();
-        this.service = new Service();
-        //TODO: fill entities with data to compare
+        this.dogs = this.initializeDogs();
+        this.dogDTOs = this.initializeDogDTOs();
+    }
+
+    private List<Dog> initializeDogs(){
+        Dog dog1 = new Dog("Rexo", "German Shepherd", new Date(2017, 11, 15), Gender.MALE, null, null);
+        Dog dog2 = new Dog("Rexi", "German Shepherd", new Date(2017, 11, 15), Gender.FEMALE, null, null);
+        Dog dog3 = new Dog("Franklin", "Chihuahua", new Date(2017, 11, 15), Gender.MALE, null, null);
+        List<Dog> dogs = new ArrayList<>();
+        dogs.add(dog1);
+        dogs.add(dog2);
+        dogs.add(dog3);
+        return dogs;
+    }
+
+    private List<DogDTO> initializeDogDTOs(){
+        DogDTO dog1 = new DogDTO("Cody", "Golden Retriever", new Date(2016,1,22), Gender.MALE);
+        DogDTO dog2 = new DogDTO("Boby", "GodKnows", new Date(1996,4,4), Gender.MALE);
+        DogDTO dog3 = new DogDTO("Connor", "Border Collie", new Date(2015,11,23), Gender.MALE);
+        List<DogDTO> dogs = new ArrayList<>();
+        dogs.add(dog1);
+        dogs.add(dog2);
+        dogs.add(dog3);
+        return dogs;
     }
 
     @Test
@@ -52,6 +73,20 @@ public class TestMapper extends AbstractTestNGSpringContextTests {
         Dog dog = beanMappingService.mapTo(this.dogDTO, Dog.class);
         Assert.assertEquals(this.dogDTO.getName(), dog.getName());
         Assert.assertEquals(this.dogDTO.getGender(), dog.getGender());
+    }
+
+    @Test
+    public void listOfDogsIsMappedToListOfDogDTOs(){
+        List<DogDTO> dogDTOs = beanMappingService.mapTo(this.dogs, DogDTO.class);
+        Assert.assertEquals(3, dogDTOs.size());
+        Assert.assertEquals("Franklin", dogDTOs.get(2).getName());
+    }
+
+    @Test
+    public void listOfDogDTOsIsMappedToListOfDogs(){
+        List<Dog> dogs = beanMappingService.mapTo(this.dogDTOs, Dog.class);
+        Assert.assertEquals(3, dogs.size());
+        Assert.assertEquals("Boby", dogs.get(1).getName());
     }
 
 }
