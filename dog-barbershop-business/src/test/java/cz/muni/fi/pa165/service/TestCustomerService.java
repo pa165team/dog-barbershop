@@ -57,4 +57,14 @@ public class TestCustomerService {
     public void retrievedAllCustomersMatchingPhoneNumbers(){
         //
     }
+
+    @Test
+    public void updatedCustomer(){
+        //
+    }
+
+    @Test
+    public void didntUpdateNonExistingCustomer(){
+        //
+    }
 }

@@ -12,4 +12,5 @@ public interface CustomerFacade {
     List<CustomerDTO> getAllCustomersMatchingPhoneNumber(String phoneNumber);
     Long createCustomer(CustomerCreateDTO newCustomer);
     void deleteCustomer(CustomerDTO customer);
+    Long updateCustomer(CustomerDTO customer);
 }

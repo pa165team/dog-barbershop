@@ -16,4 +16,5 @@ public interface DogService {
     void create(Dog dog);
     void remove(Dog dog);
     List<Dog> findAllOfGender(Gender gender);
+    void update(Dog dog);
 }

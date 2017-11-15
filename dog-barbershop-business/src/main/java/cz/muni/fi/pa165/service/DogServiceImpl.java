@@ -41,4 +41,9 @@ public class DogServiceImpl implements DogService {
     public List<Dog> findAllOfGender(Gender gender) {
         return dogDao.findAllOfGender(gender);
     }
+
+    @Override
+    public void update(Dog dog) {
+        dogDao.update(dog);
+    }
 }

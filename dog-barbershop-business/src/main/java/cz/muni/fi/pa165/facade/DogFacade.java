@@ -16,4 +16,5 @@ public interface DogFacade {
     List<DogDTO> getAllDogsOfGender(Gender gender);
     Long createDog(DogCreateDTO newDog);
     void removeDog(DogDTO dog);
+    Long updateDog(DogDTO dog);
 }

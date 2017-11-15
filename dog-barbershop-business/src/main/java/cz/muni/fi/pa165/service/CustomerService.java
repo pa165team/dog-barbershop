@@ -13,4 +13,5 @@ public interface CustomerService {
     void remove(Customer customer);
     List<Customer> getAllMatchingSurname(String surname);
     List<Customer> getAllMatchingPhoneNumber(String phoneNumber);
+    void update(Customer customer);
 }

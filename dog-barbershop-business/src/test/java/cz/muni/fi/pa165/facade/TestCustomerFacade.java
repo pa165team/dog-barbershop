@@ -62,4 +62,14 @@ public class TestCustomerFacade {
     public void didntDeleteNonExistingCustomer(){
         //
     }
+
+    @Test
+    public void updatedExistingCustomer(){
+        //
+    }
+
+    @Test
+    public void didntUpdateNonExistingCustomer(){
+        //
+    }
 }
