@@ -34,12 +34,6 @@ public class ServiceDaoImpl implements ServiceDao {
             .getResultList();
     }
 
-    public List<Service> getAllMatchingDescription(String description) {
-        return em.createQuery("SELECT s FROM Service s WHERE s.description LIKE :description", Service.class)
-            .setParameter("description", "%" + description + "%")
-            .getResultList();
-    }
-
     public List<Service> getServicesProvidedBetween(Date start, Date end) {
         return em
             .createQuery("SELECT s FROM Service s WHERE s.dateProvided BETWEEN :startDate AND :endDate", Service.class)

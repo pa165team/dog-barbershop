@@ -20,11 +20,7 @@ public class Service {
 
     @NotNull
     @Column(nullable = false)
-    private String description;
-
-    @NotNull
-    @Column(nullable = false)
-    private BigDecimal price;
+    private BigDecimal actualPrice;
 
     @NotNull
     @Column(nullable = false)
@@ -43,6 +39,10 @@ public class Service {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
+    @ManyToOne
+    @JoinColumn(name = "serviceType_id")
+    private ServiceType serviceType;
+
     public Service() {
     }
 
@@ -50,20 +50,12 @@ public class Service {
         return id;
     }
 
-    public String getDescription() {
-        return description;
+    public BigDecimal getActualPrice() {
+        return actualPrice;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setActualPrice(BigDecimal actualPrice) {
+        this.actualPrice = actualPrice;
     }
 
     public Date getDateProvided() {
@@ -98,21 +90,29 @@ public class Service {
         this.employee = employee;
     }
 
+    public ServiceType getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(ServiceType serviceType) {
+        this.serviceType = serviceType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !(o instanceof Service)) return false;
+        if (!(o instanceof Service)) return false;
         Service service = (Service) o;
-        return Objects.equals(getDescription(), service.getDescription()) &&
-            Objects.equals(getPrice(), service.getPrice()) &&
+        return Objects.equals(getActualPrice(), service.getActualPrice()) &&
             Objects.equals(getDateProvided(), service.getDateProvided()) &&
             Objects.equals(getLength(), service.getLength()) &&
-            Objects.equals(dog, service.dog) &&
-            Objects.equals(employee, service.employee);
+            Objects.equals(getDog(), service.getDog()) &&
+            Objects.equals(getEmployee(), service.getEmployee()) &&
+            Objects.equals(getServiceType(), service.getServiceType());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getDescription(), getPrice(), getDateProvided(), getLength(), dog, employee);
+        return Objects.hash(getActualPrice(), getDateProvided(), getLength(), getDog(), getEmployee(), getServiceType());
     }
 }

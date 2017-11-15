@@ -12,20 +12,12 @@ public interface ServiceDao {
     Service findById(Long id);
 
     void create(Service service);
-    
+
     void update(Service service);
 
     void delete(Service service);
 
     List<Service> findAll();
-
-    /**
-     * Gets services based on their description
-     *
-     * @param description Description
-     * @return All services containing the description string, or null if no match is found.
-     */
-    List<Service> getAllMatchingDescription(String description);
 
     /**
      * Gets services that were provided between two dates
