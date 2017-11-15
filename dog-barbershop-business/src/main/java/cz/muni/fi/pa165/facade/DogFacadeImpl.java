@@ -51,4 +51,9 @@ public class DogFacadeImpl implements DogFacade{
         dogService.create(dog);
         return dog.getId();
     }
+
+    @Override
+    public void removeDog(DogDTO dog) {
+        dogService.remove(beanMappingService.mapTo(dog, Dog.class));
+    }
 }
