@@ -2,12 +2,8 @@ package cz.muni.fi.pa165.service;
 
 
 import cz.muni.fi.pa165.dto.DogDTO;
-import cz.muni.fi.pa165.entity.Customer;
 import cz.muni.fi.pa165.entity.Dog;
-import cz.muni.fi.pa165.entity.Employee;
-import cz.muni.fi.pa165.entity.Service;
 import cz.muni.fi.pa165.enums.Gender;
-import cz.muni.fi.pa165.service.BeanMappingService;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;

@@ -41,7 +41,7 @@ public class Employee {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "employee")
-    private Set<Service> services;
+    private Set<ServiceRecord> serviceRecords;
 
     public Long getId() {
         return id;
@@ -88,12 +88,12 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<Service> getServices() {
-        return services;
+    public Set<ServiceRecord> getServiceRecords() {
+        return serviceRecords;
     }
 
-    public void setServices(Set<Service> services) {
-        this.services = services;
+    public void setServiceRecords(Set<ServiceRecord> serviceRecords) {
+        this.serviceRecords = serviceRecords;
     }
 
     public Employee() {

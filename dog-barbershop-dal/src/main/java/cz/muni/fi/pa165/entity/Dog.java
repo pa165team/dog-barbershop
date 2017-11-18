@@ -40,7 +40,7 @@ public class Dog {
     private Gender gender;
 
     @OneToMany(mappedBy = "dog")
-    private Set<Service> services;
+    private Set<ServiceRecord> serviceRecords;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -49,12 +49,12 @@ public class Dog {
     public Dog() {
     }
 
-    public Dog(String name, String breed, Date dateOfBirth, Gender gender, Set<Service> services, Customer owner) {
+    public Dog(String name, String breed, Date dateOfBirth, Gender gender, Set<ServiceRecord> serviceRecords, Customer owner) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.services = services;
+        this.serviceRecords = serviceRecords;
         this.owner = owner;
     }
 
@@ -94,12 +94,12 @@ public class Dog {
         this.gender = gender;
     }
 
-    public Set<Service> getServices() {
-        return services;
+    public Set<ServiceRecord> getServiceRecords() {
+        return serviceRecords;
     }
 
-    public void setServices(Set<Service> services) {
-        this.services = services;
+    public void setServiceRecords(Set<ServiceRecord> serviceRecords) {
+        this.serviceRecords = serviceRecords;
     }
 
     public Customer getOwner() {
@@ -121,7 +121,7 @@ public class Dog {
         if (!getBreed().equals(dog.getBreed())) return false;
         if (!getDateOfBirth().equals(dog.getDateOfBirth())) return false;
         if (getGender() != dog.getGender()) return false;
-        if (!getServices().equals(dog.getServices())) return false;
+        if (!getServiceRecords().equals(dog.getServiceRecords())) return false;
         return getOwner().equals(dog.getOwner());
     }
 
@@ -131,7 +131,7 @@ public class Dog {
         result = 31 * result + getBreed().hashCode();
         result = 31 * result + getDateOfBirth().hashCode();
         result = 31 * result + getGender().hashCode();
-        result = 31 * result + getServices().hashCode();
+        result = 31 * result + getServiceRecords().hashCode();
         result = 31 * result + getOwner().hashCode();
         return result;
     }
