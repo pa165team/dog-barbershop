@@ -1,5 +1,6 @@
 package cz.muni.fi.pa165.dao;
 
+import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.entity.ServiceRecord;
 import org.springframework.stereotype.Repository;
 
@@ -31,6 +32,14 @@ public class ServiceRecordDaoImpl implements ServiceRecordDao {
 
     public List<ServiceRecord> findAll() {
         return em.createQuery("SELECT s FROM ServiceRecord s", ServiceRecord.class)
+            .getResultList();
+    }
+
+    @Override
+    public List<ServiceRecord> getRecordsByDog(Dog dog) {
+        return em.
+            createQuery("SELECT s FROM ServiceRecord s WHERE s.dog = :dog", ServiceRecord.class)
+            .setParameter("dog", dog)
             .getResultList();
     }
 

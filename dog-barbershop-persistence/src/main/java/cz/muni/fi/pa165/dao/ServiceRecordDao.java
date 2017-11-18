@@ -1,5 +1,6 @@
 package cz.muni.fi.pa165.dao;
 
+import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.entity.ServiceRecord;
 
 import java.util.Date;
@@ -18,6 +19,8 @@ public interface ServiceRecordDao {
     void delete(ServiceRecord serviceRecord);
 
     List<ServiceRecord> findAll();
+
+    List<ServiceRecord> getRecordsByDog(Dog dog);
 
     /**
      * Gets services that were provided between two dates

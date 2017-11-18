@@ -48,12 +48,14 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
     @PersistenceContext
     private EntityManager em;
 
+    private Customer sampleOwner;
     private Dog sampleDog;
     private Employee sampleEmployee;
     private ServiceType sampleServiceType;
 
     @BeforeMethod
     private void beforeEvery() {
+        sampleOwner = createSampleOwner();
         sampleDog = createSampleDog();
         sampleEmployee = createSampleEmployee();
         sampleServiceType = createSampleServiceType();
@@ -65,7 +67,18 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
         dog.setBreed("Plemeno");
         dog.setDateOfBirth(Date.valueOf("2007-05-10"));
         dog.setGender(Gender.FEMALE);
-        dog.setOwner(createSampleOwner());
+        dog.setOwner(sampleOwner);
+        dogDao.create(dog);
+        return dog;
+    }
+
+    private Dog createSampleDog2() {
+        Dog dog = new Dog();
+        dog.setName("Jiné jméno");
+        dog.setBreed("Jiné plemeno");
+        dog.setDateOfBirth(Date.valueOf("2009-05-10"));
+        dog.setGender(Gender.MALE);
+        dog.setOwner(sampleOwner);
         dogDao.create(dog);
         return dog;
     }
@@ -179,5 +192,36 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
         serviceRecordDao.update(serviceRecord);
         List<ServiceRecord> foundServiceRecord = serviceRecordDao.findAll();
         Assert.assertTrue(foundServiceRecord.get(0).getActualPrice().equals(new BigDecimal("20")));
+    }
+
+    @Test
+    public void getRecordsByDog() {
+        ServiceRecord serviceRecord1 = new ServiceRecord();
+        serviceRecord1.setActualPrice(new BigDecimal(400));
+        serviceRecord1.setDateProvided(Date.valueOf("2017-11-18"));
+        serviceRecord1.setLength(Time.valueOf("01:20:00"));
+        serviceRecord1.setDog(sampleDog);
+        serviceRecord1.setEmployee(sampleEmployee);
+        serviceRecord1.setServiceType(sampleServiceType);
+
+        Dog dog2 = createSampleDog2();
+        ServiceRecord serviceRecord2 = new ServiceRecord();
+        serviceRecord2.setActualPrice(new BigDecimal(200));
+        serviceRecord2.setDateProvided(Date.valueOf("2017-01-01"));
+        serviceRecord2.setLength(Time.valueOf("00:30:00"));
+        serviceRecord2.setDog(dog2);
+        serviceRecord2.setEmployee(sampleEmployee);
+        serviceRecord2.setServiceType(sampleServiceType);
+
+        serviceRecordDao.create(serviceRecord1);
+        serviceRecordDao.create(serviceRecord2);
+
+        List<ServiceRecord> recordsByDog = serviceRecordDao.getRecordsByDog(sampleDog);
+        Assert.assertEquals(1, recordsByDog.size());
+        Assert.assertEquals(sampleDog, recordsByDog.get(0).getDog());
+
+        List<ServiceRecord> recordsByDog2 = serviceRecordDao.getRecordsByDog(dog2);
+        Assert.assertEquals(1, recordsByDog2.size());
+        Assert.assertEquals(dog2, recordsByDog2.get(0).getDog());
     }
 }
