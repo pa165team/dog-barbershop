@@ -6,6 +6,7 @@ import cz.muni.fi.pa165.utils.Address;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -37,7 +38,7 @@ public class Employee {
     private BigDecimal salary;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
 
     @OneToMany(mappedBy = "employee")
@@ -102,28 +103,14 @@ public class Employee {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || !(o instanceof Employee)) {
-            return false;
-        }
-        Employee emp = (Employee) o;
-        return getName().equals(emp.getName()) &&
-            getSurname().equals(emp.getSurname()) &&
-            getAddress().equals(emp.getAddress()) &&
-            getSalary().equals(emp.getSalary()) &&
-            getPhoneNumber().equals(emp.getPhoneNumber());
-
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(getPhoneNumber(), employee.getPhoneNumber());
     }
 
     @Override
     public int hashCode() {
-        int result = getName().hashCode();
-        result = 31 * result + getSurname().hashCode();
-        result = 31 * result + getAddress().hashCode();
-        result = 31 * result + getSalary().hashCode();
-        result = 31 * result + getPhoneNumber().hashCode();
-        return result;
+        return Objects.hash(getPhoneNumber());
     }
 }

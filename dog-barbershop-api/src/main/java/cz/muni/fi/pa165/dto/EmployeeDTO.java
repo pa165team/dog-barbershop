@@ -1,47 +1,23 @@
-package cz.muni.fi.pa165.entity;
+package cz.muni.fi.pa165.dto;
 
+import cz.muni.fi.pa165.dto.servicerecord.ServiceRecordDTO;
 import cz.muni.fi.pa165.utils.Address;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
- * Class for customer of the Dog barbershop
- *
- * @author Lucie Kolarikova
+ * @author Jan Kalfus
  */
-@Entity
-public class Customer {
-
-    @Id
-    @Column(name = "customer_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EmployeeDTO {
     private Long id;
-
-    @NotNull
-    @Column(nullable = false)
     private String name;
-
-    @NotNull
-    @Column(nullable = false)
     private String surname;
-
-    @NotNull
-    @Column(nullable = false)
-    @Embedded
     private Address address;
-
-    @NotNull
-    @Column(nullable = false, unique = true)
+    private BigDecimal salary;
     private String phoneNumber;
-
-    @OneToMany(mappedBy = "owner")
-    private Set<Dog> dogs;
-
-    public Customer() {
-    }
+    private List<ServiceRecordDTO> serviceRecords;
 
     public Long getId() {
         return id;
@@ -75,6 +51,14 @@ public class Customer {
         this.address = address;
     }
 
+    public BigDecimal getSalary() {
+        return salary;
+    }
+
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -83,12 +67,20 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    public List<ServiceRecordDTO> getServiceRecords() {
+        return serviceRecords;
+    }
+
+    public void setServiceRecords(List<ServiceRecordDTO> serviceRecords) {
+        this.serviceRecords = serviceRecords;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Customer)) return false;
-        Customer customer = (Customer) o;
-        return Objects.equals(getPhoneNumber(), customer.getPhoneNumber());
+        if (o == null || getClass() != o.getClass()) return false;
+        EmployeeDTO that = (EmployeeDTO) o;
+        return Objects.equals(getPhoneNumber(), that.getPhoneNumber());
     }
 
     @Override
