@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -42,7 +43,8 @@ public class Dog {
     @OneToMany(mappedBy = "dog")
     private Set<ServiceRecord> serviceRecords;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     @JoinColumn(name = "customer_id")
     private Customer owner;
 
@@ -113,27 +115,17 @@ public class Dog {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !(o instanceof Dog)) return false;
-
+        if (!(o instanceof Dog)) return false;
         Dog dog = (Dog) o;
-
-        if (!getName().equals(dog.getName())) return false;
-        if (!getBreed().equals(dog.getBreed())) return false;
-        if (!getDateOfBirth().equals(dog.getDateOfBirth())) return false;
-        if (getGender() != dog.getGender()) return false;
-        if (!getServiceRecords().equals(dog.getServiceRecords())) return false;
-        return getOwner().equals(dog.getOwner());
+        return Objects.equals(getName(), dog.getName()) &&
+            Objects.equals(getBreed(), dog.getBreed()) &&
+            Objects.equals(getDateOfBirth(), dog.getDateOfBirth()) &&
+            getGender() == dog.getGender() &&
+            Objects.equals(getOwner(), dog.getOwner());
     }
 
     @Override
     public int hashCode() {
-        int result = getName().hashCode();
-        result = 31 * result + getBreed().hashCode();
-        result = 31 * result + getDateOfBirth().hashCode();
-        result = 31 * result + getGender().hashCode();
-        result = 31 * result + getServiceRecords().hashCode();
-        result = 31 * result + getOwner().hashCode();
-        return result;
+        return Objects.hash(getName(), getBreed(), getDateOfBirth(), getGender(), getOwner());
     }
-
 }

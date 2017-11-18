@@ -31,15 +31,18 @@ public class ServiceRecord {
     @Column(nullable = false)
     private Time length;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     @JoinColumn(name = "dog_id")
     private Dog dog;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     @JoinColumn(name = "serviceType_id")
     private ServiceType serviceType;
 
