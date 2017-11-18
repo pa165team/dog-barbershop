@@ -120,9 +120,10 @@
 
 
   <modules>
-    <module>dog-barbershop-gui</module>
-    <module>dog-barbershop-business</module>
-    <module>dog-barbershop-dal</module>
+    <module>dog-barbershop-api</module>
+    <module>dog-barbershop-persistence</module>
+    <module>dog-barbershop-service</module>
+    <module>dog-barbershop-shared</module>
   </modules>
 
 
