@@ -1,26 +1,30 @@
 package cz.muni.fi.pa165;
 
+import cz.muni.fi.pa165.dao.CustomerDao;
 import cz.muni.fi.pa165.dao.DogDao;
+import cz.muni.fi.pa165.entity.Customer;
 import cz.muni.fi.pa165.entity.Dog;
-import java.sql.Date;
-import java.util.Arrays;
-import java.util.List;
-
 import cz.muni.fi.pa165.enums.Gender;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import cz.muni.fi.pa165.utils.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.sql.Date;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Test class for Dog DAO
+ *
  * @author Lucie Kolarikova
  */
 @ContextConfiguration(classes = PersistenceSampleApplicationContext.class)
@@ -31,20 +35,41 @@ public class TestDogDao extends AbstractTestNGSpringContextTests {
     @Autowired
     private DogDao dogDao;
 
+    @Autowired
+    private CustomerDao customerDao;
+
+    private Customer sampleOwner;
+
+    @BeforeMethod
+    private void beforeEvery() {
+        sampleOwner = createSampleOwner();
+    }
+
+    private Customer createSampleOwner() {
+        Customer owner = new Customer();
+        owner.setName("Jan");
+        owner.setSurname("Novák");
+        owner.setAddress(new Address("Brno", "Náměstí svobody", 20));
+        owner.setPhoneNumber("123456789");
+        customerDao.create(owner);
+        return owner;
+    }
+
     @PersistenceContext
     private EntityManager em;
-    
-    /**
-     * Creates a dog
-     * @return dog
-     */
-    private Dog createADog() {
+
+    private Dog createSingleDog() {
+        return createSingleDog("Alik", "Labrador", Date.valueOf("2010-04-02"), Gender.MALE);
+    }
+
+    private Dog createSingleDog(String name, String breed, Date birth, Gender gender) {
         Dog dog = new Dog();
 
-        dog.setName("Alik");
-        dog.setBreed("Labrador");
-        dog.setDateOfBirth(java.sql.Date.valueOf("2010-04-02"));
-        dog.setGender(Gender.MALE);
+        dog.setName(name);
+        dog.setBreed(breed);
+        dog.setDateOfBirth(birth);
+        dog.setGender(gender);
+        dog.setOwner(sampleOwner);
 
         dogDao.create(dog);
         return dog;
@@ -52,37 +77,19 @@ public class TestDogDao extends AbstractTestNGSpringContextTests {
 
     /**
      * Creates three dogs (2 female, 1 male)
+     *
      * @return list of dogs
      */
     private List<Dog> createThreeDogs() {
-        Dog brenda = new Dog();
-        brenda.setName("Brenda");
-        brenda.setBreed("GermanShepherd");
-        brenda.setDateOfBirth(Date.valueOf("2014-07-15"));
-        brenda.setGender(Gender.FEMALE);
-        dogDao.create(brenda);
-
-        Dog betty = new Dog();
-        betty.setName("Betty");
-        betty.setBreed("Poodle");
-        betty.setDateOfBirth(Date.valueOf("2017-05-20"));
-        betty.setGender(Gender.FEMALE);
-        dogDao.create(betty);
-
-        Dog marley = new Dog();
-        marley.setName("Marley");
-        marley.setBreed("GoldenRetriever");
-        marley.setDateOfBirth(Date.valueOf("2007-12-09"));
-        marley.setGender(Gender.MALE);
-        dogDao.create(marley);
-
-
+        Dog brenda = createSingleDog("Brenda", "GermanShepherd", Date.valueOf("2014-07-15"), Gender.FEMALE);
+        Dog betty = createSingleDog("Betty", "Poodle", Date.valueOf("2017-05-20"), Gender.FEMALE);
+        Dog marley = createSingleDog("Marley", "GoldenRetriever", Date.valueOf("2007-12-09"), Gender.MALE);
         return Arrays.asList(brenda, betty, marley);
     }
 
     @Test
     public void storeAndReceiveADog() {
-        Dog dog = createADog();
+        Dog dog = createSingleDog();
 
         List<Dog> dogs = dogDao.findAll();
         Assert.assertEquals(dogs.size(), 1);
@@ -93,20 +100,20 @@ public class TestDogDao extends AbstractTestNGSpringContextTests {
 
     @Test
     public void storeAndDeleteADog() {
-        Dog dog = createADog();
+        Dog dog = createSingleDog();
 
         List<Dog> dogsBeforeDeleting = dogDao.findAll();
         Assert.assertEquals(dogsBeforeDeleting.size(), 1);
-        
+
         dogDao.delete(dog);
-        
+
         List<Dog> dogsAfterDeleting = dogDao.findAll();
         Assert.assertEquals(dogsAfterDeleting.size(), 0);
     }
 
     @Test
     public void findDogById() {
-        Dog dog = createADog();
+        Dog dog = createSingleDog();
 
         Dog foundDog = dogDao.findById(dog.getId());
         Assert.assertTrue(dog.equals(foundDog));
@@ -114,7 +121,7 @@ public class TestDogDao extends AbstractTestNGSpringContextTests {
 
     @Test
     public void findNonexistentDog() {
-        createADog();
+        createSingleDog();
 
         Dog foundDog = dogDao.findById(-1L);
         Assert.assertEquals(foundDog, null);
@@ -135,10 +142,10 @@ public class TestDogDao extends AbstractTestNGSpringContextTests {
         List<Dog> dogs = dogDao.findAllOfGender(Gender.MALE);
         Assert.assertEquals(dogs.size(), 1);
     }
-    
+
     @Test
     public void updateDogGender() {
-        Dog maleDog = createADog();
+        Dog maleDog = createSingleDog();
         em.detach(maleDog);
         maleDog.setGender(Gender.FEMALE);
         dogDao.update(maleDog);

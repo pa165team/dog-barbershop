@@ -1,13 +1,16 @@
 package cz.muni.fi.pa165;
 
-import cz.muni.fi.pa165.dao.ServiceRecordDao;
-import cz.muni.fi.pa165.entity.ServiceRecord;
+import cz.muni.fi.pa165.dao.*;
+import cz.muni.fi.pa165.entity.*;
+import cz.muni.fi.pa165.enums.Gender;
+import cz.muni.fi.pa165.utils.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import javax.persistence.EntityManager;
@@ -30,12 +33,76 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
     @Autowired
     private ServiceRecordDao serviceRecordDao;
 
+    @Autowired
+    private DogDao dogDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
+
+    @Autowired
+    private ServiceTypeDao serviceTypeDao;
+
+    @Autowired
+    private CustomerDao customerDao;
+
     @PersistenceContext
     private EntityManager em;
 
+    private Dog sampleDog;
+    private Employee sampleEmployee;
+    private ServiceType sampleServiceType;
+
+    @BeforeMethod
+    private void beforeEvery() {
+        sampleDog = createSampleDog();
+        sampleEmployee = createSampleEmployee();
+        sampleServiceType = createSampleServiceType();
+    }
+
+    private Dog createSampleDog() {
+        Dog dog = new Dog();
+        dog.setName("Jméno");
+        dog.setBreed("Plemeno");
+        dog.setDateOfBirth(Date.valueOf("2007-05-10"));
+        dog.setGender(Gender.FEMALE);
+        dog.setOwner(createSampleOwner());
+        dogDao.create(dog);
+        return dog;
+    }
+
+    private Customer createSampleOwner() {
+        Customer owner = new Customer();
+        owner.setName("Jan");
+        owner.setSurname("Novák");
+        owner.setAddress(new Address("Brno", "Náměstí svobody", 20));
+        owner.setPhoneNumber("123456789");
+        customerDao.create(owner);
+        return owner;
+    }
+
+    private Employee createSampleEmployee() {
+        Employee employee = new Employee();
+        employee.setName("Josef");
+        employee.setSurname("Pepa");
+        employee.setAddress(new Address("Brno", "Konečného náměstí", 1234));
+        employee.setSalary(new BigDecimal("20000"));
+        employee.setPhoneNumber("123456789");
+        employeeDao.create(employee);
+        return employee;
+    }
+
+    private ServiceType createSampleServiceType() {
+        ServiceType serviceType = new ServiceType();
+        serviceType.setName("Stříhání");
+        serviceType.setDescription("Jednoduché stříhání");
+        serviceType.setPricePerHour(new BigDecimal("200"));
+        serviceTypeDao.create(serviceType);
+        return serviceType;
+    }
+
     @Test
-    public void storesAndReceivesSingleService() {
-        ServiceRecord serviceRecord = createSingleService();
+    public void storesAndReceivesSingleRecord() {
+        ServiceRecord serviceRecord = createSingleRecord();
 
         List<ServiceRecord> serviceRecords = serviceRecordDao.findAll();
         Assert.assertEquals(serviceRecords.size(), 1);
@@ -45,8 +112,8 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void storesAndDeletesSingleService() {
-        ServiceRecord serviceRecord = createSingleService();
+    public void storesAndDeletesSingleRecord() {
+        ServiceRecord serviceRecord = createSingleRecord();
 
         List<ServiceRecord> serviceRecords = serviceRecordDao.findAll();
         Assert.assertEquals(serviceRecords.size(), 1);
@@ -57,20 +124,25 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(services2.size(), 0);
     }
 
-    private ServiceRecord createSingleService() {
+    private ServiceRecord createSingleRecord() {
+        return createSingleRecord(Date.valueOf("2017-10-28"), Time.valueOf("00:10:00"));
+    }
+
+    private ServiceRecord createSingleRecord(Date date, Time length) {
         ServiceRecord serviceRecord = new ServiceRecord();
-        serviceRecord.setLength(Time.valueOf("00:10:00"));
-        serviceRecord.setDog(null);
-        serviceRecord.setEmployee(null);
-        serviceRecord.setDateProvided(Date.valueOf("2017-10-28"));
         serviceRecord.setActualPrice(BigDecimal.TEN);
+        serviceRecord.setDateProvided(date);
+        serviceRecord.setLength(length);
+        serviceRecord.setDog(sampleDog);
+        serviceRecord.setEmployee(sampleEmployee);
+        serviceRecord.setServiceType(sampleServiceType);
         serviceRecordDao.create(serviceRecord);
         return serviceRecord;
     }
 
     @Test
     public void findsServiceById() {
-        ServiceRecord serviceRecord = createSingleService();
+        ServiceRecord serviceRecord = createSingleRecord();
 
         ServiceRecord foundServiceRecord = serviceRecordDao.findById(serviceRecord.getId());
         Assert.assertTrue(serviceRecord.equals(foundServiceRecord));
@@ -78,38 +150,22 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
 
     @Test
     public void doesntFindNonExistentService() {
-        createSingleService();
+        createSingleRecord();
 
         ServiceRecord foundServiceRecord = serviceRecordDao.findById(-1L);
         Assert.assertTrue(foundServiceRecord == null);
     }
 
-    private List<ServiceRecord> createTestServices() {
-        ServiceRecord simpleServiceRecord = new ServiceRecord();
-        simpleServiceRecord.setLength(Time.valueOf("00:10:00"));
-        simpleServiceRecord.setDateProvided(Date.valueOf("2017-10-28"));
-        simpleServiceRecord.setActualPrice(BigDecimal.TEN);
-        serviceRecordDao.create(simpleServiceRecord);
-
-        ServiceRecord simplerServiceRecord = new ServiceRecord();
-        simplerServiceRecord.setLength(Time.valueOf("00:05:00"));
-        simplerServiceRecord.setDateProvided(Date.valueOf("2017-10-29"));
-        simplerServiceRecord.setActualPrice(BigDecimal.ONE);
-        serviceRecordDao.create(simplerServiceRecord);
-
-        ServiceRecord difficultServiceRecord = new ServiceRecord();
-        difficultServiceRecord.setLength(Time.valueOf("00:45:00"));
-        difficultServiceRecord.setDateProvided(Date.valueOf("2017-10-15"));
-        difficultServiceRecord.setActualPrice(BigDecimal.TEN);
-
-        serviceRecordDao.create(difficultServiceRecord);
-
-        return Arrays.asList(simpleServiceRecord, simplerServiceRecord, difficultServiceRecord);
+    private List<ServiceRecord> createTestRecords() {
+        ServiceRecord one = createSingleRecord(Date.valueOf("2017-10-28"), Time.valueOf("00:10:00"));
+        ServiceRecord two = createSingleRecord(Date.valueOf("2017-10-29"), Time.valueOf("00:05:00"));
+        ServiceRecord three = createSingleRecord(Date.valueOf("2017-10-15"), Time.valueOf("00:45:00"));
+        return Arrays.asList(one, two, three);
     }
 
     @Test
     public void findsAllServicesProvidedBetweenTwoDates() {
-        createTestServices();
+        createTestRecords();
 
         List<ServiceRecord> serviceRecords = serviceRecordDao.getServicesProvidedBetween(Date.valueOf("2017-10-20"), Date.valueOf("2017-10-30"));
         Assert.assertEquals(serviceRecords.size(), 2);
@@ -117,7 +173,7 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
 
     @Test
     public void updatesServiceActualPrice() {
-        ServiceRecord serviceRecord = createSingleService();
+        ServiceRecord serviceRecord = createSingleRecord();
         em.detach(serviceRecord);
         serviceRecord.setActualPrice(new BigDecimal("20"));
         serviceRecordDao.update(serviceRecord);
