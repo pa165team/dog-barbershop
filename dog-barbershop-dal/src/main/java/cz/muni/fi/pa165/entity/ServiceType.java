@@ -29,7 +29,7 @@ public class ServiceType {
     private BigDecimal pricePerHour;
 
     @OneToMany(mappedBy = "serviceType")
-    private Set<Service> services;
+    private Set<ServiceRecord> serviceRecords;
 
     public Long getId() {
         return id;

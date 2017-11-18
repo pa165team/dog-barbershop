@@ -11,10 +11,10 @@ import java.util.Objects;
  * @author Jan Kalfus
  */
 @Entity
-public class Service {
+public class ServiceRecord {
 
     @Id
-    @Column(name = "service_id")
+    @Column(name = "serviceRecord_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -43,7 +43,7 @@ public class Service {
     @JoinColumn(name = "serviceType_id")
     private ServiceType serviceType;
 
-    public Service() {
+    public ServiceRecord() {
     }
 
     public Long getId() {
@@ -101,14 +101,14 @@ public class Service {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Service)) return false;
-        Service service = (Service) o;
-        return Objects.equals(getActualPrice(), service.getActualPrice()) &&
-            Objects.equals(getDateProvided(), service.getDateProvided()) &&
-            Objects.equals(getLength(), service.getLength()) &&
-            Objects.equals(getDog(), service.getDog()) &&
-            Objects.equals(getEmployee(), service.getEmployee()) &&
-            Objects.equals(getServiceType(), service.getServiceType());
+        if (!(o instanceof ServiceRecord)) return false;
+        ServiceRecord serviceRecord = (ServiceRecord) o;
+        return Objects.equals(getActualPrice(), serviceRecord.getActualPrice()) &&
+            Objects.equals(getDateProvided(), serviceRecord.getDateProvided()) &&
+            Objects.equals(getLength(), serviceRecord.getLength()) &&
+            Objects.equals(getDog(), serviceRecord.getDog()) &&
+            Objects.equals(getEmployee(), serviceRecord.getEmployee()) &&
+            Objects.equals(getServiceType(), serviceRecord.getServiceType());
     }
 
     @Override
