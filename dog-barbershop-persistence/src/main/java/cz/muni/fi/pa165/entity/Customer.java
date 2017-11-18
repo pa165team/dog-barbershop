@@ -4,6 +4,7 @@ import cz.muni.fi.pa165.utils.Address;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -33,7 +34,7 @@ public class Customer {
     private Address address;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
 
     @OneToMany(mappedBy = "owner")
@@ -42,42 +43,6 @@ public class Customer {
     public Customer() {
     }
 
-    /**
-     * Equals
-     *
-     * @param o Given object
-     * @return True if this and given object are equal.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || !(o instanceof Customer)) {
-            return false;
-        }
-
-        Customer customer = (Customer) o;
-
-        if (!getName().equals(customer.getName())) return false;
-        if (!getSurname().equals(customer.getSurname())) return false;
-        if (!getAddress().equals(customer.getAddress())) return false;
-        return getPhoneNumber().equals(customer.getPhoneNumber());
-    }
-
-    /**
-     * Hashcode
-     *
-     * @return Hashcode as integer
-     */
-    @Override
-    public int hashCode() {
-        int result = getName().hashCode();
-        result = 31 * result + getSurname().hashCode();
-        result = 31 * result + getAddress().hashCode();
-        result = 31 * result + getPhoneNumber().hashCode();
-        return result;
-    }
-
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -116,5 +81,18 @@ public class Customer {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer)) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(getPhoneNumber(), customer.getPhoneNumber());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPhoneNumber());
     }
 }

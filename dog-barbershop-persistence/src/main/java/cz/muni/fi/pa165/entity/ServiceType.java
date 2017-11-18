@@ -17,11 +17,9 @@ public class ServiceType {
     private Long id;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
-    @NotNull
-    @Column(nullable = false)
     private String description;
 
     @NotNull
@@ -64,13 +62,11 @@ public class ServiceType {
         if (this == o) return true;
         if (!(o instanceof ServiceType)) return false;
         ServiceType that = (ServiceType) o;
-        return Objects.equals(getName(), that.getName()) &&
-            Objects.equals(getDescription(), that.getDescription()) &&
-            Objects.equals(getPricePerHour(), that.getPricePerHour());
+        return Objects.equals(getName(), that.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getDescription(), getPricePerHour());
+        return Objects.hash(getName());
     }
 }
