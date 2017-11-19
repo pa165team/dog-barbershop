@@ -18,7 +18,6 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.sql.Time;
 import java.util.Arrays;
 import java.util.List;
 
@@ -138,14 +137,14 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
     }
 
     private ServiceRecord createSingleRecord() {
-        return createSingleRecord(Date.valueOf("2017-10-28"), Time.valueOf("00:10:00"));
+        return createSingleRecord(Date.valueOf("2017-10-28"), 10);
     }
 
-    private ServiceRecord createSingleRecord(Date date, Time length) {
+    private ServiceRecord createSingleRecord(Date date, Integer length) {
         ServiceRecord serviceRecord = new ServiceRecord();
         serviceRecord.setActualPrice(BigDecimal.TEN);
         serviceRecord.setDateProvided(date);
-        serviceRecord.setLength(length);
+        serviceRecord.setLengthMinutes(length);
         serviceRecord.setDog(sampleDog);
         serviceRecord.setEmployee(sampleEmployee);
         serviceRecord.setServiceType(sampleServiceType);
@@ -170,9 +169,9 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
     }
 
     private List<ServiceRecord> createTestRecords() {
-        ServiceRecord one = createSingleRecord(Date.valueOf("2017-10-28"), Time.valueOf("00:10:00"));
-        ServiceRecord two = createSingleRecord(Date.valueOf("2017-10-29"), Time.valueOf("00:05:00"));
-        ServiceRecord three = createSingleRecord(Date.valueOf("2017-10-15"), Time.valueOf("00:45:00"));
+        ServiceRecord one = createSingleRecord(Date.valueOf("2017-10-28"), 10);
+        ServiceRecord two = createSingleRecord(Date.valueOf("2017-10-29"), 5);
+        ServiceRecord three = createSingleRecord(Date.valueOf("2017-10-15"), 45);
         return Arrays.asList(one, two, three);
     }
 
@@ -199,7 +198,7 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
         ServiceRecord serviceRecord1 = new ServiceRecord();
         serviceRecord1.setActualPrice(new BigDecimal(400));
         serviceRecord1.setDateProvided(Date.valueOf("2017-11-18"));
-        serviceRecord1.setLength(Time.valueOf("01:20:00"));
+        serviceRecord1.setLengthMinutes(80);
         serviceRecord1.setDog(sampleDog);
         serviceRecord1.setEmployee(sampleEmployee);
         serviceRecord1.setServiceType(sampleServiceType);
@@ -208,7 +207,7 @@ public class TestServiceRecordDao extends AbstractTestNGSpringContextTests {
         ServiceRecord serviceRecord2 = new ServiceRecord();
         serviceRecord2.setActualPrice(new BigDecimal(200));
         serviceRecord2.setDateProvided(Date.valueOf("2017-01-01"));
-        serviceRecord2.setLength(Time.valueOf("00:30:00"));
+        serviceRecord2.setLengthMinutes(30);
         serviceRecord2.setDog(dog2);
         serviceRecord2.setEmployee(sampleEmployee);
         serviceRecord2.setServiceType(sampleServiceType);

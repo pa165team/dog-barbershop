@@ -3,7 +3,6 @@ package cz.muni.fi.pa165.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.sql.Time;
 import java.util.Date;
 import java.util.Objects;
 
@@ -27,9 +26,8 @@ public class ServiceRecord {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateProvided;
 
-    @NotNull
     @Column(nullable = false)
-    private Time length;
+    private Integer lengthMinutes;
 
     @ManyToOne(optional = false)
     @NotNull
@@ -69,12 +67,12 @@ public class ServiceRecord {
         this.dateProvided = dateProvided;
     }
 
-    public Time getLength() {
-        return length;
+    public Integer getLengthMinutes() {
+        return lengthMinutes;
     }
 
-    public void setLength(Time length) {
-        this.length = length;
+    public void setLengthMinutes(Integer lengthMinutes) {
+        this.lengthMinutes = lengthMinutes;
     }
 
     public Dog getDog() {
@@ -108,7 +106,7 @@ public class ServiceRecord {
         ServiceRecord serviceRecord = (ServiceRecord) o;
         return Objects.equals(getActualPrice(), serviceRecord.getActualPrice()) &&
             Objects.equals(getDateProvided(), serviceRecord.getDateProvided()) &&
-            Objects.equals(getLength(), serviceRecord.getLength()) &&
+            Objects.equals(getLengthMinutes(), serviceRecord.getLengthMinutes()) &&
             Objects.equals(getDog(), serviceRecord.getDog()) &&
             Objects.equals(getEmployee(), serviceRecord.getEmployee()) &&
             Objects.equals(getServiceType(), serviceRecord.getServiceType());
@@ -116,6 +114,6 @@ public class ServiceRecord {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getActualPrice(), getDateProvided(), getLength(), getDog(), getEmployee(), getServiceType());
+        return Objects.hash(getActualPrice(), getDateProvided(), getLengthMinutes(), getDog(), getEmployee(), getServiceType());
     }
 }

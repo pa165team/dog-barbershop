@@ -15,4 +15,6 @@ public interface ServiceRecordService {
     ServiceRecord create(ServiceRecord s);
 
     List<ServiceRecord> getServiceRecordsByDog(Dog dog);
+
+
 }

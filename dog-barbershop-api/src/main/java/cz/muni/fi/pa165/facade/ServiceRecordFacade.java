@@ -9,6 +9,6 @@ import java.util.List;
  * @author Jan Kalfus
  */
 public interface ServiceRecordFacade {
-    Long createServiceRecord(ServiceRecordCreateDTO serviceRecord);
+    Long createServiceRecord(ServiceRecordCreateDTO dto);
     List<ServiceRecordDTO> getServiceRecordsByDog(Long dogId);
 }

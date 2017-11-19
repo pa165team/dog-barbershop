@@ -5,7 +5,6 @@ import cz.muni.fi.pa165.dto.EmployeeDTO;
 import cz.muni.fi.pa165.dto.servicetype.ServiceTypeDTO;
 
 import java.math.BigDecimal;
-import java.sql.Time;
 import java.util.Date;
 import java.util.Objects;
 
@@ -16,7 +15,7 @@ public class ServiceRecordDTO {
     private Long id;
     private BigDecimal actualPrice;
     private Date dateProvided;
-    private Time length;
+    private Integer lengthMinutes;
     private DogDTO dog;
     private EmployeeDTO employee;
     private ServiceTypeDTO serviceType;
@@ -45,12 +44,12 @@ public class ServiceRecordDTO {
         this.dateProvided = dateProvided;
     }
 
-    public Time getLength() {
-        return length;
+    public Integer getLengthMinutes() {
+        return lengthMinutes;
     }
 
-    public void setLength(Time length) {
-        this.length = length;
+    public void setLengthMinutes(Integer lengthMinutes) {
+        this.lengthMinutes = lengthMinutes;
     }
 
     public DogDTO getDog() {
@@ -84,7 +83,7 @@ public class ServiceRecordDTO {
         ServiceRecordDTO that = (ServiceRecordDTO) o;
         return Objects.equals(getActualPrice(), that.getActualPrice()) &&
             Objects.equals(getDateProvided(), that.getDateProvided()) &&
-            Objects.equals(getLength(), that.getLength()) &&
+            Objects.equals(getLengthMinutes(), that.getLengthMinutes()) &&
             Objects.equals(getDog(), that.getDog()) &&
             Objects.equals(getEmployee(), that.getEmployee()) &&
             Objects.equals(getServiceType(), that.getServiceType());
@@ -92,6 +91,6 @@ public class ServiceRecordDTO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getActualPrice(), getDateProvided(), getLength(), getDog(), getEmployee(), getServiceType());
+        return Objects.hash(getActualPrice(), getDateProvided(), getLengthMinutes(), getDog(), getEmployee(), getServiceType());
     }
 }
