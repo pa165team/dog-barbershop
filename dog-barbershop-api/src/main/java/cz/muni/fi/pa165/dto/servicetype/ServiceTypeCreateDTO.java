@@ -50,11 +50,13 @@ public class ServiceTypeCreateDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ServiceTypeCreateDTO that = (ServiceTypeCreateDTO) o;
-        return Objects.equals(getName(), that.getName());
+        return Objects.equals(getName(), that.getName()) &&
+            Objects.equals(getDescription(), that.getDescription()) &&
+            Objects.equals(getPricePerHour(), that.getPricePerHour());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName());
+        return Objects.hash(getName(), getDescription(), getPricePerHour());
     }
 }

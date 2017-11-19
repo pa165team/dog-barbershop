@@ -21,7 +21,6 @@ import java.util.List;
 @Service
 @Transactional
 public class ServiceTypeFacadeImpl implements ServiceTypeFacade {
-    // TODO
 
     private ServiceTypeService serviceTypeService;
     private BeanMappingService beanMappingService;
@@ -61,6 +60,7 @@ public class ServiceTypeFacadeImpl implements ServiceTypeFacade {
 
     @Override
     public List<ServiceTypeDTO> getAllServiceTypes() {
-        return null;
+        List<ServiceType> all = serviceTypeService.findAll();
+        return beanMappingService.mapTo(all, ServiceTypeDTO.class);
     }
 }
