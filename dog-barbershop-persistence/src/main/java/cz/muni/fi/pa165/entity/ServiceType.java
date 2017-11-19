@@ -3,6 +3,7 @@ package cz.muni.fi.pa165.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -27,7 +28,7 @@ public class ServiceType {
     private BigDecimal pricePerHour;
 
     @OneToMany(mappedBy = "serviceType")
-    private Set<ServiceRecord> serviceRecords;
+    private Set<ServiceRecord> serviceRecords = new HashSet<>();
 
     public Long getId() {
         return id;

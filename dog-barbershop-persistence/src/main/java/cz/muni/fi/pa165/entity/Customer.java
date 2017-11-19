@@ -4,6 +4,7 @@ import cz.muni.fi.pa165.utils.Address;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -38,7 +39,7 @@ public class Customer {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "owner")
-    private Set<Dog> dogs;
+    private Set<Dog> dogs = new HashSet<>();
 
     public Customer() {
     }
