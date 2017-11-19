@@ -12,11 +12,11 @@ import java.util.List;
  */
 public interface ServiceTypeFacade {
 
-    Long createServiceType(ServiceTypeCreateDTO serviceType);
+    Long createServiceType(ServiceTypeCreateDTO dto);
 
-    void changeDescription(DescriptionChangeDTO newDescription);
+    void changeDescription(DescriptionChangeDTO dto);
 
-    void changePricePerHour(PricePerHourChangeDTO newPricePerHour);
+    void changePricePerHour(PricePerHourChangeDTO dto);
 
     List<ServiceTypeDTO> getAllServiceTypes();
 }

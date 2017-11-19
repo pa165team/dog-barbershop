@@ -30,6 +30,15 @@ public class ServiceType {
     @OneToMany(mappedBy = "serviceType")
     private Set<ServiceRecord> serviceRecords = new HashSet<>();
 
+    public ServiceType() {
+    }
+
+    public ServiceType(@NotNull String name, String description, @NotNull BigDecimal pricePerHour) {
+        this.name = name;
+        this.description = description;
+        this.pricePerHour = pricePerHour;
+    }
+
     public Long getId() {
         return id;
     }
