@@ -13,6 +13,9 @@ import java.math.BigDecimal;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+/**
+ * @author Jan Kalfus
+ */
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
 public class TestServiceTypeService extends AbstractTransactionalTestNGSpringContextTests {
 

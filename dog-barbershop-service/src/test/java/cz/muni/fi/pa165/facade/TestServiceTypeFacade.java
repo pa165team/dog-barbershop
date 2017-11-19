@@ -23,6 +23,9 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
+/**
+ * @author Jan Kalfus
+ */
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
 public class TestServiceTypeFacade extends AbstractTransactionalTestNGSpringContextTests {
 
