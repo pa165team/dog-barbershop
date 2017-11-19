@@ -3,6 +3,8 @@ package cz.muni.fi.pa165.facade;
 import cz.muni.fi.pa165.dto.servicetype.DescriptionChangeDTO;
 import cz.muni.fi.pa165.dto.servicetype.PricePerHourChangeDTO;
 import cz.muni.fi.pa165.entity.ServiceType;
+import cz.muni.fi.pa165.service.BeanMappingService;
+import cz.muni.fi.pa165.service.BeanMappingServiceImpl;
 import cz.muni.fi.pa165.service.DogBarbershopServiceException;
 import cz.muni.fi.pa165.service.ServiceTypeService;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;
@@ -22,6 +24,7 @@ public class TestServiceTypeFacade extends AbstractTransactionalTestNGSpringCont
     private ServiceTypeService serviceMock;
     private ServiceType typeMock;
     private static final Long ID = 1L;
+    private BeanMappingService beanMappingService = new BeanMappingServiceImpl();
 
     @BeforeMethod
     public void setupEvery() {
@@ -36,7 +39,7 @@ public class TestServiceTypeFacade extends AbstractTransactionalTestNGSpringCont
         dto.setServiceTypeId(ID);
         dto.setDescription(newDescription);
 
-        ServiceTypeFacadeImpl facade = new ServiceTypeFacadeImpl(serviceMock);
+        ServiceTypeFacadeImpl facade = new ServiceTypeFacadeImpl(serviceMock, beanMappingService);
         when(serviceMock.findById(ID)).thenReturn(typeMock);
 
         facade.changeDescription(dto);
@@ -52,7 +55,7 @@ public class TestServiceTypeFacade extends AbstractTransactionalTestNGSpringCont
         dto.setServiceTypeId(ID);
         dto.setPricePerHour(newPrice);
 
-        ServiceTypeFacadeImpl facade = new ServiceTypeFacadeImpl(serviceMock);
+        ServiceTypeFacadeImpl facade = new ServiceTypeFacadeImpl(serviceMock, beanMappingService);
         when(serviceMock.findById(ID)).thenReturn(typeMock);
 
         facade.changePricePerHour(dto);
@@ -68,7 +71,7 @@ public class TestServiceTypeFacade extends AbstractTransactionalTestNGSpringCont
         dto.setServiceTypeId(ID);
         dto.setPricePerHour(newPrice);
 
-        ServiceTypeFacadeImpl facade = new ServiceTypeFacadeImpl(serviceMock);
+        ServiceTypeFacadeImpl facade = new ServiceTypeFacadeImpl(serviceMock, beanMappingService);
         when(serviceMock.findById(ID)).thenReturn(typeMock);
 
         try {
@@ -80,5 +83,14 @@ public class TestServiceTypeFacade extends AbstractTransactionalTestNGSpringCont
         verifyZeroInteractions(typeMock);
     }
 
+    @Test
+    public void testCreation() {
+        ServiceType type = new ServiceType("Name", "Description", new BigDecimal("42"));
+
+        ServiceTypeFacadeImpl facade = new ServiceTypeFacadeImpl(serviceMock, beanMappingService);
+
+        facade.createServiceType();
+        // TODO: dokončit
+    }
     // TODO: otestovat createServiceType, getAllServiceTypes
 }

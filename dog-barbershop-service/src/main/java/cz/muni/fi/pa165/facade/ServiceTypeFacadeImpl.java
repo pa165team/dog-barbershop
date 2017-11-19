@@ -5,6 +5,7 @@ import cz.muni.fi.pa165.dto.servicetype.PricePerHourChangeDTO;
 import cz.muni.fi.pa165.dto.servicetype.ServiceTypeCreateDTO;
 import cz.muni.fi.pa165.dto.servicetype.ServiceTypeDTO;
 import cz.muni.fi.pa165.entity.ServiceType;
+import cz.muni.fi.pa165.service.BeanMappingService;
 import cz.muni.fi.pa165.service.DogBarbershopServiceException;
 import cz.muni.fi.pa165.service.ServiceTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +24,19 @@ public class ServiceTypeFacadeImpl implements ServiceTypeFacade {
     // TODO
 
     private ServiceTypeService serviceTypeService;
+    private BeanMappingService beanMappingService;
 
     @Autowired
-    public ServiceTypeFacadeImpl(ServiceTypeService serviceTypeService) {
+    public ServiceTypeFacadeImpl(ServiceTypeService serviceTypeService, BeanMappingService beanMappingService) {
         this.serviceTypeService = serviceTypeService;
+        this.beanMappingService = beanMappingService;
     }
 
     @Override
     public Long createServiceType(ServiceTypeCreateDTO dto) {
-        return null;
+        ServiceType serviceType = beanMappingService.mapTo(dto, ServiceType.class);
+        ServiceType created = serviceTypeService.create(serviceType);
+        return created.getId();
     }
 
     @Override
