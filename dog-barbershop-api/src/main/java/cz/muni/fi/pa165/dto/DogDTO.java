@@ -68,7 +68,7 @@ public class DogDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !(o instanceof DogDTO)) return false;
+        if (o == null ||  o.getClass() != this.getClass()) return false;
 
         DogDTO dog = (DogDTO) o;
 
