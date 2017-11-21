@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Martin Kuchár 433499
@@ -39,6 +40,13 @@ public class DogDaoImpl implements DogDao {
         return em.createQuery("select dog from Dog dog where gender = :gender",
             Dog.class).setParameter("gender", gender)
             .getResultList();
+    }
+
+    @Override
+    public Dog getRandomlyDeterminedDogByLot() {
+        Random random = new Random();
+        List<Dog> allDogs = em.createQuery("select dog from Dog dog", Dog.class).getResultList();
+        return allDogs.get(random.nextInt(allDogs.size()));
     }
 
     @Override

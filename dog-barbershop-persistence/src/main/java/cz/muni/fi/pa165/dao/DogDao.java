@@ -53,4 +53,10 @@ public interface DogDao {
      * @return List of Dogs.
      */
     List<Dog> findAllOfGender(Gender gender);
+
+    /**
+     * Randomly chooses one dog to be the lucky one to have discount.
+     * @return Dog
+     */
+    Dog getRandomlyDeterminedDogByLot();
 }

@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.dto;
+package cz.muni.fi.pa165.dto.dog;
 
 import cz.muni.fi.pa165.enums.Gender;
 import java.sql.Date;
@@ -19,14 +19,17 @@ public class DogDTO {
 
     private Gender gender;
 
+    private Boolean hasDiscount;
+
     public DogDTO() {
     }
 
-    public DogDTO(String name, String breed, Date dateOfBirth, Gender gender) {
+    public DogDTO(String name, String breed, Date dateOfBirth, Gender gender, Boolean hasDiscount) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+        this.hasDiscount = hasDiscount;
     }
 
     public Long getId() {
@@ -63,6 +66,14 @@ public class DogDTO {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public Boolean getHasDiscount() {
+        return hasDiscount;
+    }
+
+    public void setHasDiscount(Boolean hasDiscount) {
+        this.hasDiscount = hasDiscount;
     }
 
     @Override

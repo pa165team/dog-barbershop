@@ -1,7 +1,7 @@
 package cz.muni.fi.pa165.facade;
 
-import cz.muni.fi.pa165.dto.DogCreateDTO;
-import cz.muni.fi.pa165.dto.DogDTO;
+import cz.muni.fi.pa165.dto.dog.DogCreateDTO;
+import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.enums.Gender;
 
 import java.util.List;
@@ -17,4 +17,5 @@ public interface DogFacade {
     Long createDog(DogCreateDTO newDog);
     void removeDog(DogDTO dog);
     Long updateDog(DogDTO dog);
+    Long drawLuckyDogToHaveDiscount();
 }

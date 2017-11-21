@@ -1,7 +1,7 @@
 package cz.muni.fi.pa165.service;
 
 
-import cz.muni.fi.pa165.dto.DogDTO;
+import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.enums.Gender;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;

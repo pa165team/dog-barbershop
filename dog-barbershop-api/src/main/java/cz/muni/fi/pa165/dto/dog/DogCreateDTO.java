@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.dto;
+package cz.muni.fi.pa165.dto.dog;
 
 import cz.muni.fi.pa165.enums.Gender;
 import org.hibernate.validator.constraints.Length;
@@ -28,14 +28,18 @@ public class DogCreateDTO {
     @NotNull
     private Gender gender;
 
+    @NotNull
+    private Long ownerId;
+
     public DogCreateDTO() {
     }
 
-    public DogCreateDTO(String name, String breed, Date dateOfBirth, Gender gender) {
+    public DogCreateDTO(String name, String breed, Date dateOfBirth, Gender gender, Long ownerId) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+        this.ownerId = ownerId;
     }
 
     public String getName() {
@@ -68,6 +72,14 @@ public class DogCreateDTO {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
     }
 
     @Override

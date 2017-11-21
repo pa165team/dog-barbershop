@@ -41,6 +41,10 @@ public class Dog {
     @Column(nullable = false)
     private Gender gender;
 
+    @NotNull
+    @Column(nullable = false)
+    private Boolean hasDiscount = false;
+
     @OneToMany(mappedBy = "dog")
     private Set<ServiceRecord> serviceRecords = new HashSet<>();
 
@@ -52,7 +56,7 @@ public class Dog {
     public Dog() {
     }
 
-    public Dog(String name, String breed, Date dateOfBirth, Gender gender, Set<ServiceRecord> serviceRecords, Customer owner) {
+    public Dog(String name, String breed, Date dateOfBirth, Gender gender, Customer owner) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
@@ -105,12 +109,28 @@ public class Dog {
         this.serviceRecords = serviceRecords;
     }
 
+    public void addServiceRecord(ServiceRecord serviceRecord){
+        this.serviceRecords.add(serviceRecord);
+    }
+
+    public void removeServiceRecord(ServiceRecord serviceRecord){
+        this.serviceRecords.remove(serviceRecord);
+    }
+
     public Customer getOwner() {
         return owner;
     }
 
     public void setOwner(Customer owner) {
         this.owner = owner;
+    }
+
+    public void setHasDiscount(Boolean hasDiscount) {
+        this.hasDiscount = hasDiscount;
+    }
+
+    public Boolean getHasDiscount() {
+        return hasDiscount;
     }
 
     @Override
