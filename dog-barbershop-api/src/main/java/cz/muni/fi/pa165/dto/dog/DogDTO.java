@@ -24,12 +24,11 @@ public class DogDTO {
     public DogDTO() {
     }
 
-    public DogDTO(String name, String breed, Date dateOfBirth, Gender gender, Boolean hasDiscount) {
+    public DogDTO(String name, String breed, Date dateOfBirth, Gender gender) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.hasDiscount = hasDiscount;
     }
 
     public Long getId() {
