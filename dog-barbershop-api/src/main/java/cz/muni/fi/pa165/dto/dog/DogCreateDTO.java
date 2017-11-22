@@ -101,7 +101,7 @@ public class DogCreateDTO {
         if (!getBreed().equals(that.getBreed())) return false;
         if (!getDateOfBirth().equals(that.getDateOfBirth())) return false;
         if (!getGender().equals(that.getGender())) return false;
-        return getOwnerId() == that.getOwnerId();
+        return getOwnerId().equals(that.getOwnerId());
     }
 
     @Override

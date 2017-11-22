@@ -61,7 +61,6 @@ public class Dog {
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.serviceRecords = serviceRecords;
         this.owner = owner;
     }
 

@@ -26,9 +26,6 @@ public class DogFacadeImpl implements DogFacade {
     @Autowired
     private DogService dogService;
 
-    /*@Autowired
-    private CustomerService customerService;*/
-
     @Override
     public List<DogDTO> getAllDogs() {
         return beanMappingService.mapTo(dogService.findAll(), DogDTO.class);
