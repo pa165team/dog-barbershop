@@ -17,5 +17,5 @@ public interface DogFacade {
     Long createDog(DogCreateDTO newDog);
     void removeDog(DogDTO dog);
     Long updateDog(DogDTO dog);
-    Long drawLuckyDogToHaveDiscount();
+    DogDTO drawLuckyDogToHaveDiscount();
 }

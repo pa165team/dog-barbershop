@@ -13,9 +13,9 @@ import java.util.List;
 public interface DogService {
     Dog findById(Long id);
     List<Dog> findAll();
-    void create(Dog dog);
-    void remove(Dog dog);
+    void create(Dog dog, Long ownerId);
+    void remove(Dog dog, Long ownerId);
     List<Dog> findAllOfGender(Gender gender);
     void update(Dog dog);
-    Dog getRandomDog();
+    Dog drawRandomDog();
 }

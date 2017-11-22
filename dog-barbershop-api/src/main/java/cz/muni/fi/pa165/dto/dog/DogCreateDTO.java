@@ -100,7 +100,8 @@ public class DogCreateDTO {
         if (!getName().equals(that.getName())) return false;
         if (!getBreed().equals(that.getBreed())) return false;
         if (!getDateOfBirth().equals(that.getDateOfBirth())) return false;
-        return getGender() == that.getGender();
+        if (!getGender().equals(that.getGender())) return false;
+        return getOwnerId() == that.getOwnerId();
     }
 
     @Override
@@ -109,6 +110,7 @@ public class DogCreateDTO {
         result = 31 * result + getBreed().hashCode();
         result = 31 * result + getDateOfBirth().hashCode();
         result = 31 * result + getGender().hashCode();
+        result = 31 * result + getOwnerId().hashCode();
         return result;
     }
 }

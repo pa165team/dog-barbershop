@@ -142,11 +142,12 @@ public class Dog {
             Objects.equals(getBreed(), dog.getBreed()) &&
             Objects.equals(getDateOfBirth(), dog.getDateOfBirth()) &&
             getGender() == dog.getGender() &&
+            getHasDiscount() == dog.getHasDiscount() &&
             Objects.equals(getOwner(), dog.getOwner());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getBreed(), getDateOfBirth(), getGender(), getOwner());
+        return Objects.hash(getName(), getBreed(), getDateOfBirth(), getGender(), getOwner(), getHasDiscount());
     }
 }
