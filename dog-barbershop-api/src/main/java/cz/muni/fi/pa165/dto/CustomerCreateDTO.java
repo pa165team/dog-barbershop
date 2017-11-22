@@ -18,7 +18,6 @@ public class CustomerCreateDTO {
     private String surname;
 
     @NotNull
-    @Embedded
     private Address address;
 
     @NotNull
@@ -76,7 +75,7 @@ public class CustomerCreateDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CustomerCreateDTO)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         CustomerCreateDTO that = (CustomerCreateDTO) o;
 
