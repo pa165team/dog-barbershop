@@ -2,6 +2,7 @@ package cz.muni.fi.pa165.facade;
 
 import cz.muni.fi.pa165.dto.dog.DogCreateDTO;
 import cz.muni.fi.pa165.dto.dog.DogDTO;
+import cz.muni.fi.pa165.entity.Customer;
 import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.enums.Gender;
 import cz.muni.fi.pa165.service.BeanMappingService;
@@ -48,18 +49,24 @@ public class DogFacadeImpl implements DogFacade {
 
     @Override
     public Long createDog(DogCreateDTO newDog) {
+        Customer owner = customerService.findById(newDog.getOwnerId());
         Dog dog = new Dog(
             newDog.getName(),
             newDog.getBreed(),
             newDog.getDateOfBirth(),
             newDog.getGender(),
-            customerService.findById(newDog.getOwnerId()));
+            owner);
+        owner.addDog(dog);
         dogService.create(dog);
+        customerService.update(owner);
         return dog.getId();
     }
 
     @Override
     public void removeDog(DogDTO dog) {
+        /*Dog originalDog = dogService.findById(dog.getId());
+        Customer ownerOfDog = customerService.findById(originalDog.getOwner().getId());*/
+        //TODO: add to customerService: getOwnerOfDog(Long dogId)
         dogService.remove(beanMappingService.mapTo(dog, Dog.class));
     }
 
