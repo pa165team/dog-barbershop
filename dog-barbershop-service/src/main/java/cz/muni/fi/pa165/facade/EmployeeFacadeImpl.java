@@ -69,7 +69,6 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
         updatedEmployee.setPhoneNumber(employee.getPhoneNumber());
         updatedEmployee.setSalary(employee.getSalary());
         updatedEmployee.setSurname(employee.getSurname());
-        employeeService.update(updatedEmployee);
         return employee.getId();
     }
 }
