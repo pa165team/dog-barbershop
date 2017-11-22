@@ -63,7 +63,13 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 
     @Override
     public Long updateEmployee(EmployeeDTO employee) {
-        employeeService.update(beanMappingService.mapTo(employee, Employee.class));
+        Employee updatedEmployee = employeeService.findById(employee.getId());
+        updatedEmployee.setAddress(employee.getAddress());
+        updatedEmployee.setName(employee.getName());
+        updatedEmployee.setPhoneNumber(employee.getPhoneNumber());
+        updatedEmployee.setSalary(employee.getSalary());
+        updatedEmployee.setSurname(employee.getSurname());
+        employeeService.update(updatedEmployee);
         return employee.getId();
     }
 }

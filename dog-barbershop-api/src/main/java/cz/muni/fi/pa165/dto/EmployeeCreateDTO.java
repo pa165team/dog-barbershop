@@ -109,7 +109,7 @@ public class EmployeeCreateDTO {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof EmployeeCreateDTO)) {
+        if (!(getClass() != obj.getClass())) {
             return false;
         }
         final EmployeeCreateDTO other = (EmployeeCreateDTO) obj;
