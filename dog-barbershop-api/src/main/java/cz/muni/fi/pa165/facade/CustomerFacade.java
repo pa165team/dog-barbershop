@@ -5,12 +5,15 @@ import cz.muni.fi.pa165.dto.CustomerDTO;
 
 import java.util.List;
 
+/**
+ * @author Lucie Kolarikova
+ */
 public interface CustomerFacade {
-    List<CustomerDTO> getAllCustomers();
-    CustomerDTO getCustomerById();
-    List<CustomerDTO> getAllCustomersMatchingSurname(String surname);
-    List<CustomerDTO> getAllCustomersMatchingPhoneNumber(String phoneNumber);
+    CustomerDTO getCustomerById(Long id);
     Long createCustomer(CustomerCreateDTO newCustomer);
     void deleteCustomer(CustomerDTO customer);
     Long updateCustomer(CustomerDTO customer);
+    List<CustomerDTO> getAllCustomers();
+    List<CustomerDTO> getAllCustomersMatchingSurname(String surname);
+    List<CustomerDTO> getAllCustomersMatchingPhoneNumber(String phoneNumber);
 }
