@@ -14,5 +14,6 @@ public interface CustomerService {
     List<Customer> findAll();
     List<Customer> getAllMatchingSurname(String surname);
     List<Customer> getAllMatchingPhoneNumber(String phoneNumber);
+    Customer getOwnerOfDog(Long dogId);
 
 }
