@@ -1,7 +1,7 @@
 package cz.muni.fi.pa165.facade;
 
-import cz.muni.fi.pa165.dto.DogCreateDTO;
-import cz.muni.fi.pa165.dto.DogDTO;
+import cz.muni.fi.pa165.dto.dog.DogCreateDTO;
+import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.entity.Customer;
 import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.enums.Gender;
