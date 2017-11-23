@@ -141,7 +141,7 @@ public class Dog {
             Objects.equals(getBreed(), dog.getBreed()) &&
             Objects.equals(getDateOfBirth(), dog.getDateOfBirth()) &&
             getGender() == dog.getGender() &&
-            getHasDiscount() == dog.getHasDiscount() &&
+            getHasDiscount().equals(dog.getHasDiscount()) &&
             Objects.equals(getOwner(), dog.getOwner());
     }
 

@@ -86,7 +86,7 @@ public class DogDTO {
         if (!getBreed().equals(dog.getBreed())) return false;
         if (!getDateOfBirth().equals(dog.getDateOfBirth())) return false;
         if (!getGender().equals(dog.getGender())) return false;
-        return getHasDiscount() == dog.getHasDiscount();
+        return getHasDiscount().equals(dog.getHasDiscount());
     }
 
     @Override
