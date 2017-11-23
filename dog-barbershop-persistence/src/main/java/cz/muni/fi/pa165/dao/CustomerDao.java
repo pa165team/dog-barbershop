@@ -35,7 +35,7 @@ public interface CustomerDao {
 
     /**
      * Updates customer in database.
-     * @param customer
+     * @param customer Customer to update.
      */
     void update(Customer customer);
     
