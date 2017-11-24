@@ -98,6 +98,14 @@ public class Employee {
         this.serviceRecords = serviceRecords;
     }
 
+    public void removeServiceRecord(ServiceRecord sr){
+        this.serviceRecords.remove(sr);
+    }
+
+    public void addServiceRecord(ServiceRecord sr){
+        this.serviceRecords.add(sr);
+    }
+
     public Employee() {
 
     }

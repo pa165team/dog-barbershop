@@ -54,7 +54,13 @@ public class ServiceRecordFacadeImpl implements ServiceRecordFacade {
         record.setLengthMinutes(dto.getLengthMinutes());
         record.setActualPrice(calculateActualPrice(type, dto.getLengthMinutes()));
 
+        dog.addServiceRecord(record);
+        emp.addServiceRecord(record);
+
         ServiceRecord created = serviceRecordService.create(record);
+        //TODO: maybe not needed, but present because it is present everywhere...
+        dogService.update(dog);
+        employeeService.update(emp);
         return created.getId();
     }
 

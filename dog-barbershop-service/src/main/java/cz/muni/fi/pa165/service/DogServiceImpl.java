@@ -46,4 +46,9 @@ public class DogServiceImpl implements DogService {
     public void update(Dog dog) {
         dogDao.update(dog);
     }
+
+    @Override
+    public Dog drawRandomDog() {
+        return dogDao.getRandomlyDeterminedDogByLot();
+    }
 }

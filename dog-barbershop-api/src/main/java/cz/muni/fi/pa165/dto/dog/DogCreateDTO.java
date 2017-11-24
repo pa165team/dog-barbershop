@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.dto;
+package cz.muni.fi.pa165.dto.dog;
 
 import cz.muni.fi.pa165.enums.Gender;
 import org.hibernate.validator.constraints.Length;
@@ -28,14 +28,18 @@ public class DogCreateDTO {
     @NotNull
     private Gender gender;
 
+    @NotNull
+    private Long ownerId;
+
     public DogCreateDTO() {
     }
 
-    public DogCreateDTO(String name, String breed, Date dateOfBirth, Gender gender) {
+    public DogCreateDTO(String name, String breed, Date dateOfBirth, Gender gender, Long ownerId) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+        this.ownerId = ownerId;
     }
 
     public String getName() {
@@ -70,6 +74,14 @@ public class DogCreateDTO {
         this.gender = gender;
     }
 
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
     @Override
     public String toString(){
         return "DogCreateDTO[name: "+this.getName()+
@@ -88,7 +100,8 @@ public class DogCreateDTO {
         if (!getName().equals(that.getName())) return false;
         if (!getBreed().equals(that.getBreed())) return false;
         if (!getDateOfBirth().equals(that.getDateOfBirth())) return false;
-        return getGender() == that.getGender();
+        if (!getGender().equals(that.getGender())) return false;
+        return getOwnerId().equals(that.getOwnerId());
     }
 
     @Override
@@ -97,6 +110,7 @@ public class DogCreateDTO {
         result = 31 * result + getBreed().hashCode();
         result = 31 * result + getDateOfBirth().hashCode();
         result = 31 * result + getGender().hashCode();
+        result = 31 * result + getOwnerId().hashCode();
         return result;
     }
 }

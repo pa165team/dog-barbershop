@@ -1,7 +1,7 @@
 package cz.muni.fi.pa165.service;
 
 
-import cz.muni.fi.pa165.dto.DogDTO;
+import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.enums.Gender;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;
@@ -29,16 +29,16 @@ public class TestMapper extends AbstractTestNGSpringContextTests {
 
     @BeforeClass
     public void createEntities(){
-        this.dog = new Dog("Rex", "Golden Retriever", new Date(2017, 11, 11), Gender.MALE, null, null);
+        this.dog = new Dog("Rex", "Golden Retriever", new Date(2017, 11, 11), Gender.MALE, null);
         this.dogDTO = new DogDTO("Cody", "Golden Retriever", new Date(2016,1,22), Gender.MALE);
         this.dogs = this.initializeDogs();
         this.dogDTOs = this.initializeDogDTOs();
     }
 
     private List<Dog> initializeDogs(){
-        Dog dog1 = new Dog("Rexo", "German Shepherd", new Date(2017, 11, 15), Gender.MALE, null, null);
-        Dog dog2 = new Dog("Rexi", "German Shepherd", new Date(2017, 11, 15), Gender.FEMALE, null, null);
-        Dog dog3 = new Dog("Franklin", "Chihuahua", new Date(2017, 11, 15), Gender.MALE, null, null);
+        Dog dog1 = new Dog("Rexo", "German Shepherd", new Date(2017, 11, 15), Gender.MALE, null);
+        Dog dog2 = new Dog("Rexi", "German Shepherd", new Date(2017, 11, 15), Gender.FEMALE, null);
+        Dog dog3 = new Dog("Franklin", "Chihuahua", new Date(2017, 11, 15), Gender.MALE, null);
         List<Dog> dogs = new ArrayList<>();
         dogs.add(dog1);
         dogs.add(dog2);

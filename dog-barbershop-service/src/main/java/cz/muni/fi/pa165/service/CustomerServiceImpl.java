@@ -1,7 +1,9 @@
 package cz.muni.fi.pa165.service;
 
 import cz.muni.fi.pa165.dao.CustomerDao;
+import cz.muni.fi.pa165.dao.DogDao;
 import cz.muni.fi.pa165.entity.Customer;
+import cz.muni.fi.pa165.entity.Dog;
 import org.dozer.inject.Inject;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,9 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Inject
     private CustomerDao customerDao;
+
+    @Inject
+    private DogDao dogDao;
 
 
     @Override
@@ -50,7 +55,15 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
+    public Customer getOwnerOfDog(Long dogId) {
+        Dog dog = dogDao.findById(dogId);
+        return customerDao.findById(dog.getOwner().getId());
+    }
+
+    @Override
     public void update(Customer customer) {
         customerDao.update(customer);
     }
+
+
 }
