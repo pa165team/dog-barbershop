@@ -84,6 +84,22 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    public Set<Dog> getDogs() {
+        return dogs;
+    }
+
+    public void setDogs(Set<Dog> dogs) {
+        this.dogs = dogs;
+    }
+
+    public void addDog(Dog dog){
+        this.dogs.add(dog);
+    }
+
+    public void removeDog(Dog dog){
+        this.dogs.remove(dog);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.dto;
+package cz.muni.fi.pa165.dto.dog;
 
 import cz.muni.fi.pa165.enums.Gender;
 import java.sql.Date;
@@ -18,6 +18,8 @@ public class DogDTO {
     private Date dateOfBirth;
 
     private Gender gender;
+
+    private Boolean hasDiscount;
 
     public DogDTO() {
     }
@@ -65,17 +67,26 @@ public class DogDTO {
         this.gender = gender;
     }
 
+    public Boolean getHasDiscount() {
+        return hasDiscount;
+    }
+
+    public void setHasDiscount(Boolean hasDiscount) {
+        this.hasDiscount = hasDiscount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !(o instanceof DogDTO)) return false;
+        if (o == null ||  o.getClass() != this.getClass()) return false;
 
         DogDTO dog = (DogDTO) o;
 
         if (!getName().equals(dog.getName())) return false;
         if (!getBreed().equals(dog.getBreed())) return false;
         if (!getDateOfBirth().equals(dog.getDateOfBirth())) return false;
-        return getGender() == dog.getGender();
+        if (!getGender().equals(dog.getGender())) return false;
+        return getHasDiscount().equals(dog.getHasDiscount());
     }
 
     @Override
@@ -84,6 +95,7 @@ public class DogDTO {
         result = 31 * result + getBreed().hashCode();
         result = 31 * result + getDateOfBirth().hashCode();
         result = 31 * result + getGender().hashCode();
+        result = 31 * result + getHasDiscount().hashCode();
         return result;
     }
 

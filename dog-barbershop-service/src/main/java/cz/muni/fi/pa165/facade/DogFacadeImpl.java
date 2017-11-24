@@ -1,10 +1,12 @@
 package cz.muni.fi.pa165.facade;
 
-import cz.muni.fi.pa165.dto.DogCreateDTO;
-import cz.muni.fi.pa165.dto.DogDTO;
+import cz.muni.fi.pa165.dto.dog.DogCreateDTO;
+import cz.muni.fi.pa165.dto.dog.DogDTO;
+import cz.muni.fi.pa165.entity.Customer;
 import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.enums.Gender;
 import cz.muni.fi.pa165.service.BeanMappingService;
+import cz.muni.fi.pa165.service.CustomerService;
 import cz.muni.fi.pa165.service.DogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,9 @@ public class DogFacadeImpl implements DogFacade {
     @Autowired
     private DogService dogService;
 
+    @Autowired
+    private CustomerService customerService;
+
     @Override
     public List<DogDTO> getAllDogs() {
         return beanMappingService.mapTo(dogService.findAll(), DogDTO.class);
@@ -43,18 +48,28 @@ public class DogFacadeImpl implements DogFacade {
 
     @Override
     public Long createDog(DogCreateDTO newDog) {
-        Dog dog = new Dog();
-        dog.setName(newDog.getName());
-        dog.setBreed(newDog.getBreed());
-        dog.setDateOfBirth(newDog.getDateOfBirth());
-        dog.setGender(newDog.getGender());
+        Customer owner = customerService.findById(newDog.getOwnerId());
+        Dog dog = new Dog(
+            newDog.getName(),
+            newDog.getBreed(),
+            newDog.getDateOfBirth(),
+            newDog.getGender(),
+            owner
+        );
+        dog.setHasDiscount(false);
+        owner.addDog(dog);
         dogService.create(dog);
+        customerService.update(owner);
         return dog.getId();
     }
 
     @Override
     public void removeDog(DogDTO dog) {
-        dogService.remove(beanMappingService.mapTo(dog, Dog.class));
+        Customer owner = customerService.getOwnerOfDog(dog.getId());
+        Dog originalDog = beanMappingService.mapTo(dog, Dog.class);
+        owner.removeDog(originalDog);
+        dogService.remove(originalDog);
+        customerService.update(owner);
     }
 
     @Override
@@ -62,4 +77,14 @@ public class DogFacadeImpl implements DogFacade {
         dogService.update(beanMappingService.mapTo(dog, Dog.class));
         return dog.getId();
     }
+
+    @Override
+    public DogDTO drawLuckyDogToHaveDiscount() {
+        Dog luckyDog = dogService.drawRandomDog();
+        luckyDog.setHasDiscount(true);
+        dogService.update(luckyDog);
+        return beanMappingService.mapTo(luckyDog, DogDTO.class);
+    }
+
+
 }
