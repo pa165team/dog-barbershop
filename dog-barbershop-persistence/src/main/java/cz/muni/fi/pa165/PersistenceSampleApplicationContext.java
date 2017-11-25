@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.sql.DataSource;
+import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 
 
 @Configuration
@@ -46,6 +47,7 @@ public class PersistenceSampleApplicationContext {
         jpaFactoryBean.setDataSource(db());
         jpaFactoryBean.setLoadTimeWeaver(instrumentationLoadTimeWeaver());
         jpaFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+        jpaFactoryBean.setJpaDialect(hibernateJpaDialect());
         return jpaFactoryBean;
     }
 
@@ -63,5 +65,10 @@ public class PersistenceSampleApplicationContext {
     public DataSource db() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         return builder.setType(EmbeddedDatabaseType.DERBY).build();
+    }
+    
+    @Bean
+    public HibernateJpaDialect hibernateJpaDialect() {
+        return new HibernateJpaDialect();
     }
 }
