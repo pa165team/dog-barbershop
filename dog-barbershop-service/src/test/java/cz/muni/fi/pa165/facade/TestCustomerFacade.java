@@ -120,7 +120,7 @@ public class TestCustomerFacade extends AbstractTransactionalTestNGSpringContext
         when(customerServiceMock.create(captor.capture())).thenReturn(customerMock);
         when(customerMock.getId()).thenReturn(id);
 
-        Long newCustomerId = facade.createCustomer(dto);
+        facade.createCustomer(dto);
 
         Customer captured = captor.getValue();
 
@@ -128,6 +128,5 @@ public class TestCustomerFacade extends AbstractTransactionalTestNGSpringContext
         Assert.assertEquals(surname, captured.getSurname());
         Assert.assertEquals(address, captured.getAddress());
         Assert.assertEquals(phoneNumber, captured.getPhoneNumber());
-        Assert.assertEquals(id, newCustomerId);
     }
 }
