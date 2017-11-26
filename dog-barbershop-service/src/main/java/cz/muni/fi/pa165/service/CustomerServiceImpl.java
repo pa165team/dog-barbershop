@@ -5,6 +5,7 @@ import cz.muni.fi.pa165.dao.DogDao;
 import cz.muni.fi.pa165.entity.Customer;
 import cz.muni.fi.pa165.entity.Dog;
 import org.dozer.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,13 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Inject
     private DogDao dogDao;
+
+
+    @Autowired
+    public CustomerServiceImpl(CustomerDao customerDao, DogDao dogDao) {
+        this.customerDao = customerDao;
+        this.dogDao = dogDao;
+    }
 
 
     @Override
