@@ -17,7 +17,7 @@ public interface EmployeeService {
 
     void create(Employee employee);
 
-    void remove(Long employeeId);
+    void remove(Employee employee);
 
     List<Employee> findAllBelowSalary(BigDecimal salary);
 

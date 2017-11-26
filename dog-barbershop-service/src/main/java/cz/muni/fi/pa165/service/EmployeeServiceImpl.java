@@ -43,9 +43,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void remove(Long employeeId) {
+    public void remove(Employee employee) {
 
-        employeeDao.delete(employeeDao.findById(employeeId));
+        employeeDao.delete(employee);
     }
 
     @Override
