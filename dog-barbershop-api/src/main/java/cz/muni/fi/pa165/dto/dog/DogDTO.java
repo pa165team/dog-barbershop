@@ -26,11 +26,12 @@ public class DogDTO {
     public DogDTO() {
     }
 
-    public DogDTO(String name, String breed, Date dateOfBirth, Gender gender, Long ownerId) {
+    public DogDTO(String name, String breed, Date dateOfBirth, Gender gender, Boolean hasDiscount, Long ownerId) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+        this.hasDiscount = hasDiscount;
         this.ownerId = ownerId;
     }
 

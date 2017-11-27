@@ -14,6 +14,8 @@ import cz.muni.fi.pa165.service.DogService;
 import cz.muni.fi.pa165.service.DogServiceImpl;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;
 import cz.muni.fi.pa165.utils.Address;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
@@ -21,11 +23,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.mockito.Mockito.verify;
 
 /**
  * @author Lucie Kolarikova
@@ -34,16 +36,17 @@ import java.util.List;
 @ContextConfiguration(classes = MappingServiceConfiguration.class)
 public class TestDogFacade extends AbstractTransactionalTestNGSpringContextTests {
 
+    @Mock
     private DogService dogService;
+
     private DogFacadeImpl dogFacade;
+
+    @Mock
     private Dog dog1;
 
     private Customer sampleOwner;
     private CustomerService customerService;
 
-
-    @PersistenceContext
-    private EntityManager em;
 
     @Autowired
     private BeanMappingService beanMappingService;
@@ -57,6 +60,8 @@ public class TestDogFacade extends AbstractTransactionalTestNGSpringContextTests
     // TestNG methods that are annotated with @BeforeMethod annotation will be run before executing each test method.
     @BeforeMethod
     public void setup() {
+        MockitoAnnotations.initMocks(this);
+
         customerService = new CustomerServiceImpl(customerDao, dogDao);
 
         sampleOwner = new Customer();
@@ -154,29 +159,29 @@ public class TestDogFacade extends AbstractTransactionalTestNGSpringContextTests
     @Test
     public void testCreateDog() {
         DogCreateDTO dogCreateDTO = new DogCreateDTO("Vivian","SomeBreed", Date.valueOf("2017-11-08"), Gender.FEMALE, sampleOwner.getId());
-        Long something = dogFacade.createDog(dogCreateDTO);
+        dogFacade.createDog(dogCreateDTO);
 
         Assert.assertEquals(7, dogFacade.getAllDogs().size());
     }
 
-    /*
+
     @Test
     public void testRemoveDog() {
-        DogDTO dog1DTO = dogFacade.getDogById(dog1.getId());
-        dogFacade.removeDog(dog1DTO);
-        em.flush();
-        Assert.assertEquals(5, dogFacade.getAllDogs().size());
+        DogDTO dogDTO = new DogDTO(dog1.getName(), dog1.getBreed(), dog1.getDateOfBirth(), dog1.getGender(), dog1.getHasDiscount(), dog1.getOwner().getId());
+        dogFacade.removeDog(dogDTO);
+
+        verify(dogService).remove(dog1);
     }
 
     @Test
     public void testUpdateDog() {
-        DogDTO dog1DTO = dogFacade.getDogById(dog1.getId());
-        dog1DTO.setBreed("Golden Retriever");
+        DogDTO dogDTO = new DogDTO(dog1.getName(), dog1.getBreed(), dog1.getDateOfBirth(), dog1.getGender(), dog1.getHasDiscount(), dog1.getOwner().getId());
+        dogDTO.setBreed("Golden Retriever");
 
-        dogFacade.updateDog(dog1DTO);
-        Assert.assertEquals("Golden Retriever", dogFacade.getDogById(dog1.getId()).getBreed());
+        dogFacade.updateDog(dogDTO);
+        verify(dogService).update(dog1);
     }
-    */
+
 
     @Test
     public void testDrawLuckyDogToHaveDiscount() {
