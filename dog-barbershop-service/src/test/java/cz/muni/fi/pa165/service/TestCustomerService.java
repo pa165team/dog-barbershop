@@ -122,8 +122,6 @@ public class TestCustomerService extends AbstractTransactionalTestNGSpringContex
         verify(customerDao).update(customer);
     }
 
-    //TODO: getOwnerOfDog
-
     @Test
     public void getOwnerOfDog(){
         Dog dog = getOneDog();

@@ -1,14 +1,15 @@
 package cz.muni.fi.pa165.facade;
 
+import cz.muni.fi.pa165.dao.CustomerDao;
+import cz.muni.fi.pa165.dao.DogDao;
 import cz.muni.fi.pa165.dto.customer.CustomerCreateDTO;
 import cz.muni.fi.pa165.dto.customer.CustomerDTO;
 import cz.muni.fi.pa165.entity.Customer;
-import cz.muni.fi.pa165.service.BeanMappingService;
-import cz.muni.fi.pa165.service.CustomerService;
+import cz.muni.fi.pa165.service.*;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;
 import cz.muni.fi.pa165.utils.Address;
+import org.junit.Ignore;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -36,12 +38,32 @@ public class TestCustomerFacade extends AbstractTransactionalTestNGSpringContext
     @Mock
     private Customer customerMock;
 
+    @Mock
+    private BeanMappingService beanMappingServiceMock;
+
+    private CustomerFacade customerFacadeWithMocks;
+
+    //=============================================
+
+    @Autowired
+    private DogDao dogDao;
+
+    @Autowired
+    private CustomerDao customerDao;
+
+    private CustomerService customerService;
+
+    private CustomerFacade customerFacade;
+
     @Autowired
     private BeanMappingService beanMappingService;
+
+    //==============================================
 
     @BeforeClass
     public void setup(){
         MockitoAnnotations.initMocks(this);
+        this.customerFacadeWithMocks = new CustomerFacadeImpl(customerServiceMock, beanMappingServiceMock);
     }
 
     private List<Customer> customers(){
@@ -64,47 +86,107 @@ public class TestCustomerFacade extends AbstractTransactionalTestNGSpringContext
         return array;
     }
 
+    private List<Customer> initializeCustomers() {
+        Customer c1 = new Customer();
+        c1.setName("Name1");
+        c1.setSurname("Surname1");
+        c1.setAddress(new Address("City", "Street", 47));
+        c1.setPhoneNumber("123456789");
+        c1.setDogs(new HashSet<>());
+
+        Customer c2 = new Customer();
+        c2.setName("Name2");
+        c2.setSurname("Surname2");
+        c2.setAddress(new Address("Town", "Teerts", 74));
+        c2.setPhoneNumber("987654321");
+        c2.setDogs(new HashSet<>());
+
+        Customer c3 = new Customer();
+        c3.setName("Name3");
+        c3.setSurname("Surname3");
+        c3.setAddress(new Address("Nice City", "Ugly Street", 42));
+        c3.setPhoneNumber("123987456");
+        c3.setDogs(new HashSet<>());
+
+        customerService = new CustomerServiceImpl(customerDao, dogDao);
+        customerService.create(c1);
+        customerService.create(c2);
+        customerService.create(c3);
+
+        customerFacade = new CustomerFacadeImpl(customerService, beanMappingService);
+
+        List<Customer> customerList = new ArrayList<>();
+        customerList.add(c1);
+        customerList.add(c2);
+        customerList.add(c3);
+
+        return customerList;
+    }
+
+    private List<CustomerDTO> getListCustomerDTOFromListCustomers(Customer customer){
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setId(customer.getId());
+        customerDTO.setName(customer.getName());
+        customerDTO.setSurname(customer.getSurname());
+        customerDTO.setAddress(customer.getAddress());
+        customerDTO.setPhoneNumber(customer.getPhoneNumber());
+
+        List<CustomerDTO> customerDTOS = new ArrayList<>();
+        customerDTOS.add(customerDTO);
+
+        return customerDTOS;
+    }
+
+    private CustomerDTO getCustomerDTO(Customer customer){
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setName(customer.getName());
+        customerDTO.setSurname(customer.getSurname());
+        customerDTO.setAddress(customer.getAddress());
+        customerDTO.setPhoneNumber(customer.getPhoneNumber());
+        customerDTO.setId(customer.getId());
+        customerDTO.setServiceRecords(new ArrayList<>());
+        return customerDTO;
+    }
+
     @Test
     public void retrieveAllCustomersWithMatchingSurnames(){
-        CustomerFacade facade = new CustomerFacadeImpl(customerServiceMock, beanMappingService);
-
         List<Customer> customers = customers();
 
         List<Customer> returnListForFirstSurname = new ArrayList<>();
         returnListForFirstSurname.add(customers.get(0));
 
-        when(customerServiceMock.getAllMatchingSurname("Surname1")).thenReturn(returnListForFirstSurname);
+        List<CustomerDTO> customerDTOS = getListCustomerDTOFromListCustomers(returnListForFirstSurname.get(0));
 
-        List<CustomerDTO> customersWithSurname = facade.getAllCustomersMatchingSurname("Surname1");
+        when(customerServiceMock.getAllMatchingSurname("Surname1")).thenReturn(returnListForFirstSurname);
+        when(beanMappingServiceMock.mapTo(returnListForFirstSurname, CustomerDTO.class)).thenReturn(customerDTOS);
+
+        List<CustomerDTO> customersWithSurname = customerFacadeWithMocks.getAllCustomersMatchingSurname("Surname1");
 
         Assert.assertEquals(1, customersWithSurname.size());
         Assert.assertEquals("Name1", customersWithSurname.get(0).getName());
         Assert.assertEquals("Surname1", customersWithSurname.get(0).getSurname());
-        Assert.assertEquals(customers.get(0).getAddress().getCity(), customersWithSurname.get(0).getAddress().getCity());
-        Assert.assertEquals(customers.get(0).getAddress().getStreet(), customersWithSurname.get(0).getAddress().getStreet());
-        Assert.assertEquals(customers.get(0).getAddress().getNumber(), customersWithSurname.get(0).getAddress().getNumber());
+        Assert.assertEquals(customers.get(0).getAddress(), customersWithSurname.get(0).getAddress());
         Assert.assertEquals("123456789", customersWithSurname.get(0).getPhoneNumber());
     }
 
     @Test
     public void retrieveAllCustomersWithMatchingPhoneNumbers(){
-        CustomerFacade facade = new CustomerFacadeImpl(customerServiceMock, beanMappingService);
-
         List<Customer> customers = customers();
 
         List<Customer> returnListForSecondPhoneNumber = new ArrayList<>();
         returnListForSecondPhoneNumber.add(customers.get(1));
 
-        when(customerServiceMock.getAllMatchingPhoneNumber("987654321")).thenReturn(returnListForSecondPhoneNumber);
+        List<CustomerDTO> customerDTOS = getListCustomerDTOFromListCustomers(returnListForSecondPhoneNumber.get(0));
 
-        List<CustomerDTO> customersWithPhoneNumber = facade.getAllCustomersMatchingPhoneNumber("987654321");
+        when(customerServiceMock.getAllMatchingPhoneNumber("987654321")).thenReturn(returnListForSecondPhoneNumber);
+        when(beanMappingServiceMock.mapTo(returnListForSecondPhoneNumber, CustomerDTO.class)).thenReturn(customerDTOS);
+
+        List<CustomerDTO> customersWithPhoneNumber = customerFacadeWithMocks.getAllCustomersMatchingPhoneNumber("987654321");
 
         Assert.assertEquals(1, customersWithPhoneNumber.size());
         Assert.assertEquals("Name2", customersWithPhoneNumber.get(0).getName());
         Assert.assertEquals("Surname2", customersWithPhoneNumber.get(0).getSurname());
-        Assert.assertEquals(customers.get(1).getAddress().getCity(), customersWithPhoneNumber.get(0).getAddress().getCity());
-        Assert.assertEquals(customers.get(1).getAddress().getStreet(), customersWithPhoneNumber.get(0).getAddress().getStreet());
-        Assert.assertEquals(customers.get(1).getAddress().getNumber(), customersWithPhoneNumber.get(0).getAddress().getNumber());
+        Assert.assertEquals(customers.get(1).getAddress(), customersWithPhoneNumber.get(0).getAddress());
         Assert.assertEquals("987654321", customersWithPhoneNumber.get(0).getPhoneNumber());
     }
 
@@ -118,13 +200,11 @@ public class TestCustomerFacade extends AbstractTransactionalTestNGSpringContext
 
         CustomerCreateDTO dto = new CustomerCreateDTO(name, surname, address, phoneNumber);
 
-        CustomerFacade facade = new CustomerFacadeImpl(customerServiceMock, beanMappingService);
-
         ArgumentCaptor<Customer> captor = ArgumentCaptor.forClass(Customer.class);
         when(customerServiceMock.create(captor.capture())).thenReturn(customerMock);
         when(customerMock.getId()).thenReturn(id);
 
-        facade.createCustomer(dto);
+        customerFacadeWithMocks.createCustomer(dto);
 
         Customer captured = captor.getValue();
 
@@ -134,5 +214,62 @@ public class TestCustomerFacade extends AbstractTransactionalTestNGSpringContext
         Assert.assertEquals(phoneNumber, captured.getPhoneNumber());
     }
 
-    //TODO: tests for all functions
+    @Test
+    public void getCustomerById(){
+        List<Customer> customers = initializeCustomers();
+
+        Assert.assertEquals(
+            customers.get(0).getName(),
+            customerFacade.getCustomerById(customers.get(0).getId()).getName()
+        );
+        Assert.assertEquals(
+            customers.get(0).getSurname(),
+            customerFacade.getCustomerById(customers.get(0).getId()).getSurname()
+        );
+        Assert.assertEquals(
+            customers.get(0).getAddress(),
+            customerFacade.getCustomerById(customers.get(0).getId()).getAddress()
+        );
+        Assert.assertEquals(
+            customers.get(0).getPhoneNumber(),
+            customerFacade.getCustomerById(customers.get(0).getId()).getPhoneNumber()
+        );
+    }
+
+    @Test
+    public void updateCustomer(){
+        List<Customer> customers = initializeCustomers();
+
+        CustomerDTO customerDTO = getCustomerDTO(customers.get(0));
+        customerDTO.setPhoneNumber("192837465");
+        customers.get(0).setPhoneNumber("192837465");
+
+        when(beanMappingServiceMock.mapTo(customerDTO, Customer.class)).thenReturn(customers.get(0));
+
+        Long customerIdReturned = customerFacadeWithMocks.updateCustomer(customerDTO);
+        verify(customerServiceMock).update(customers.get(0));
+        Assert.assertEquals(customers.get(0).getId(), customerIdReturned);
+    }
+
+    @Test
+    public void getAllCustomers(){
+        initializeCustomers();
+
+        List<CustomerDTO> customers = customerFacade.getAllCustomers();
+        Assert.assertTrue(customers.size() == 3);
+    }
+
+    @Test
+    public void deleteCustomer(){
+        List<Customer> customers = initializeCustomers();
+
+        CustomerDTO customerDTO = getCustomerDTO(customers.get(0));
+
+        when(beanMappingServiceMock.mapTo(customerDTO, Customer.class)).thenReturn(customers.get(0));
+
+        customerFacadeWithMocks.deleteCustomer(customerDTO);
+
+        verify(customerServiceMock).delete(customers.get(0));
+
+    }
 }
