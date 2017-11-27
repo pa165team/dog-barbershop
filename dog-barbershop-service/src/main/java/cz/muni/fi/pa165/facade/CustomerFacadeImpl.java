@@ -20,10 +20,16 @@ import java.util.List;
 public class CustomerFacadeImpl implements CustomerFacade {
 
     @Autowired
+    private CustomerService customerService;
+
+    @Autowired
     private BeanMappingService beanMappingService;
 
     @Autowired
-    private CustomerService customerService;
+    public CustomerFacadeImpl(CustomerService customerService, BeanMappingService beanMappingService) {
+        this.customerService = customerService;
+        this.beanMappingService = beanMappingService;
+    }
 
     @Override
     public CustomerDTO getCustomerById(Long id) {

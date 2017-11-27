@@ -58,7 +58,7 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 
     @Override
     public void removeEmployee(EmployeeDTO employee) {
-        employeeService.remove(employee.getId());
+        employeeService.remove(employeeService.findById(employee.getId()));
     }
 
     @Override
