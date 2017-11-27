@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface CustomerService {
     Customer findById(Long id);
-    void create(Customer customer);
+    Customer create(Customer customer);
     void delete(Customer customer);
     void update(Customer customer);
     List<Customer> findAll();
