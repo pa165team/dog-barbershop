@@ -4,6 +4,7 @@ import cz.muni.fi.pa165.dao.DogDao;
 import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.enums.Gender;
 import org.dozer.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -16,6 +17,12 @@ public class DogServiceImpl implements DogService {
 
     @Inject
     private DogDao dogDao;
+
+    @Autowired
+    public DogServiceImpl(DogDao employeeDao) {
+        this.dogDao = employeeDao;
+    }
+
 
     @Override
     public Dog findById(Long id) {
