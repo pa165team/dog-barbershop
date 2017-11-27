@@ -18,9 +18,11 @@ import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * @author Jan Kalfus
@@ -47,7 +49,7 @@ public class TestServiceRecordFacade extends AbstractTransactionalTestNGSpringCo
     }
 
     @Test
-    public void createRecord() {
+    public void createsRecord() {
         final Long id = 42L;
         final Integer lengthMinutes = 10;
 
@@ -85,7 +87,7 @@ public class TestServiceRecordFacade extends AbstractTransactionalTestNGSpringCo
     }
 
     @Test
-    public void getServiceRecordsByDog() {
+    public void getsServiceRecordsByDog() {
         final Long id = 1L;
         ServiceRecordFacade facade = new ServiceRecordFacadeImpl(recordServiceMock, typeServiceMock, dogServiceMock, employeeServiceMock, beanMappingService);
 
@@ -111,5 +113,23 @@ public class TestServiceRecordFacade extends AbstractTransactionalTestNGSpringCo
         Assert.assertEquals(2, serviceRecordsByDog.size());
         Assert.assertEquals(price1, serviceRecordsByDog.get(0).getActualPrice());
         Assert.assertEquals(price2, serviceRecordsByDog.get(1).getActualPrice());
+    }
+
+    @Test
+    public void getsServiceRecordsFromLastWeek() {
+        ServiceRecordFacade facade = new ServiceRecordFacadeImpl(recordServiceMock, typeServiceMock, dogServiceMock, employeeServiceMock, beanMappingService);
+
+        ArrayList<ServiceRecord> records = new ArrayList<>();
+        ServiceRecord record1 = new ServiceRecord();
+        Date dateProvided = new Date();
+        record1.setDateProvided(dateProvided);
+        records.add(record1);
+
+        when(recordServiceMock.getServiceRecordsFromLastWeek()).thenReturn(records);
+
+        List<ServiceRecordDTO> recordsReturned = facade.getServiceRecordsFromLastWeek();
+
+        Assert.assertEquals(1, recordsReturned.size());
+        Assert.assertEquals(dateProvided, recordsReturned.get(0).getDateProvided());
     }
 }
