@@ -7,11 +7,7 @@ import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.entity.Customer;
 import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.enums.Gender;
-import cz.muni.fi.pa165.service.BeanMappingService;
-import cz.muni.fi.pa165.service.CustomerService;
-import cz.muni.fi.pa165.service.CustomerServiceImpl;
-import cz.muni.fi.pa165.service.DogService;
-import cz.muni.fi.pa165.service.DogServiceImpl;
+import cz.muni.fi.pa165.service.*;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;
 import cz.muni.fi.pa165.utils.Address;
 import org.mockito.Mock;
@@ -27,7 +23,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 /**
  * @author Lucie Kolarikova
@@ -37,19 +33,22 @@ import static org.mockito.Mockito.verify;
 public class TestDogFacade extends AbstractTransactionalTestNGSpringContextTests {
 
     @Mock
-    private DogService dogService;
-
-    private DogFacadeImpl dogFacade;
-
+    private DogService dogServiceMock;
     @Mock
-    private Dog dog1;
+    private CustomerService customerServiceMock;
+    @Mock
+    private BeanMappingService beanMappingServiceMock;
 
-    private Customer sampleOwner;
     private CustomerService customerService;
-
-
+    private DogService dogService;
     @Autowired
     private BeanMappingService beanMappingService;
+
+    private DogFacadeImpl dogFacade;
+    private DogFacadeImpl dogFacadeWithMocks;
+
+    private Customer sampleOwner;
+    private Dog dog1;
 
     @Autowired
     private DogDao dogDao;
@@ -122,6 +121,7 @@ public class TestDogFacade extends AbstractTransactionalTestNGSpringContextTests
         dogService.create(dog6);
 
         dogFacade = new DogFacadeImpl(beanMappingService, dogService, customerService);
+        dogFacadeWithMocks = new DogFacadeImpl(beanMappingServiceMock, dogServiceMock, customerServiceMock);
     }
 
 
@@ -166,20 +166,34 @@ public class TestDogFacade extends AbstractTransactionalTestNGSpringContextTests
 
 
     @Test
-    public void testRemoveDog() {
-        DogDTO dogDTO = new DogDTO(dog1.getName(), dog1.getBreed(), dog1.getDateOfBirth(), dog1.getGender(), dog1.getHasDiscount(), dog1.getOwner().getId());
-        dogFacade.removeDog(dogDTO);
+    public void testRemoveDog() throws NoSuchFieldException, IllegalAccessException {
+        final Long dogId = 8L;
+        Customer customerMock = mock(Customer.class);
 
-        verify(dogService).remove(dog1);
+        DogDTO dogDTO = new DogDTO(dog1.getName(), dog1.getBreed(), dog1.getDateOfBirth(), dog1.getGender(), dog1.getHasDiscount(), dog1.getOwner().getId());
+        dogDTO.setId(dogId);
+
+        when(beanMappingServiceMock.mapTo(dogDTO, Dog.class)).thenReturn(dog1);
+        when(customerServiceMock.getOwnerOfDog(dogId)).thenReturn(customerMock);
+
+        dogFacadeWithMocks.removeDog(dogDTO);
+
+        verify(customerMock).removeDog(dog1);
+        verify(dogServiceMock).remove(dog1);
     }
 
     @Test
     public void testUpdateDog() {
         DogDTO dogDTO = new DogDTO(dog1.getName(), dog1.getBreed(), dog1.getDateOfBirth(), dog1.getGender(), dog1.getHasDiscount(), dog1.getOwner().getId());
         dogDTO.setBreed("Golden Retriever");
+        Long dogId = 5L;
+        dogDTO.setId(dogId);
 
-        dogFacade.updateDog(dogDTO);
-        verify(dogService).update(dog1);
+        when(beanMappingServiceMock.mapTo(dogDTO, Dog.class)).thenReturn(dog1);
+
+        Long dogIdReturned = dogFacadeWithMocks.updateDog(dogDTO);
+        verify(dogServiceMock).update(dog1);
+        Assert.assertEquals(dogId, dogIdReturned);
     }
 
 
