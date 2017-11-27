@@ -21,18 +21,26 @@ public class DogDTO {
 
     private Boolean hasDiscount;
 
+    private Long ownerId;
+
     public DogDTO() {
     }
 
-    public DogDTO(String name, String breed, Date dateOfBirth, Gender gender) {
+    public DogDTO(String name, String breed, Date dateOfBirth, Gender gender, Boolean hasDiscount, Long ownerId) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+        this.hasDiscount = hasDiscount;
+        this.ownerId = ownerId;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -73,6 +81,14 @@ public class DogDTO {
 
     public void setHasDiscount(Boolean hasDiscount) {
         this.hasDiscount = hasDiscount;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
     }
 
     @Override

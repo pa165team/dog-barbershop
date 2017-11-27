@@ -31,6 +31,13 @@ public class DogFacadeImpl implements DogFacade {
     @Autowired
     private CustomerService customerService;
 
+
+    public DogFacadeImpl(BeanMappingService beanMappingService, DogService dogService, CustomerService customerService) {
+        this.beanMappingService = beanMappingService;
+        this.dogService = dogService;
+        this.customerService = customerService;
+    }
+
     @Override
     public List<DogDTO> getAllDogs() {
         return beanMappingService.mapTo(dogService.findAll(), DogDTO.class);
