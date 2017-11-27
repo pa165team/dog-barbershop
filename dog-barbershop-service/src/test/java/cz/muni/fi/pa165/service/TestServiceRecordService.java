@@ -6,11 +6,15 @@ import cz.muni.fi.pa165.entity.ServiceRecord;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static org.mockito.Mockito.*;
 
@@ -60,5 +64,38 @@ public class TestServiceRecordService extends AbstractTransactionalTestNGSpringC
         calendar.setTime(currentTime);
         calendar.add(Calendar.DAY_OF_YEAR, -7);
         verify(daoMock).getServicesProvidedBetween(calendar.getTime(), currentTime);
+    }
+
+    @Test
+    public void getsTurnoverForLastMonth() {
+        Date currentTime = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentTime);
+        calendar.add(Calendar.MONTH, -1);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        Date firstDayOfPreviousMonth = calendar.getTime();
+        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+        Date lastDayOfPreviousMonth = calendar.getTime();
+
+        ServiceRecord record1 = new ServiceRecord();
+        BigDecimal price1 = new BigDecimal("15.38");
+        record1.setActualPrice(price1);
+
+        ServiceRecord record2 = new ServiceRecord();
+        BigDecimal price2 = new BigDecimal("158.98");
+        record2.setActualPrice(price2);
+
+        List<ServiceRecord> records = new ArrayList<>();
+        records.add(record1);
+        records.add(record2);
+
+        BigDecimal expectedTurnover = price1.add(price2);
+
+        when(timeServiceMock.getCurrentTime()).thenReturn(currentTime);
+        when(daoMock.getServicesProvidedBetween(firstDayOfPreviousMonth, lastDayOfPreviousMonth)).thenReturn(records);
+        BigDecimal turnoverReturned = service.getTurnoverForLastMonth();
+
+        verify(daoMock).getServicesProvidedBetween(firstDayOfPreviousMonth, lastDayOfPreviousMonth);
+        Assert.assertEquals(expectedTurnover, turnoverReturned);
     }
 }
