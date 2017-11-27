@@ -58,7 +58,7 @@ public class ServiceRecordFacadeImpl implements ServiceRecordFacade {
         emp.addServiceRecord(record);
 
         ServiceRecord created = serviceRecordService.create(record);
-        //TODO: maybe not needed, but present because it is present everywhere...
+
         dogService.update(dog);
         employeeService.update(emp);
         return created.getId();
@@ -74,5 +74,11 @@ public class ServiceRecordFacadeImpl implements ServiceRecordFacade {
         Dog dog = dogService.findById(dogId);
         List<ServiceRecord> serviceRecordsByDog = serviceRecordService.getServiceRecordsByDog(dog);
         return beanMappingService.mapTo(serviceRecordsByDog, ServiceRecordDTO.class);
+    }
+
+    @Override
+    public List<ServiceRecordDTO> getServiceRecordsFromLastWeek() {
+        List<ServiceRecord> recordsFromLastWeek = serviceRecordService.getServiceRecordsFromLastWeek();
+        return beanMappingService.mapTo(recordsFromLastWeek, ServiceRecordDTO.class);
     }
 }

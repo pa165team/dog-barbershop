@@ -16,5 +16,5 @@ public interface ServiceRecordService {
 
     List<ServiceRecord> getServiceRecordsByDog(Dog dog);
 
-
+    List<ServiceRecord> getServiceRecordsFromLastWeek();
 }

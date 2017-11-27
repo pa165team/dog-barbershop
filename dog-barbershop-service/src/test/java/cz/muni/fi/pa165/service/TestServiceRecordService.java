@@ -9,8 +9,10 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import java.util.Calendar;
+import java.util.Date;
+
+import static org.mockito.Mockito.*;
 
 /**
  * @author Jan Kalfus
@@ -20,15 +22,17 @@ public class TestServiceRecordService extends AbstractTransactionalTestNGSpringC
 
     private ServiceRecordService service;
     private ServiceRecordDao daoMock;
+    private TimeService timeServiceMock;
 
     @BeforeMethod
     public void setupEvery() {
         daoMock = mock(ServiceRecordDao.class);
-        service = new ServiceRecordServiceImpl(daoMock);
+        timeServiceMock = mock(TimeService.class);
+        service = new ServiceRecordServiceImpl(daoMock, timeServiceMock);
     }
 
     @Test
-    public void createServiceRecord() {
+    public void createsServiceRecord() {
         ServiceRecord record = new ServiceRecord();
 
         service.create(record);
@@ -37,11 +41,24 @@ public class TestServiceRecordService extends AbstractTransactionalTestNGSpringC
     }
 
     @Test
-    public void getServiceRecordsByDog() {
+    public void getsServiceRecordsByDog() {
         Dog dog = new Dog();
 
         service.getServiceRecordsByDog(dog);
 
         verify(daoMock).getRecordsByDog(dog);
+    }
+
+    @Test
+    public void getsServiceRecordsFromLastWeek() {
+        Date currentTime = new Date();
+        when(timeServiceMock.getCurrentTime()).thenReturn(currentTime);
+
+        service.getServiceRecordsFromLastWeek();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentTime);
+        calendar.add(Calendar.DAY_OF_YEAR, -7);
+        verify(daoMock).getServicesProvidedBetween(calendar.getTime(), currentTime);
     }
 }

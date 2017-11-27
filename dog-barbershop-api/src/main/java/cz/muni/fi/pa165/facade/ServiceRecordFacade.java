@@ -11,4 +11,5 @@ import java.util.List;
 public interface ServiceRecordFacade {
     Long createServiceRecord(ServiceRecordCreateDTO dto);
     List<ServiceRecordDTO> getServiceRecordsByDog(Long dogId);
+    List<ServiceRecordDTO> getServiceRecordsFromLastWeek();
 }
