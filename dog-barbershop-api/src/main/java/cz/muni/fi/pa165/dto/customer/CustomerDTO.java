@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.dto;
+package cz.muni.fi.pa165.dto.customer;
 
 
 import cz.muni.fi.pa165.dto.servicerecord.ServiceRecordDTO;

@@ -1,7 +1,7 @@
 package cz.muni.fi.pa165.facade;
 
-import cz.muni.fi.pa165.dto.CustomerCreateDTO;
-import cz.muni.fi.pa165.dto.CustomerDTO;
+import cz.muni.fi.pa165.dto.customer.CustomerCreateDTO;
+import cz.muni.fi.pa165.dto.customer.CustomerDTO;
 import cz.muni.fi.pa165.entity.Customer;
 import cz.muni.fi.pa165.service.BeanMappingService;
 import cz.muni.fi.pa165.service.CustomerService;

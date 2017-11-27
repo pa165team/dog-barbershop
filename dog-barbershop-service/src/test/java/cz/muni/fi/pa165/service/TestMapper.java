@@ -30,7 +30,7 @@ public class TestMapper extends AbstractTestNGSpringContextTests {
     @BeforeClass
     public void createEntities(){
         this.dog = new Dog("Rex", "Golden Retriever", new Date(2017, 11, 11), Gender.MALE, null);
-        this.dogDTO = new DogDTO("Cody", "Golden Retriever", new Date(2016,1,22), Gender.MALE);
+        this.dogDTO = new DogDTO("Cody", "Golden Retriever", new Date(2016,1,22), Gender.MALE, false, null);
         this.dogs = this.initializeDogs();
         this.dogDTOs = this.initializeDogDTOs();
     }
@@ -47,9 +47,9 @@ public class TestMapper extends AbstractTestNGSpringContextTests {
     }
 
     private List<DogDTO> initializeDogDTOs(){
-        DogDTO dog1 = new DogDTO("Cody", "Golden Retriever", new Date(2016,1,22), Gender.MALE);
-        DogDTO dog2 = new DogDTO("Boby", "GodKnows", new Date(1996,4,4), Gender.MALE);
-        DogDTO dog3 = new DogDTO("Connor", "Border Collie", new Date(2015,11,23), Gender.MALE);
+        DogDTO dog1 = new DogDTO("Cody", "Golden Retriever", new Date(2016,1,22), Gender.MALE, false, null);
+        DogDTO dog2 = new DogDTO("Boby", "GodKnows", new Date(1996,4,4), Gender.MALE, false, null);
+        DogDTO dog3 = new DogDTO("Connor", "Border Collie", new Date(2015,11,23), Gender.MALE, false, null);
         List<DogDTO> dogs = new ArrayList<>();
         dogs.add(dog1);
         dogs.add(dog2);
