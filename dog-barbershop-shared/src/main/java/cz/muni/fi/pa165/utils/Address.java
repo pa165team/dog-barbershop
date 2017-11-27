@@ -43,4 +43,24 @@ public class Address {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof Address)) return false;
+
+        Address address = (Address) o;
+
+        if (getNumber() != address.getNumber()) return false;
+        if (!getCity().equals(address.getCity())) return false;
+        return getStreet().equals(address.getStreet());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getCity().hashCode();
+        result = 31 * result + getStreet().hashCode();
+        result = 31 * result + getNumber();
+        return result;
+    }
 }

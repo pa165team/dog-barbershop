@@ -3,6 +3,8 @@ package cz.muni.fi.pa165.service;
 import cz.muni.fi.pa165.dao.CustomerDao;
 import cz.muni.fi.pa165.dao.DogDao;
 import cz.muni.fi.pa165.entity.Customer;
+import cz.muni.fi.pa165.entity.Dog;
+import cz.muni.fi.pa165.enums.Gender;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;
 import cz.muni.fi.pa165.utils.Address;
 import org.hibernate.service.spi.ServiceException;
@@ -12,12 +14,19 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.sql.Date;
 import java.util.HashSet;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+/**
+ * @author Martin Kuchar 433499
+ */
 
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
 public class TestCustomerService extends AbstractTransactionalTestNGSpringContextTests{
@@ -46,6 +55,10 @@ public class TestCustomerService extends AbstractTransactionalTestNGSpringContex
         customer.setDogs(new HashSet<>());
 
         return customer;
+    }
+
+    private Dog getOneDog(){
+        return new Dog("Rex", "German Shephard", new Date(2016,1,1), Gender.MALE, getOneCustomer());
     }
 
     @Test
@@ -107,5 +120,17 @@ public class TestCustomerService extends AbstractTransactionalTestNGSpringContex
         customerService.update(customer);
 
         verify(customerDao).update(customer);
+    }
+
+    @Test
+    public void getOwnerOfDog(){
+        Dog dog = getOneDog();
+
+        when(dogDao.findById(dog.getId())).thenReturn(dog);
+        when(customerDao.findById(dog.getOwner().getId())).thenReturn(dog.getOwner());
+
+        Customer owner = customerService.getOwnerOfDog(dog.getId());
+
+        Assert.assertEquals(dog.getOwner(), owner);
     }
 }

@@ -19,8 +19,8 @@ public class DogServiceImpl implements DogService {
     private DogDao dogDao;
 
     @Autowired
-    public DogServiceImpl(DogDao employeeDao) {
-        this.dogDao = employeeDao;
+    public DogServiceImpl(DogDao dogDao) {
+        this.dogDao = dogDao;
     }
 
 
