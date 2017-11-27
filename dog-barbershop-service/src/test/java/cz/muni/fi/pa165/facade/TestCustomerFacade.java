@@ -23,6 +23,10 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
+/**
+ * @author Martin Kuchar 433499
+ */
+
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
 public class TestCustomerFacade extends AbstractTransactionalTestNGSpringContextTests{
 
@@ -129,4 +133,6 @@ public class TestCustomerFacade extends AbstractTransactionalTestNGSpringContext
         Assert.assertEquals(address, captured.getAddress());
         Assert.assertEquals(phoneNumber, captured.getPhoneNumber());
     }
+
+    //TODO: tests for all functions
 }
