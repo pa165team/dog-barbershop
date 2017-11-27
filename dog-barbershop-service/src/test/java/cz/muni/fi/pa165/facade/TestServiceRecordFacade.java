@@ -66,7 +66,7 @@ public class TestServiceRecordFacade extends AbstractTransactionalTestNGSpringCo
         Dog dog = new Dog();
         Employee emp = new Employee();
 
-        ServiceRecordFacade facade = new ServiceRecordFacadeImpl(recordServiceMock, typeServiceMock, dogServiceMock, employeeServiceMock, beanMappingService);
+        ServiceRecordFacade facade = createFacade();
         when(typeServiceMock.findById(1L)).thenReturn(type);
         when(dogServiceMock.findById(1L)).thenReturn(dog);
         when(employeeServiceMock.findById(1L)).thenReturn(emp);
@@ -86,10 +86,14 @@ public class TestServiceRecordFacade extends AbstractTransactionalTestNGSpringCo
         Assert.assertEquals(id, newRecordId);
     }
 
+    private ServiceRecordFacadeImpl createFacade() {
+        return new ServiceRecordFacadeImpl(recordServiceMock, typeServiceMock, dogServiceMock, employeeServiceMock, beanMappingService);
+    }
+
     @Test
     public void getsServiceRecordsByDog() {
         final Long id = 1L;
-        ServiceRecordFacade facade = new ServiceRecordFacadeImpl(recordServiceMock, typeServiceMock, dogServiceMock, employeeServiceMock, beanMappingService);
+        ServiceRecordFacade facade = createFacade();
 
         Dog dog = new Dog();
         BigDecimal price1 = new BigDecimal("100");
@@ -117,7 +121,7 @@ public class TestServiceRecordFacade extends AbstractTransactionalTestNGSpringCo
 
     @Test
     public void getsServiceRecordsFromLastWeek() {
-        ServiceRecordFacade facade = new ServiceRecordFacadeImpl(recordServiceMock, typeServiceMock, dogServiceMock, employeeServiceMock, beanMappingService);
+        ServiceRecordFacade facade = createFacade();
 
         ArrayList<ServiceRecord> records = new ArrayList<>();
         ServiceRecord record1 = new ServiceRecord();
@@ -131,5 +135,16 @@ public class TestServiceRecordFacade extends AbstractTransactionalTestNGSpringCo
 
         Assert.assertEquals(1, recordsReturned.size());
         Assert.assertEquals(dateProvided, recordsReturned.get(0).getDateProvided());
+    }
+
+    @Test
+    public void getsTurnoverForLastMonth() {
+        ServiceRecordFacadeImpl facade = createFacade();
+        BigDecimal fakeTurnover = new BigDecimal("10.38");
+        when(recordServiceMock.getTurnoverForLastMonth()).thenReturn(fakeTurnover);
+
+        BigDecimal turnover = facade.getTurnoverForLastMonth();
+
+        Assert.assertEquals(fakeTurnover, turnover);
     }
 }

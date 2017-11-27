@@ -4,6 +4,7 @@ import cz.muni.fi.pa165.entity.Dog;
 import cz.muni.fi.pa165.entity.ServiceRecord;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -17,4 +18,6 @@ public interface ServiceRecordService {
     List<ServiceRecord> getServiceRecordsByDog(Dog dog);
 
     List<ServiceRecord> getServiceRecordsFromLastWeek();
+
+    BigDecimal getTurnoverForLastMonth();
 }
