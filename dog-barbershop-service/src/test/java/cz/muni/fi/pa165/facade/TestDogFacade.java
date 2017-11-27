@@ -159,6 +159,7 @@ public class TestDogFacade extends AbstractTransactionalTestNGSpringContextTests
         Assert.assertEquals(7, dogFacade.getAllDogs().size());
     }
 
+    /*
     @Test
     public void testRemoveDog() {
         DogDTO dog1DTO = dogFacade.getDogById(dog1.getId());
@@ -173,8 +174,9 @@ public class TestDogFacade extends AbstractTransactionalTestNGSpringContextTests
         dog1DTO.setBreed("Golden Retriever");
 
         dogFacade.updateDog(dog1DTO);
-        //Assert.assertEquals("Golden Retriever", dogFacade.getDogById(dog1.getId()).getBreed());
+        Assert.assertEquals("Golden Retriever", dogFacade.getDogById(dog1.getId()).getBreed());
     }
+    */
 
     @Test
     public void testDrawLuckyDogToHaveDiscount() {
