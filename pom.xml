@@ -16,6 +16,15 @@
         </configuration>
         <version>3.7.0</version>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <path>/dog-barbershop-rest</path>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <packaging>pom</packaging>
@@ -28,6 +37,12 @@
 
   <dependencies>
 
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-api</artifactId>
+      <version>7.0.82</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
@@ -129,6 +144,7 @@
     <module>dog-barbershop-persistence</module>
     <module>dog-barbershop-service</module>
     <module>dog-barbershop-shared</module>
+    <module>dog-barbershop-rest</module>
   </modules>
 
 
