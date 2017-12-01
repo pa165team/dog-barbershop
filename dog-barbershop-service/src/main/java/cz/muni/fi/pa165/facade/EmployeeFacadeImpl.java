@@ -12,6 +12,10 @@ import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * @author Daniel Mudrik (433655)
+ */
+
 @Service
 @Transactional
 public class EmployeeFacadeImpl implements EmployeeFacade {
