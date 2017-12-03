@@ -61,7 +61,7 @@ public class CustomersController {
      * @param surname
      * @return List of CustomerDTOs
      */
-    @RequestMapping(value = "/{surname}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/by_surname/{surname}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public final List<CustomerDTO> getCustomersWithSurname(@PathVariable("surname") String surname) {
         logger.debug("rest getCustomersWithSurname({})", surname);
         return customerFacade.getAllCustomersMatchingSurname(surname);
@@ -72,7 +72,7 @@ public class CustomersController {
      * @param number
      * @return List of CustomerDTOs
      */
-    @RequestMapping(value = "/{number}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/by_number/{number}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public final List<CustomerDTO> getCustomersWithPhoneNumber(@PathVariable("number") String number){
         logger.debug("rest getCustomersWithPhoneNumber({})", number);
         return customerFacade.getAllCustomersMatchingPhoneNumber(number);
