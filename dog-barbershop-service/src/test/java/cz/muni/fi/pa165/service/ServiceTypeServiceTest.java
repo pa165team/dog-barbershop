@@ -17,7 +17,7 @@ import static org.mockito.Mockito.verify;
  * @author Jan Kalfus
  */
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
-public class TestServiceTypeService extends AbstractTransactionalTestNGSpringContextTests {
+public class ServiceTypeServiceTest extends AbstractTransactionalTestNGSpringContextTests {
 
     private ServiceTypeService serviceTypeService;
     private ServiceTypeDao daoMock;

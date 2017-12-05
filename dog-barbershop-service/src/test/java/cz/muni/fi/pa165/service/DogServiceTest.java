@@ -22,7 +22,7 @@ import static org.mockito.Mockito.verify;
  * @author Lucie Kolarikova
  */
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
-public class TestDogService extends AbstractTransactionalTestNGSpringContextTests {
+public class DogServiceTest extends AbstractTransactionalTestNGSpringContextTests {
 
     @Mock
     private CustomerDao customerDao;

@@ -23,7 +23,7 @@ import static org.mockito.Mockito.*;
  * @author Daniel Mudrik (433655)
  */
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
-public class TestEmployeeFacade extends AbstractTransactionalTestNGSpringContextTests {
+public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContextTests {
 
     private EmployeeService employeeServiceMock;
     private Employee employeeMock;

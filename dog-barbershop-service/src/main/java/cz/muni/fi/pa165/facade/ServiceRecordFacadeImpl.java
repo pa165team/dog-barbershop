@@ -9,8 +9,8 @@ import cz.muni.fi.pa165.entity.ServiceType;
 import cz.muni.fi.pa165.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Date;

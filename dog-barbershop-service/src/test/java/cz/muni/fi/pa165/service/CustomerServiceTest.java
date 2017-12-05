@@ -29,7 +29,7 @@ import static org.mockito.Mockito.when;
  */
 
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
-public class TestCustomerService extends AbstractTransactionalTestNGSpringContextTests{
+public class CustomerServiceTest extends AbstractTransactionalTestNGSpringContextTests{
 
     @Mock
     private CustomerDao customerDao;
