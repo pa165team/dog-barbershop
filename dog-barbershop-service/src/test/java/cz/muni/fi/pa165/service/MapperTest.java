@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ContextConfiguration(classes = MappingServiceConfiguration.class)
-public class TestMapper extends AbstractTestNGSpringContextTests {
+public class MapperTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private BeanMappingService beanMappingService;

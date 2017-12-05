@@ -7,12 +7,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -22,7 +22,7 @@ import java.util.List;
 @ContextConfiguration(classes = PersistenceSampleApplicationContext.class)
 @TestExecutionListeners(TransactionalTestExecutionListener.class)
 @Transactional
-public class TestServiceTypeDao extends AbstractTestNGSpringContextTests {
+public class ServiceTypeDaoTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private ServiceTypeDao serviceTypeDao;

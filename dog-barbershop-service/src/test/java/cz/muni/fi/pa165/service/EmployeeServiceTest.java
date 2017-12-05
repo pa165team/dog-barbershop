@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 import org.testng.annotations.BeforeMethod;
 
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
-public class TestEmployeeService extends AbstractTransactionalTestNGSpringContextTests{
+public class EmployeeServiceTest extends AbstractTransactionalTestNGSpringContextTests{
     
     private Employee employee;
     

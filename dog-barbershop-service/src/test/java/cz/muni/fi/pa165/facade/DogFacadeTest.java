@@ -30,7 +30,7 @@ import static org.mockito.Mockito.*;
  */
 
 @ContextConfiguration(classes = MappingServiceConfiguration.class)
-public class TestDogFacade extends AbstractTransactionalTestNGSpringContextTests {
+public class DogFacadeTest extends AbstractTransactionalTestNGSpringContextTests {
 
     @Mock
     private DogService dogServiceMock;

@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
  * @author Jan Kalfus
  */
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
-public class TestServiceRecordService extends AbstractTransactionalTestNGSpringContextTests {
+public class ServiceRecordServiceTest extends AbstractTransactionalTestNGSpringContextTests {
 
     private ServiceRecordService service;
     private ServiceRecordDao daoMock;
