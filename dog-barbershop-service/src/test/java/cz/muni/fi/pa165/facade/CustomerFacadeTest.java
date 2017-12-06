@@ -8,7 +8,6 @@ import cz.muni.fi.pa165.entity.Customer;
 import cz.muni.fi.pa165.service.*;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;
 import cz.muni.fi.pa165.utils.Address;
-import org.junit.Ignore;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -30,7 +29,7 @@ import static org.mockito.Mockito.*;
  */
 
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
-public class TestCustomerFacade extends AbstractTransactionalTestNGSpringContextTests{
+public class CustomerFacadeTest extends AbstractTransactionalTestNGSpringContextTests{
 
     @Mock
     private CustomerService customerServiceMock;

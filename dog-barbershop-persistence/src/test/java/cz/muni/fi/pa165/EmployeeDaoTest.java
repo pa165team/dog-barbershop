@@ -8,15 +8,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import javax.transaction.Transactional;
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author Martin Kuchár 433499
@@ -24,7 +23,7 @@ import javax.persistence.PersistenceContext;
 @ContextConfiguration(classes = PersistenceSampleApplicationContext.class)
 @TestExecutionListeners(TransactionalTestExecutionListener.class)
 @Transactional
-public class TestEmployeeDao extends AbstractTestNGSpringContextTests {
+public class EmployeeDaoTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private EmployeeDao employeeDao;

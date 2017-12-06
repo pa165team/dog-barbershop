@@ -28,7 +28,7 @@ import static org.mockito.Mockito.when;
  * @author Jan Kalfus
  */
 @ContextConfiguration(classes = {MappingServiceConfiguration.class})
-public class TestServiceRecordFacade extends AbstractTransactionalTestNGSpringContextTests {
+public class ServiceRecordFacadeTest extends AbstractTransactionalTestNGSpringContextTests {
 
     private ServiceRecordService recordServiceMock;
     private ServiceTypeService typeServiceMock;
