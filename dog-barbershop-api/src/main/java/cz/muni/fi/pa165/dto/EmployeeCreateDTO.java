@@ -1,9 +1,9 @@
 package cz.muni.fi.pa165.dto;
 
 import cz.muni.fi.pa165.utils.Address;
-import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -12,11 +12,11 @@ import java.util.Objects;
  */
 public class EmployeeCreateDTO {
     @NotNull
-    @Length(min = 2, max = 30)
+    @Size(min = 2, max = 30)
     private String name;
 
     @NotNull
-    @Length(min = 2, max = 30)
+    @Size(min = 2, max = 30)
     private String surname;
 
     @NotNull
@@ -26,7 +26,7 @@ public class EmployeeCreateDTO {
     private BigDecimal salary;
 
     @NotNull
-    @Length(min = 7, max = 13)
+    @Size(min = 7, max = 13)
     private String phoneNumber;
 
     public EmployeeCreateDTO() {

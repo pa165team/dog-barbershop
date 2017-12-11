@@ -1,11 +1,11 @@
 package cz.muni.fi.pa165.dto.dog;
 
 import cz.muni.fi.pa165.enums.Gender;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
+import javax.validation.constraints.Size;
 
 /**
  * @author Martin Kuchar 433499
@@ -14,11 +14,11 @@ import java.sql.Date;
 public class DogCreateDTO {
 
     @NotNull
-    @Length(min = 2, max = 30)
+    @Size(min = 2, max = 30)
     private String name;
 
     @NotNull
-    @Length(min = 1, max = 30)
+    @Size(min = 1, max = 30)
     private String breed;
 
     @NotNull
