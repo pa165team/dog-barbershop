@@ -1,0 +1,48 @@
+<!-- web application deployment descriptor, needed for config that cannot be set using annotations -->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!-- define existing roles -->
+    <security-role>
+        <role-name>employer</role-name>
+    </security-role>
+    <security-role>
+        <role-name>employee</role-name>
+    </security-role>
+
+    <!-- protect URLs -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Authentication for URLs that all users can access</web-resource-name>
+            <url-pattern>/dogs/*</url-pattern>
+            <url-pattern>/customers/*</url-pattern>
+            <url-pattern>/service-records/*</url-pattern>
+            <url-pattern>/service-types/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>employer</role-name>
+            <role-name>employee</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Authentication for URLs that only employer is able to access
+            </web-resource-name>
+            <url-pattern>/employees/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>employer</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- define authentication method, can be BASIC or FORM -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/WEB-INF/jsp/login.jsp</form-login-page>
+            <form-error-page>/WEB-INF/jsp/login-failed.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+</web-app>
