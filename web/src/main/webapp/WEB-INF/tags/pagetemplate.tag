@@ -26,7 +26,32 @@
     
 </head>
 <body>
-    <jsp:invoke fragment="body"/>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Dog Barbershop</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="customers">Customers</a></li>
+                        <li><a href="dogs">Dogs</a></li>
+                        <li><a href="service-records">Service Records</a></li>
+                        <li><a href="service-types">Service Types</a></li>
+                        <li><a href="employees">Employees</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <jsp:invoke fragment="body"/>
+    </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
