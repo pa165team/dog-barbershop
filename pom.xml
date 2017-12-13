@@ -60,7 +60,7 @@
     <module>dog-barbershop-persistence</module>
     <module>dog-barbershop-sample-data</module>
     <module>dog-barbershop-service</module>
-    <module>dog-barbershop-spring-mvc</module>
+    <module>web</module>
     <module>dog-barbershop-shared</module>
     <module>dog-barbershop-rest</module>
   </modules>
