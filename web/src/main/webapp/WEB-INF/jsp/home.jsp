@@ -8,7 +8,10 @@
 <my:pagetemplate>
 <jsp:attribute name="body">
 
-    <div>hello world!</div>
+<div class="jumbotron">
+    <h1>Dog Barbershop</h1>
+    <p>Welcome to Dog Barbershop where you can manage your services!</p>
+</div>
 
 </jsp:attribute>
 </my:pagetemplate>
