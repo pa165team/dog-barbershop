@@ -18,8 +18,7 @@
             <web-resource-name>Authentication for URLs that all users can access</web-resource-name>
             <url-pattern>/dogs/*</url-pattern>
             <url-pattern>/customers/*</url-pattern>
-            <url-pattern>/service-records/*</url-pattern>
-            <url-pattern>/service-types/*</url-pattern>
+            <url-pattern>/services/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>employer</role-name>
