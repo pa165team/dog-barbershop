@@ -36,11 +36,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dog Barbershop</a>
+                    <a class="navbar-brand" href="/pa165">Dog Barbershop</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/pa165">Home</a></li>
                         <li><a href="/pa165/customers">Customers</a></li>
                         <li><a href="/pa165/dogs">Dogs</a></li>
                         <li><a href="/pa165/services">Services</a></li>
