@@ -36,11 +36,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dog Barbershop</a>
+                    <a class="navbar-brand" href="/pa165">Dog Barbershop</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/pa165">Home</a></li>
                         <li><a href="/pa165/customers">Customers</a></li>
                         <li><a href="/pa165/dogs">Dogs</a></li>
                         <li><a href="/pa165/services">Services</a></li>
@@ -49,6 +49,12 @@
                 </div>
             </div>
         </nav>
+
+
+        <c:if test="${not empty alert_success}">
+            <div class="alert alert-success" role="alert"><c:out value="${alert_success}"/></div>
+        </c:if>
+
         <jsp:invoke fragment="body"/>
     </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

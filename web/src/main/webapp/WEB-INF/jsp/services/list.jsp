@@ -19,7 +19,7 @@
         </thead>
         <tbody>
         <c:forEach items="${services}" var="service">
-            <tr>
+            <tr onclick="window.location='/pa165/services/edit/${service.id}'" style="cursor: pointer;">
                 <td><c:out value="${service.name}"/></td>
                 <td><c:out value="${service.description}"/></td>
                 <td><c:out value="${service.pricePerHour}"/></td>
