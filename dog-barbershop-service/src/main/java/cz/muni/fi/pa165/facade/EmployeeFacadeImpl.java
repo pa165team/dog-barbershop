@@ -1,7 +1,7 @@
 package cz.muni.fi.pa165.facade;
 
-import cz.muni.fi.pa165.dto.EmployeeCreateDTO;
-import cz.muni.fi.pa165.dto.EmployeeDTO;
+import cz.muni.fi.pa165.dto.employee.EmployeeCreateDTO;
+import cz.muni.fi.pa165.dto.employee.EmployeeDTO;
 import cz.muni.fi.pa165.entity.Employee;
 import cz.muni.fi.pa165.service.BeanMappingService;
 import cz.muni.fi.pa165.service.EmployeeService;

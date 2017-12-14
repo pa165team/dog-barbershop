@@ -18,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.validation.Validator;
+import org.springframework.format.FormatterRegistry;
 
 /**
  * @author Jan Kalfus
@@ -70,7 +71,8 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
     public MessageSource messageSource() {
         log.debug("registering ResourceBundle 'Texts' for messages");
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename(TEXTS);
+        messageSource.setBasename("classpath:Texts");
+        log.debug(messageSource.toString());
         return messageSource;
     }
 
@@ -83,5 +85,8 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
         return new LocalValidatorFactoryBean();
     }
 
-
+    @Override
+    public void addFormatters (FormatterRegistry registry) {
+        registry.addConverter(new StringToAddressConverter());
+    }
 }
