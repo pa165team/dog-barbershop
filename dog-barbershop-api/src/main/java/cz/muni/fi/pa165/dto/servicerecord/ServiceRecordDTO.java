@@ -1,7 +1,7 @@
 package cz.muni.fi.pa165.dto.servicerecord;
 
 import cz.muni.fi.pa165.dto.dog.DogDTO;
-import cz.muni.fi.pa165.dto.EmployeeDTO;
+import cz.muni.fi.pa165.dto.employee.EmployeeDTO;
 import cz.muni.fi.pa165.dto.servicetype.ServiceTypeDTO;
 
 import java.math.BigDecimal;

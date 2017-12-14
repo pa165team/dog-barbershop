@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.dto;
+package cz.muni.fi.pa165.dto.employee;
 
 import cz.muni.fi.pa165.utils.Address;
 

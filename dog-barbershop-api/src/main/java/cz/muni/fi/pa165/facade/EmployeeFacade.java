@@ -1,7 +1,7 @@
 package cz.muni.fi.pa165.facade;
 
-import cz.muni.fi.pa165.dto.EmployeeCreateDTO;
-import cz.muni.fi.pa165.dto.EmployeeDTO;
+import cz.muni.fi.pa165.dto.employee.EmployeeCreateDTO;
+import cz.muni.fi.pa165.dto.employee.EmployeeDTO;
 
 import java.math.BigDecimal;
 import java.util.List;
