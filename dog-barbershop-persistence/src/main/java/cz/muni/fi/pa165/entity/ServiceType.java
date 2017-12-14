@@ -67,6 +67,14 @@ public class ServiceType {
         this.pricePerHour = pricePerHour;
     }
 
+    public Set<ServiceRecord> getServiceRecords() {
+        return serviceRecords;
+    }
+
+    public void setServiceRecords(Set<ServiceRecord> serviceRecords) {
+        this.serviceRecords = serviceRecords;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
