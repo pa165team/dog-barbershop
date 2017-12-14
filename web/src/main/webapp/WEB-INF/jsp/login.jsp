@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<fmt:setBundle basename="Texts"/>
 <my:pagetemplate>
 <jsp:attribute name="body">
 <form method="POST" action="j_security_check">
