@@ -41,10 +41,10 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="#">Home</a></li>
-                        <li><a href="customers">Customers</a></li>
-                        <li><a href="dogs">Dogs</a></li>
-                        <li><a href="services">Services</a></li>
-                        <li><a href="employees">Employees</a></li>
+                        <li><a href="/pa165/customers">Customers</a></li>
+                        <li><a href="/pa165/dogs">Dogs</a></li>
+                        <li><a href="/pa165/services">Services</a></li>
+                        <li><a href="/pa165/employees">Employees</a></li>
                     </ul>
                 </div>
             </div>
