@@ -1,5 +1,6 @@
 package cz.muni.fi.pa165.mvc.controllers;
 
+import cz.muni.fi.pa165.dto.servicetype.ServiceTypeCreateDTO;
 import cz.muni.fi.pa165.dto.servicetype.ServiceTypeDTO;
 import cz.muni.fi.pa165.facade.ServiceTypeFacade;
 import org.slf4j.Logger;
@@ -61,6 +62,29 @@ public class ServiceController {
         serviceTypeEdit.setId(id);
         serviceTypeFacade.update(serviceTypeEdit);
         redirectAttributes.addFlashAttribute("alert_success", "Service type was successfully updated");
+        return "redirect:" + uriComponentsBuilder.path("/services").build().encode().toUriString();
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public String edit(Model model) {
+        model.addAttribute("serviceTypeCreate", new ServiceTypeCreateDTO());
+        return "services/create";
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String create(@Valid @ModelAttribute("serviceTypeCreate") ServiceTypeCreateDTO serviceTypeCreate,
+                         BindingResult bindingResult,
+                         Model model,
+                         RedirectAttributes redirectAttributes,
+                         UriComponentsBuilder uriComponentsBuilder) {
+        if (bindingResult.hasErrors()) {
+            for (FieldError fe : bindingResult.getFieldErrors()) {
+                model.addAttribute(fe.getField() + "_error", true);
+            }
+            return "services/create";
+        }
+        serviceTypeFacade.createServiceType(serviceTypeCreate);
+        redirectAttributes.addFlashAttribute("alert_success", "Service type was successfully created");
         return "redirect:" + uriComponentsBuilder.path("/services").build().encode().toUriString();
     }
 }
