@@ -40,11 +40,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Home</a></li>
                         <li><a href="customers">Customers</a></li>
                         <li><a href="dogs">Dogs</a></li>
-                        <li><a href="service-records">Service Records</a></li>
-                        <li><a href="service-types">Service Types</a></li>
+                        <li><a href="services">Services</a></li>
                         <li><a href="employees">Employees</a></li>
                     </ul>
                 </div>
