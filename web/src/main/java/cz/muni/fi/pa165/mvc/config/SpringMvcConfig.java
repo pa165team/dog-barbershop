@@ -71,8 +71,8 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
     public MessageSource messageSource() {
         log.debug("registering ResourceBundle 'Texts' for messages");
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("classpath:Texts");
-        log.debug(messageSource.toString());
+        messageSource.setBasename(TEXTS);
+        log.debug(messageSource.getBasenameSet().toString());
         return messageSource;
     }
 
