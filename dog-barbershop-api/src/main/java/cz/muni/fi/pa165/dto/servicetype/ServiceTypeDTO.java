@@ -1,5 +1,8 @@
 package cz.muni.fi.pa165.dto.servicetype;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -8,8 +11,14 @@ import java.util.Objects;
  */
 public class ServiceTypeDTO {
     private Long id;
+
+    @NotNull
+    @Size(min = 3, max = 50)
     private String name;
     private String description;
+
+    @NotNull
+    @Min(0)
     private BigDecimal pricePerHour;
 
     public Long getId() {

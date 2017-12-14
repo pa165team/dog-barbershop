@@ -49,6 +49,12 @@
                 </div>
             </div>
         </nav>
+
+
+        <c:if test="${not empty alert_success}">
+            <div class="alert alert-success" role="alert"><c:out value="${alert_success}"/></div>
+        </c:if>
+
         <jsp:invoke fragment="body"/>
     </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

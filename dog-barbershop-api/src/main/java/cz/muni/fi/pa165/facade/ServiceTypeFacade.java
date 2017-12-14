@@ -19,4 +19,8 @@ public interface ServiceTypeFacade {
     void changePricePerHour(PricePerHourChangeDTO dto);
 
     List<ServiceTypeDTO> getAllServiceTypes();
+
+    ServiceTypeDTO getServiceType(long id);
+
+    void update(ServiceTypeDTO dto);
 }

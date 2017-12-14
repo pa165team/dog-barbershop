@@ -63,4 +63,17 @@ public class ServiceTypeFacadeImpl implements ServiceTypeFacade {
         List<ServiceType> all = serviceTypeService.findAll();
         return beanMappingService.mapTo(all, ServiceTypeDTO.class);
     }
+
+    @Override
+    public ServiceTypeDTO getServiceType(long id) {
+        ServiceType serviceType = serviceTypeService.findById(id);
+        return beanMappingService.mapTo(serviceType, ServiceTypeDTO.class);
+    }
+
+    @Override
+    public void update(ServiceTypeDTO dto) {
+        ServiceType serviceType = serviceTypeService.findById(dto.getId());
+        serviceType.setDescription(dto.getDescription());
+        serviceType.setPricePerHour(dto.getPricePerHour());
+    }
 }
