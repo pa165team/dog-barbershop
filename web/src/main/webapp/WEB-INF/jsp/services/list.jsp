@@ -5,10 +5,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<fmt:setBundle basename="Texts"/>
 <my:pagetemplate>
 <jsp:attribute name="body">
     <h1>Services</h1>
+    <a class="btn btn-default" href="/pa165/services/create">
+        <span class="glyphicon glyphicon-plus"
+              aria-hidden="true"></span>
+        Add
+    </a>
     <table class="table">
         <thead>
         <tr>
@@ -19,7 +24,8 @@
         </thead>
         <tbody>
         <c:forEach items="${services}" var="service">
-            <tr>
+            <tr onclick="window.location='/pa165/services/edit/${service.id}'"
+                style="cursor: pointer;">
                 <td><c:out value="${service.name}"/></td>
                 <td><c:out value="${service.description}"/></td>
                 <td><c:out value="${service.pricePerHour}"/></td>
