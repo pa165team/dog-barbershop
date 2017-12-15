@@ -22,6 +22,9 @@ public class CustomerCreateDTO {
     @NotNull
     private String phoneNumber;
 
+    public CustomerCreateDTO() {
+    }
+
     public CustomerCreateDTO(@NotNull String name, @NotNull String surname, @NotNull Address address, @NotNull String phoneNumber) {
         this.name = name;
         this.surname = surname;
