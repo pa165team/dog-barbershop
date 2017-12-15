@@ -34,8 +34,22 @@
         <div class="form-group ${gender_error?'has-error':''}">
             <form:label path="gender" cssClass="col-sm-2 control-label">Gender</form:label>
             <div class="col-sm-10">
-                <form:input path="gender" cssClass="form-control"/>
+                <form:select path="gender" cssClass="form-control">
+                    <form:option value="NONE" label="--- Select Gender ---"/>
+                    <form:options items="${genders}"/>
+                </form:select>
                 <form:errors path="gender" cssClass="help-block"/>
+            </div>
+        </div>
+        <div class="form-group ${ownerId_error?'has-error':''}">
+            <form:label path="ownerId" cssClass="col-sm-2 control-label">Owner</form:label>
+            <div class="col-sm-10">
+                <form:select path="ownerId" cssClass="form-control">
+                    <form:option value="NONE" label="--- Select Owner ---"/>
+                    <c:forEach items="${allCustomers}" var="cust">
+                        <form:option value="${cust.id}">${cust.name} ${cust.surname}</form:option>
+                    </c:forEach>
+                </form:select>
             </div>
         </div>
         <button class="btn btn-primary" type="submit">Confirm Registration</button>

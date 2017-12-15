@@ -24,7 +24,7 @@
                 <td><c:out value="${dog.name}"/></td>
                 <td><c:out value="${dog.breed}"/></td>
                 <td>
-                    <c:out value="${dog.dateOfBirthLD}"/>
+                    <c:out value="${dog.dateOfBirth.toLocalDate()}"/>
                 </td>
                 <td><c:out value="${dog.gender}"/></td>
             </tr>
@@ -32,7 +32,7 @@
         </tbody>
     </table>
 
-    <my:extraTag href="/dogs/create" class="btn btn-primary">
+    <my:extraTag href="/dogs/new" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         Add Dog
     </my:extraTag>

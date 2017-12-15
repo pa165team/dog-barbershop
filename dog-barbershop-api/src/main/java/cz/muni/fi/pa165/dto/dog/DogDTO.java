@@ -18,8 +18,6 @@ public class DogDTO {
 
     private Date dateOfBirth;
 
-    private LocalDate dob;
-
     private Gender gender;
 
     private Boolean hasDiscount;
@@ -33,7 +31,6 @@ public class DogDTO {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
-        this.dob = this.dateOfBirth.toLocalDate();
         this.gender = gender;
         this.hasDiscount = hasDiscount;
         this.ownerId = ownerId;
@@ -59,14 +56,6 @@ public class DogDTO {
         return dateOfBirth;
     }
 
-    public LocalDate getDateOfBirthLD() {
-        return dob;
-    }
-
-    public void setDateOfBirthLD(LocalDate dob) {
-        this.dob = dob;
-    }
-
     public Gender getGender() {
         return gender;
     }
@@ -81,7 +70,6 @@ public class DogDTO {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-        this.setDateOfBirthLD(dateOfBirth.toLocalDate());
     }
 
     public void setGender(Gender gender) {

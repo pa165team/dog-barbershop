@@ -2,9 +2,9 @@ package cz.muni.fi.pa165.mvc.controllers;
 
 
 import cz.muni.fi.pa165.dto.dog.DogCreateDTO;
-import cz.muni.fi.pa165.dto.employee.EmployeeCreateDTO;
+import cz.muni.fi.pa165.enums.Gender;
+import cz.muni.fi.pa165.facade.CustomerFacade;
 import cz.muni.fi.pa165.facade.DogFacade;
-import cz.muni.fi.pa165.facade.EmployeeFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +34,9 @@ public class DogController {
 
     @Autowired
     private DogFacade dogFacade;
+
+    @Autowired
+    private CustomerFacade customerFacade;
 
     /**
      * Shows a list of dogs //with the ability to add, delete or edit.
@@ -56,8 +59,18 @@ public class DogController {
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createNewDog(Model model) {
         log.debug("createNewDog()");
+
         model.addAttribute("dogCreate", new DogCreateDTO());
+        model.addAttribute("allCustomers", customerFacade.getAllCustomers());
+        model.addAttribute("genders", allGenders());
         return "dogs/create";
+    }
+
+    private List<Gender> allGenders() {
+        List<Gender> genders = new ArrayList<>();
+        genders.add(Gender.MALE);
+        genders.add(Gender.FEMALE);
+        return genders;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
