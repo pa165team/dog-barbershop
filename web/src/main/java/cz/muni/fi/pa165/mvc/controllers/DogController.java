@@ -46,7 +46,7 @@ public class DogController {
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String list(Model model) {
-        model.addAttribute("dogs", dogFacade.getAllDogs());
+        model.addAttribute("allDogs", dogFacade.getAllDogs());
         return "dogs/list";
     }
 
@@ -63,6 +63,7 @@ public class DogController {
         model.addAttribute("dogCreate", new DogCreateDTO());
         model.addAttribute("allCustomers", customerFacade.getAllCustomers());
         model.addAttribute("genders", allGenders());
+
         return "dogs/create";
     }
 
