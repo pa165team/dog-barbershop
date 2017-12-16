@@ -45,9 +45,21 @@ public class DogController {
      * @param model data to display
      * @return JSP page name
      */
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public String list(Model model) {
-        model.addAttribute("allDogs", dogFacade.getAllDogs());
+    @RequestMapping(value = "/{filter}", method = RequestMethod.GET)
+    public String list(@PathVariable String filter, Model model) {
+        List<DogDTO> dogs = new ArrayList<>();
+        switch(filter){
+            case "males":
+                dogs = dogFacade.getAllDogsOfGender(Gender.MALE);
+                break;
+            case "females":
+                dogs = dogFacade.getAllDogsOfGender(Gender.FEMALE);
+                break;
+            default:
+                dogs = dogFacade.getAllDogs();
+        }
+        model.addAttribute("allDogs", dogs);
+        model.addAttribute("filter", filter);
         return "dogs/list";
     }
 

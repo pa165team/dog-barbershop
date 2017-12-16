@@ -8,6 +8,18 @@
 <my:pagetemplate title="Dogs">
 <jsp:attribute name="body">
     <h1>Dogs</h1>
+    <div>
+        Show:&nbsp;
+        <my:extraTag href="/dogs/all" class='btn btn-primary ${filter.equalsIgnoreCase("all") ? "disabled" : ""}'>
+            All Dogs
+        </my:extraTag>
+        <my:extraTag href="/dogs/males" class='btn btn-primary ${filter.equalsIgnoreCase("males") ? "disabled" : ""}'>
+            Males Only
+        </my:extraTag>
+        <my:extraTag href="/dogs/females" class='btn btn-primary ${filter.equalsIgnoreCase("females") ? "disabled" : ""}'>
+            Females Only
+        </my:extraTag>
+    </div>
     <table class="table">
         <thead>
         <tr>
