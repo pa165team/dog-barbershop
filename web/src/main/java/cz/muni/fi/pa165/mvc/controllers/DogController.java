@@ -6,6 +6,7 @@ import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.enums.Gender;
 import cz.muni.fi.pa165.facade.CustomerFacade;
 import cz.muni.fi.pa165.facade.DogFacade;
+import cz.muni.fi.pa165.facade.ServiceRecordFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,9 @@ public class DogController {
 
     @Autowired
     private CustomerFacade customerFacade;
+
+    @Autowired
+    private ServiceRecordFacade serviceRecordFacade;
 
     /**
      * Shows a list of dogs //with the ability to add, delete or edit.
@@ -168,5 +172,12 @@ public class DogController {
         dogFacade.removeDog(originalDog);
         redirectAttributes.addFlashAttribute("alert_success", "Dog was successfully removed.");
         return "redirect:" + uriComponentsBuilder.path("/dogs/all").build().encode().toUriString();
+    }
+
+    @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+    public String detail(@PathVariable long id, Model model) {
+        model.addAttribute("dog", dogFacade.getDogById(id));
+        model.addAttribute("serviceRecords", serviceRecordFacade.getServiceRecordsByDog(id));
+        return "dogs/detail";
     }
 }
