@@ -20,8 +20,9 @@ public class StringToAddressConverter implements Converter<String, Address> {
 
     @Override
     public Address convert (String address) {
+        Address newAddress;
         try {
-            Address newAddress = new Address();
+            newAddress = new Address();
             String[] commaSplit = address.split(",");
             String[] spaceSplit;
             if (commaSplit.length == 2) {
@@ -30,12 +31,16 @@ public class StringToAddressConverter implements Converter<String, Address> {
                     newAddress.setStreet(spaceSplit[0]);
                     newAddress.setNumber(Integer.parseInt(spaceSplit[1])); //can throw NumberFormatException
                     newAddress.setCity(commaSplit[1]);
-                    
+                    return newAddress;
+                } else {
+                    throw new IllegalArgumentException("Street and house no. must be separated by a space.");
                 }
+            } else {
+                throw new IllegalArgumentException("Wrong address format! Correct address format: [Street] [House No.], [City]");
             }
-            return newAddress;
-        } catch (NumberFormatException e) {
-            return null;
+            
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
         }
     }
 }
