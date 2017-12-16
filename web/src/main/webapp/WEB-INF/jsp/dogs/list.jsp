@@ -38,7 +38,7 @@
         </thead>
         <tbody>
         <c:forEach items="${allDogs}" var="dog">
-            <tr onclick="window.location='/pa165/dogs/edit/${dog.id}'" style="cursor: pointer;">
+            <tr onclick="window.location='/pa165/dogs/detail/${dog.id}'" style="cursor: pointer;">
                 <td><c:out value="${dog.name}"/></td>
                 <td><c:out value="${dog.breed}"/></td>
                 <td>
@@ -48,10 +48,14 @@
                 <td><c:out value="${dog.owner.name} ${dog.owner.surname}"/></td>
                 <td>
                     <my:extraTag href="/dogs/edit/${dog.id}" class='btn btn-primary'>
-                        Edit
+                        <span class="glyphicon glyphicon-edit">
+                            Edit
+                        </span>
                     </my:extraTag>
                     <my:extraTag href="/dogs/delete/${dog.id}" class='btn btn-danger'>
-                        Delete
+                         <span class="glyphicon glyphicon-remove">
+                            Delete
+                         </span>
                     </my:extraTag>
                 </td>
             </tr>
