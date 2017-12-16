@@ -73,7 +73,7 @@ public class DogFacadeImpl implements DogFacade {
     @Override
     public void removeDog(DogDTO dog) {
         Customer owner = customerService.findById(dog.getOwner().getId());
-        Dog originalDog = beanMappingService.mapTo(dog, Dog.class);
+        Dog originalDog = dogService.findById(dog.getId());
         owner.removeDog(originalDog);
         dogService.remove(originalDog);
         customerService.update(owner);

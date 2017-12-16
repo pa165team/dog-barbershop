@@ -43,7 +43,11 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-default">Update</button>
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
+            <span class="glyphicon glyphicon-edit">
+                Update
+            </span>
+        </button>
     </form:form>
 </jsp:attribute>
 </my:pagetemplate>
