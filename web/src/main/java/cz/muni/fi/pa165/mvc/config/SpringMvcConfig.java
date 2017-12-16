@@ -88,5 +88,6 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addFormatters (FormatterRegistry registry) {
         registry.addConverter(new StringToAddressConverter());
+        registry.addConverter(new AddressToStringConverter());
     }
 }
