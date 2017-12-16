@@ -141,21 +141,21 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
         Dog d1 = new Dog();
         d1.setName("Rexi");
         d1.setBreed("German Shepherd");
-        d1.setDateOfBirth(new Date(2011, 12, 13));
+        d1.setDateOfBirth(Date.valueOf("2011-12-13"));
         d1.setGender(Gender.FEMALE);
         dogs.add(d1);
 
         Dog d2 = new Dog();
         d2.setName("Cody");
         d2.setBreed("Golden Retriever");
-        d2.setDateOfBirth(new Date(2016, 1, 22));
+        d2.setDateOfBirth(Date.valueOf("2016-1-22"));
         d2.setGender(Gender.MALE);
         dogs.add(d2);
 
         Dog d3 = new Dog();
         d3.setName("Connor");
         d3.setBreed("Border Collie");
-        d3.setDateOfBirth(new Date(2015, 10, 25));
+        d3.setDateOfBirth(Date.valueOf("2015-10-25"));
         d3.setGender(Gender.MALE);
         dogs.add(d3);
 
@@ -231,19 +231,19 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 
         ServiceRecord sr1 = new ServiceRecord();
         sr1.setLengthMinutes(30);
-        sr1.setDateProvided(new Date(2017, 12, 14));
+        sr1.setDateProvided(Date.valueOf("2017-12-14"));
         sr1.setActualPrice(new BigDecimal("100"));
         serviceRecords.add(sr1);
 
         ServiceRecord sr2 = new ServiceRecord();
         sr2.setLengthMinutes(35);
-        sr2.setDateProvided(new Date(2017, 12, 13));
+        sr2.setDateProvided(Date.valueOf("2017-12-13"));
         sr2.setActualPrice(new BigDecimal("100"));
         serviceRecords.add(sr2);
 
         ServiceRecord sr3 = new ServiceRecord();
         sr3.setLengthMinutes(45);
-        sr3.setDateProvided(new Date(2017, 11, 10));
+        sr3.setDateProvided(Date.valueOf("2017-11-10"));
         sr3.setActualPrice(new BigDecimal("180"));
         serviceRecords.add(sr3);
 

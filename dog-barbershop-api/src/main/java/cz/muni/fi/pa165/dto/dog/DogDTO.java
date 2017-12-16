@@ -2,6 +2,7 @@ package cz.muni.fi.pa165.dto.dog;
 
 import cz.muni.fi.pa165.enums.Gender;
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * @author Martin Kuchar 433499
