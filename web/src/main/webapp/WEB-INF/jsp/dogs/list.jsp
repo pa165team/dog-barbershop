@@ -15,18 +15,19 @@
             <th>Breed</th>
             <th>Date Of Birth</th>
             <th>Gender</th>
-            <!--<th>Owner</th>-->
+            <th>Owner</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${allDogs}" var="dog">
-            <tr>
+            <tr onclick="window.location='/pa165/dogs/edit/${dog.id}'" style="cursor: pointer;">
                 <td><c:out value="${dog.name}"/></td>
                 <td><c:out value="${dog.breed}"/></td>
                 <td>
                     <c:out value="${dog.dateOfBirth.toLocalDate()}"/>
                 </td>
                 <td><c:out value="${dog.gender}"/></td>
+                <td><c:out value="${dog.owner.name} ${dog.owner.surname}"/></td>
             </tr>
         </c:forEach>
         </tbody>

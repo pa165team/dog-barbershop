@@ -2,6 +2,7 @@ package cz.muni.fi.pa165.mvc.controllers;
 
 
 import cz.muni.fi.pa165.dto.dog.DogCreateDTO;
+import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.enums.Gender;
 import cz.muni.fi.pa165.facade.CustomerFacade;
 import cz.muni.fi.pa165.facade.DogFacade;
@@ -99,5 +100,39 @@ public class DogController {
 
         redirectAttributes.addFlashAttribute("alert_success", "Dog " + id + " was created.");
         return "redirect:" + uriBuilder.path("/dogs").toUriString();
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String edit(@PathVariable long id, Model model) {
+        model.addAttribute("dogEdit", dogFacade.getDogById(id));
+        model.addAttribute("genders", allGenders());
+        model.addAttribute("allCustomers", customerFacade.getAllCustomers());
+        return "dogs/edit";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public String edit(
+        @Valid @ModelAttribute("dogEdit") DogDTO dogEdit,
+        BindingResult bindingResult,
+        Model model,
+        RedirectAttributes redirectAttributes,
+        UriComponentsBuilder uriComponentsBuilder,
+        @PathVariable long id)
+    {
+        DogDTO originalDog = dogFacade.getDogById(id);
+        dogEdit.setId(id);
+        dogEdit.setOwner(originalDog.getOwner());
+        dogEdit.setHasDiscount(originalDog.getHasDiscount());
+
+        if (bindingResult.hasErrors()) {
+            for (FieldError fe : bindingResult.getFieldErrors()) {
+                model.addAttribute(fe.getField() + "_error", true);
+            }
+            return "dogs/edit";
+        }
+        dogEdit.setId(id);
+        dogFacade.updateDog(dogEdit);
+        redirectAttributes.addFlashAttribute("alert_success", "Dog was successfully updated.");
+        return "redirect:" + uriComponentsBuilder.path("/dogs").build().encode().toUriString();
     }
 }
