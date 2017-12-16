@@ -90,7 +90,7 @@ public class ServiceRecordController {
         DogDTO dogOfThisRecord = dogFacade.getDogById(formBean.getDogId());
 
         redirectAttributes.addFlashAttribute(
-            "alert_success", "Service " + id + " was successfully ordered for" +
+            "alert_success", "Service " + id + " was successfully ordered for " +
                 dogOfThisRecord.getName() + ".");
         return "redirect:" + uriBuilder.path("/dogs/detail/"+dogOfThisRecord.getId()).toUriString();
     }
