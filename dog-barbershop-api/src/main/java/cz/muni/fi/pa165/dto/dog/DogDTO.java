@@ -1,8 +1,8 @@
 package cz.muni.fi.pa165.dto.dog;
 
+import cz.muni.fi.pa165.dto.customer.CustomerDTO;
 import cz.muni.fi.pa165.enums.Gender;
 import java.sql.Date;
-import java.time.LocalDate;
 
 /**
  * @author Martin Kuchar 433499
@@ -22,18 +22,18 @@ public class DogDTO {
 
     private Boolean hasDiscount;
 
-    private Long ownerId;
+    private CustomerDTO owner;
 
     public DogDTO() {
     }
 
-    public DogDTO(String name, String breed, Date dateOfBirth, Gender gender, Boolean hasDiscount, Long ownerId) {
+    public DogDTO(String name, String breed, Date dateOfBirth, Gender gender, Boolean hasDiscount, CustomerDTO owner) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.hasDiscount = hasDiscount;
-        this.ownerId = ownerId;
+        this.owner = owner;
     }
 
     public Long getId() {
@@ -84,12 +84,12 @@ public class DogDTO {
         this.hasDiscount = hasDiscount;
     }
 
-    public Long getOwnerId() {
-        return ownerId;
+    public CustomerDTO getOwner() {
+        return owner;
     }
 
-    public void setOwnerId(Long ownerId) {
-        this.ownerId = ownerId;
+    public void setOwner(CustomerDTO owner) {
+        this.owner = owner;
     }
 
     @Override
