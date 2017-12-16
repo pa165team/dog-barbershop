@@ -44,14 +44,14 @@ public class DogController {
     private ServiceRecordFacade serviceRecordFacade;
 
     /**
-     * Shows a list of dogs //with the ability to add, delete or edit.
+     * Shows a list of dogs with the ability to add, delete, edit or show details of particular dogs.
      *
      * @param model data to display
      * @return JSP page name
      */
     @RequestMapping(value = "/{filter}", method = RequestMethod.GET)
     public String list(@PathVariable String filter, Model model) {
-        List<DogDTO> dogs = new ArrayList<>();
+        List<DogDTO> dogs;
         switch(filter){
             case "males":
                 dogs = dogFacade.getAllDogsOfGender(Gender.MALE);

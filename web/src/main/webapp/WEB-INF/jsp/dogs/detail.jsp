@@ -24,7 +24,7 @@
     </div>
     <my:extraTag href="/dogs/all" class="btn btn-default">
         <span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
-        Close Details
+        All Dogs
     </my:extraTag>
 
     <h3>Services provided for ${dog.name}:</h3>
@@ -35,7 +35,7 @@
             <th>Date Provided</th>
             <th>Actual Price</th>
             <th>
-                <my:extraTag href="/records/create" class="btn btn-primary">
+                <my:extraTag href="/records/new/${dog.id}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         Order New Service For ${dog.name}
                 </my:extraTag>

@@ -59,8 +59,9 @@ public class ServiceRecordFacadeImpl implements ServiceRecordFacade {
 
         ServiceRecord created = serviceRecordService.create(record);
 
-        dogService.update(dog);
-        employeeService.update(emp);
+        //not needed - behaves incorrectly
+        /*dogService.update(dog);
+        employeeService.update(emp);*/
         return created.getId();
     }
 
