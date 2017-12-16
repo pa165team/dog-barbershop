@@ -8,7 +8,11 @@
 <my:pagetemplate title="Dogs">
 <jsp:attribute name="body">
     <h1>Dogs</h1>
-    <div>
+    <my:extraTag href="/dogs/new" class="btn btn-default">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Add Dog
+    </my:extraTag>
+    <div style="margin-top: 10px;">
         Show:&nbsp;
         <my:extraTag href="/dogs/all" class='btn btn-primary ${filter.equalsIgnoreCase("all") ? "disabled" : ""}'>
             All Dogs
@@ -20,6 +24,7 @@
             Females Only
         </my:extraTag>
     </div>
+
     <table class="table">
         <thead>
         <tr>
@@ -28,6 +33,7 @@
             <th>Date Of Birth</th>
             <th>Gender</th>
             <th>Owner</th>
+            <th><!--Buttons Column--></th>
         </tr>
         </thead>
         <tbody>
@@ -40,14 +46,17 @@
                 </td>
                 <td><c:out value="${dog.gender}"/></td>
                 <td><c:out value="${dog.owner.name} ${dog.owner.surname}"/></td>
+                <td>
+                    <my:extraTag href="/dogs/edit/${dog.id}" class='btn btn-primary'>
+                        Edit
+                    </my:extraTag>
+                    <my:extraTag href="/dogs/delete/${dog.id}" class='btn btn-danger'>
+                        Delete
+                    </my:extraTag>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-
-    <my:extraTag href="/dogs/new" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        Add Dog
-    </my:extraTag>
 </jsp:attribute>
 </my:pagetemplate>

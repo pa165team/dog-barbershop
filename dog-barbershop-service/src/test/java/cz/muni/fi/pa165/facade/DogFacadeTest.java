@@ -175,7 +175,7 @@ public class DogFacadeTest extends AbstractTransactionalTestNGSpringContextTests
         DogDTO dogDTO = new DogDTO(dog1.getName(), dog1.getBreed(), dog1.getDateOfBirth(), dog1.getGender(), dog1.getHasDiscount(), owner);
         dogDTO.setId(dogId);
 
-        when(beanMappingServiceMock.mapTo(dogDTO, Dog.class)).thenReturn(dog1);
+        when(dogServiceMock.findById(dogDTO.getId())).thenReturn(dog1);
         when(customerServiceMock.findById(dogDTO.getOwner().getId())).thenReturn(customerMock);
 
         dogFacadeWithMocks.removeDog(dogDTO);

@@ -111,7 +111,7 @@ public class DogController {
         Long id = dogFacade.createDog(formBean);
 
         redirectAttributes.addFlashAttribute("alert_success", "Dog " + id + " was created.");
-        return "redirect:" + uriBuilder.path("/dogs").toUriString();
+        return "redirect:" + uriBuilder.path("/dogs/all").toUriString();
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
@@ -145,6 +145,28 @@ public class DogController {
         dogEdit.setId(id);
         dogFacade.updateDog(dogEdit);
         redirectAttributes.addFlashAttribute("alert_success", "Dog was successfully updated.");
-        return "redirect:" + uriComponentsBuilder.path("/dogs").build().encode().toUriString();
+        return "redirect:" + uriComponentsBuilder.path("/dogs/all").build().encode().toUriString();
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable long id, Model model) {
+        model.addAttribute("dogToDelete", dogFacade.getDogById(id));
+        return "dogs/confirmDelete";
+    }
+
+    @RequestMapping(value = "/confirmedDelete/{id}", method = RequestMethod.GET)
+    public String delete(
+        @Valid @ModelAttribute("dogToDelete") DogDTO dogToDelete,
+        BindingResult bindingResult,
+        Model model,
+        RedirectAttributes redirectAttributes,
+        UriComponentsBuilder uriComponentsBuilder,
+        @PathVariable long id)
+    {
+        DogDTO originalDog = dogFacade.getDogById(id);
+
+        dogFacade.removeDog(originalDog);
+        redirectAttributes.addFlashAttribute("alert_success", "Dog was successfully removed.");
+        return "redirect:" + uriComponentsBuilder.path("/dogs/all").build().encode().toUriString();
     }
 }
