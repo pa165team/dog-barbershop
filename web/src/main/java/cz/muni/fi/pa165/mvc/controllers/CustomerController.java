@@ -129,6 +129,6 @@ public class CustomerController {
     public String detail(@PathVariable long id, Model model) {
         model.addAttribute("customer", customerFacade.getCustomerById(id));
         model.addAttribute("dogs", customerFacade.getAllDogsOfCustomer(id));
-        return "dogs/detail";
+        return "customers/detail";
     }
 }

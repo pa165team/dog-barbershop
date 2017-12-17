@@ -7,15 +7,15 @@
 <fmt:setBundle basename="Texts"/>
 <my:pagetemplate title="Customers">
 <jsp:attribute name="body">
-    <h1>Customer ${customer.name}</h1>
-    <h3>Info about ${customer.name}</h3>
+    <h1>Customer ${customer.name} ${customer.surname}</h1>
+    <h3>Info about ${customer.name} ${customer.surname}</h3>
     <div>
         <span>Name: ${customer.name}</span><br/>
         <span>Surname: ${customer.surname}</span><br/>
         <span>Address: ${customer.address.street} ${customer.address.number}, ${customer.address.city}</span><br/>
         <span>Phone number: ${customer.phoneNumber}</span><br/>
     </div>
-    <my:extraTag href="/customers/all" class="btn btn-default">
+    <my:extraTag href="/customers" class="btn btn-default">
         <span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
         All Customers
     </my:extraTag>

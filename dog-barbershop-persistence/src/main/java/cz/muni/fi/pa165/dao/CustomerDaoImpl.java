@@ -55,7 +55,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public List<Dog> getAllDogsOfCustomer(Long customerId) {
-        return em.createQuery("SELECT d FROM Dog d WHERE d.customer_id = :customerId", Dog.class)
+        return em.createQuery("SELECT d FROM Dog d WHERE d.owner.id = :customerId", Dog.class)
             .setParameter("customerId", customerId)
             .getResultList();
     }
