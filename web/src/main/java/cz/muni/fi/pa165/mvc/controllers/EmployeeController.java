@@ -97,7 +97,6 @@ public class EmployeeController {
         UriComponentsBuilder uriComponentsBuilder,
         @PathVariable long id) {
         
-        employeeEdit.setId(id);
         if (bindingResult.hasErrors()) {
             for (FieldError fe : bindingResult.getFieldErrors()) {
                 model.addAttribute(fe.getField() + "_error", true);
