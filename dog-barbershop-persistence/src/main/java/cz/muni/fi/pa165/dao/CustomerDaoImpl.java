@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.dao;
 
 import cz.muni.fi.pa165.entity.Customer;
+import cz.muni.fi.pa165.entity.Dog;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -39,8 +40,8 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public List<Customer> getAllMatchingSurname(String surname) {
-        return em.createQuery("SELECT c FROM Customer c WHERE c.surname LIKE :surname", Customer.class)
-            .setParameter("surname", "%" + surname + "%")
+        return em.createQuery("SELECT c FROM Customer c WHERE c.surname = :surname", Customer.class)
+            .setParameter("surname", surname)
             .getResultList();
     }
 
@@ -50,6 +51,13 @@ public class CustomerDaoImpl implements CustomerDao {
             .setParameter("phoneNumber", "%" + phoneNumber + "%")
             .getResultList();
 
+    }
+
+    @Override
+    public List<Dog> getAllDogsOfCustomer(Long customerId) {
+        return em.createQuery("SELECT d FROM Dog d WHERE d.customer_id = :customerId", Dog.class)
+            .setParameter("customerId", customerId)
+            .getResultList();
     }
 
     @Override

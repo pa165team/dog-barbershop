@@ -95,25 +95,32 @@ public class DogDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null ||  o.getClass() != this.getClass()) return false;
+        if (!(o instanceof DogDTO)) return false;
 
-        DogDTO dog = (DogDTO) o;
+        DogDTO dogDTO = (DogDTO) o;
 
-        if (!getName().equals(dog.getName())) return false;
-        if (!getBreed().equals(dog.getBreed())) return false;
-        if (!getDateOfBirth().equals(dog.getDateOfBirth())) return false;
-        if (!getGender().equals(dog.getGender())) return false;
-        return getHasDiscount().equals(dog.getHasDiscount());
+        if (getId() != null ? !getId().equals(dogDTO.getId()) : dogDTO.getId() != null) return false;
+        if (getName() != null ? !getName().equals(dogDTO.getName()) : dogDTO.getName() != null) return false;
+        if (getBreed() != null ? !getBreed().equals(dogDTO.getBreed()) : dogDTO.getBreed() != null) return false;
+        if (getDateOfBirth() != null ? !getDateOfBirth().equals(dogDTO.getDateOfBirth()) : dogDTO.getDateOfBirth() != null) {
+            return false;
+        }
+        if (getGender() != dogDTO.getGender()) return false;
+        if (getHasDiscount() != null ? !getHasDiscount().equals(dogDTO.getHasDiscount()) : dogDTO.getHasDiscount() != null) {
+            return false;
+        }
+        return getOwner() != null ? getOwner().equals(dogDTO.getOwner()) : dogDTO.getOwner() == null;
     }
 
     @Override
     public int hashCode() {
-        int result = getName().hashCode();
-        result = 31 * result + getBreed().hashCode();
-        result = 31 * result + getDateOfBirth().hashCode();
-        result = 31 * result + getGender().hashCode();
-        result = 31 * result + getHasDiscount().hashCode();
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getBreed() != null ? getBreed().hashCode() : 0);
+        result = 31 * result + (getDateOfBirth() != null ? getDateOfBirth().hashCode() : 0);
+        result = 31 * result + (getGender() != null ? getGender().hashCode() : 0);
+        result = 31 * result + (getHasDiscount() != null ? getHasDiscount().hashCode() : 0);
+        result = 31 * result + (getOwner() != null ? getOwner().hashCode() : 0);
         return result;
     }
-
 }

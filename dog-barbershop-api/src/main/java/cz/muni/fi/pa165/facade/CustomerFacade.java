@@ -2,6 +2,7 @@ package cz.muni.fi.pa165.facade;
 
 import cz.muni.fi.pa165.dto.customer.CustomerCreateDTO;
 import cz.muni.fi.pa165.dto.customer.CustomerDTO;
+import cz.muni.fi.pa165.dto.dog.DogDTO;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ public interface CustomerFacade {
     List<CustomerDTO> getAllCustomers();
     List<CustomerDTO> getAllCustomersMatchingSurname(String surname);
     List<CustomerDTO> getAllCustomersMatchingPhoneNumber(String phoneNumber);
+    List<DogDTO> getAllDogsOfCustomer(Long customerId);
 }

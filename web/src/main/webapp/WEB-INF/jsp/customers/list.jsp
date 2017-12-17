@@ -7,7 +7,13 @@
 <fmt:setBundle basename="Texts"/>
 <my:pagetemplate title="Customers">
 <jsp:attribute name="body">
+
     <h1>Customers</h1>
+
+    <my:extraTag href="/customers/new" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Register Customer
+    </my:extraTag>
     <table class="table">
         <thead>
         <tr>
@@ -19,21 +25,23 @@
         </thead>
         <tbody>
         <c:forEach items="${customers}" var="customer">
-            <tr>
+            <tr onclick="window.location='/pa165/customers/detail/${customer.id}'" style="cursor: pointer;">
                 <td><c:out value="${customer.name}"/></td>
                 <td><c:out value="${customer.surname}"/></td>
                 <td>
                     <c:out value="${customer.address.street} ${customer.address.number}, ${customer.address.city}"/>
                 </td>
                 <td><c:out value="${customer.phoneNumber}"/></td>
+                <td>
+                    <my:extraTag href="/customers/edit/${customer.id}" class='btn btn-primary'>
+                        <span class="glyphicon glyphicon-edit">
+                            Edit
+                        </span>
+                    </my:extraTag>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-
-    <my:extraTag href="/customers/new" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        Register Customer
-    </my:extraTag>
 </jsp:attribute>
 </my:pagetemplate>

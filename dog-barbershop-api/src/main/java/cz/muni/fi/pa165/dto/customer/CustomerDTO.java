@@ -1,7 +1,7 @@
 package cz.muni.fi.pa165.dto.customer;
 
 
-import cz.muni.fi.pa165.dto.servicerecord.ServiceRecordDTO;
+import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.utils.Address;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class CustomerDTO {
     private String surname;
     private Address address;
     private String phoneNumber;
-    private List<ServiceRecordDTO> serviceRecords;
+    private List<DogDTO> dogs;
 
     public Long getId() {
         return id;
@@ -59,14 +59,14 @@ public class CustomerDTO {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<ServiceRecordDTO> getServiceRecords() {
-        return serviceRecords;
+
+    public List<DogDTO> getDogs() {
+        return dogs;
     }
 
-    public void setServiceRecords(List<ServiceRecordDTO> serviceRecords) {
-        this.serviceRecords = serviceRecords;
+    public void setDogs(List<DogDTO> dogs) {
+        this.dogs = dogs;
     }
-
 
     @Override
     public boolean equals(Object o) {

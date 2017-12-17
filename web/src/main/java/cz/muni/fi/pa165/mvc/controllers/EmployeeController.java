@@ -1,6 +1,5 @@
 package cz.muni.fi.pa165.mvc.controllers;
 
-
 import cz.muni.fi.pa165.dto.employee.EmployeeCreateDTO;
 import cz.muni.fi.pa165.facade.EmployeeFacade;
 import org.slf4j.Logger;

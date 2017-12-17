@@ -8,9 +8,7 @@ import javax.validation.constraints.Size;
 /**
  * @author Lucie Kolarikova
  */
-
-public class CustomerCreateDTO {
-
+public class CustomerUpdateDTO {
     @NotNull
     @Size(min = 2, max = 30, message = "Name must be 2 to 30 characters long.")
     private String name;
@@ -26,10 +24,10 @@ public class CustomerCreateDTO {
     @Size(min = 7, max = 13, message = "Phone number must be 7 to 13 characters long.")
     private String phoneNumber;
 
-    public CustomerCreateDTO() {
+    public CustomerUpdateDTO() {
     }
 
-    public CustomerCreateDTO(@NotNull String name, @NotNull String surname, @NotNull Address address, @NotNull String phoneNumber) {
+    public CustomerUpdateDTO(@NotNull String name, @NotNull String surname, @NotNull Address address, @NotNull String phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.address = address;
