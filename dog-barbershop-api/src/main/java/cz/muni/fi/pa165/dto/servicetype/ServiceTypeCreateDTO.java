@@ -12,13 +12,13 @@ import java.util.Objects;
 public class ServiceTypeCreateDTO {
 
     @NotNull
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 50, message = "Name must be at least 3 characters long")
     private String name;
 
     private String description;
 
-    @NotNull
-    @Min(0)
+    @NotNull(message = "Please enter a price")
+    @Min(value = 0, message = "Please enter a price larger than 0")
     private BigDecimal pricePerHour;
 
     public String getName() {
