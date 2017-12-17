@@ -9,7 +9,7 @@
 <my:pagetemplate>
 <jsp:attribute name="body">
     <h1>Update Customer Information</h1>
-    <form:form method="post" action="${pageContext.request.contextPath}/customers/edit/${customerId}"
+    <form:form method="post" action="${pageContext.request.contextPath}/customers/edit/${customerToUpdate.id}"
                modelAttribute="customerToUpdate">
         <div class="form-group ${name_error?'has-error':''}">
             <form:label path="name" cssClass="col-sm-2 control-label">Name</form:label>
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="form-group ${address_error?'has-error':''}">
-            <form:label path="address" cssClass="col-sm-2 control-label">Address</form:label>
+            <form:label path="address" placeholder="[Street] [House No.], [City]" cssClass="col-sm-2 control-label">Address</form:label>
             <div class="col-sm-10">
                 <form:input path="address" cssClass="form-control"/>
                 <form:errors path="address" cssClass="help-block"/>

@@ -2,7 +2,6 @@ package cz.muni.fi.pa165.mvc.controllers;
 
 import cz.muni.fi.pa165.dto.customer.CustomerCreateDTO;
 import cz.muni.fi.pa165.dto.customer.CustomerDTO;
-import cz.muni.fi.pa165.dto.customer.CustomerUpdateDTO;
 import cz.muni.fi.pa165.facade.CustomerFacade;
 import cz.muni.fi.pa165.facade.DogFacade;
 import org.slf4j.Logger;
@@ -93,26 +92,19 @@ public class CustomerController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable long id, Model model) {
-        CustomerDTO customer = customerFacade.getCustomerById(id);
-        CustomerUpdateDTO updateDTO = new CustomerUpdateDTO(customer.getName(), customer.getSurname(), customer.getAddress(), customer.getPhoneNumber());
-        model.addAttribute("customerToUpdate", updateDTO);
-        model.addAttribute("customerId", customer.getId());
+        model.addAttribute("customerToUpdate", customerFacade.getCustomerById(id));
         return "customers/edit";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String edit(@Valid @ModelAttribute("customerToUpdate") CustomerUpdateDTO customerEdit,
+    public String edit(@Valid @ModelAttribute("customerToUpdate") CustomerDTO customerToUpdate,
         BindingResult bindingResult,
         Model model,
         RedirectAttributes redirectAttributes,
         UriComponentsBuilder uriComponentsBuilder,
-        @PathVariable long id)
-    {
-        CustomerDTO originalCustomer = customerFacade.getCustomerById(id);
-        originalCustomer.setName(customerEdit.getName());
-        originalCustomer.setSurname(customerEdit.getSurname());
-        originalCustomer.setAddress(customerEdit.getAddress());
-        originalCustomer.setPhoneNumber(customerEdit.getPhoneNumber());
+        @PathVariable long id) {
+
+        customerToUpdate.setId(id);
 
         if (bindingResult.hasErrors()) {
             for (FieldError fe : bindingResult.getFieldErrors()) {
@@ -120,7 +112,7 @@ public class CustomerController {
             }
             return "customers/edit";
         }
-        customerFacade.updateCustomer(originalCustomer);
+        customerFacade.updateCustomer(customerToUpdate);
         redirectAttributes.addFlashAttribute("alert_success", "Customer was successfully updated.");
         return "redirect:" + uriComponentsBuilder.path("/customers").build().encode().toUriString();
     }

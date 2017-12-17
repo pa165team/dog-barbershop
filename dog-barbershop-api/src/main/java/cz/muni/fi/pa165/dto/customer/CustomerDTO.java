@@ -4,6 +4,8 @@ package cz.muni.fi.pa165.dto.customer;
 import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.utils.Address;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,10 +15,22 @@ import java.util.Objects;
 
 public class CustomerDTO {
     private Long id;
+
+    @NotNull
+    @Size(min = 2, max = 30, message = "Please enter a name at least 2 characters long")
     private String name;
+
+    @NotNull
+    @Size(min = 2, max = 30, message = "Please enter a surname at least 2 cahracters long")
     private String surname;
+
+    @NotNull(message = "Please enter an address in format [Street] [House No.], [City]")
     private Address address;
+
+    @NotNull
+    @Size(min = 7, max = 13, message = "Please enter a phone number")
     private String phoneNumber;
+
     private List<DogDTO> dogs;
 
     public Long getId() {

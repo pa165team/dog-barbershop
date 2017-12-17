@@ -10,7 +10,7 @@
 
     <h1>Customers</h1>
 
-    <my:extraTag href="/customers/new" class="btn btn-primary">
+    <my:extraTag href="/customers/new" class="btn btn-default">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         Register Customer
     </my:extraTag>

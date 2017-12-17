@@ -20,4 +20,8 @@ public interface ServiceRecordService {
     List<ServiceRecord> getServiceRecordsFromLastWeek();
 
     BigDecimal getTurnoverForLastMonth();
+
+    List<ServiceRecord> getAll();
+
+    ServiceRecord getById(Long id);
 }
