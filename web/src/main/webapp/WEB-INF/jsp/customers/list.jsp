@@ -12,7 +12,7 @@
 
     <my:extraTag href="/customers/new" class="btn btn-default">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        Register Customer
+        Add New Customer
     </my:extraTag>
     <table class="table">
         <thead>
@@ -35,8 +35,7 @@
                 <td>
                     <my:extraTag href="/customers/edit/${customer.id}" class='btn btn-primary'>
                         <span class="glyphicon glyphicon-edit">
-                            Edit
-                        </span>
+                        </span> Edit
                     </my:extraTag>
                 </td>
             </tr>

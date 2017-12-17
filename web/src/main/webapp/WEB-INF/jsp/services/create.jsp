@@ -8,7 +8,7 @@
 <fmt:setBundle basename="Texts"/>
 <my:pagetemplate>
 <jsp:attribute name="body">
-    <h1>Create service type</h1>
+    <h1>Create new service type</h1>
     <form:form method="post" action="${pageContext.request.contextPath}/services/create"
                modelAttribute="serviceTypeCreate">
         <div class="form-group ${name_error ? 'has-error' : ''}">
@@ -26,7 +26,7 @@
             <form:input path="pricePerHour" cssClass="form-control"/>
             <form:errors path="pricePerHour"/>
         </div>
-        <button type="submit" class="btn btn-default">Create</button>
+        <button class="btn btn-primary" type="submit">Create</button>
     </form:form>
 </jsp:attribute>
 </my:pagetemplate>

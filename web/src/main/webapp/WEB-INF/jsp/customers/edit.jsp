@@ -42,8 +42,8 @@
 
         <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
             <span class="glyphicon glyphicon-edit">
-                Update
-            </span>
+
+            </span> Update
         </button>
     </form:form>
 </jsp:attribute>

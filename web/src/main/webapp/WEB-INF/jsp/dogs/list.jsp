@@ -10,7 +10,7 @@
     <h1>Dogs</h1>
     <my:extraTag href="/dogs/new" class="btn btn-default">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        Add Dog
+        Add New Dog
     </my:extraTag>
     <div style="margin-top: 10px;">
         <div class="btn-group">
@@ -50,8 +50,8 @@
                 <td>
                     <my:extraTag href="/dogs/edit/${dog.id}" class='btn btn-primary'>
                         <span class="glyphicon glyphicon-edit">
-                            Edit
-                        </span>
+                        </span> Edit
+
                     </my:extraTag>
                 </td>
             </tr>
