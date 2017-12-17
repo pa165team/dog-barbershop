@@ -19,6 +19,7 @@
             <url-pattern>/dogs/*</url-pattern>
             <url-pattern>/customers/*</url-pattern>
             <url-pattern>/services/*</url-pattern>
+            <url-pattern>/records/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>employer</role-name>

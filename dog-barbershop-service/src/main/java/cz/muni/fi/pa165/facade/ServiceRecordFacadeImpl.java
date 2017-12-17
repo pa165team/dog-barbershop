@@ -84,4 +84,16 @@ public class ServiceRecordFacadeImpl implements ServiceRecordFacade {
     public BigDecimal getTurnoverForLastMonth() {
         return serviceRecordService.getTurnoverForLastMonth();
     }
+
+    @Override
+    public List<ServiceRecordDTO> getAll() {
+        List<ServiceRecord> all = serviceRecordService.getAll();
+        return beanMappingService.mapTo(all, ServiceRecordDTO.class);
+    }
+
+    @Override
+    public ServiceRecordDTO getById(Long id) {
+        ServiceRecord record = serviceRecordService.getById(id);
+        return beanMappingService.mapTo(record, ServiceRecordDTO.class);
+    }
 }

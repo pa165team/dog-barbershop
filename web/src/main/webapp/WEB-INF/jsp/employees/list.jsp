@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" trimDirectiveWhitespaces="false" session="false" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" trimDirectiveWhitespaces="false"
+         session="false" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -14,19 +15,22 @@
     </my:extraTag>
     <div style="margin-top: 10px;">
         <h3>Filter:</h3>
-        <my:extraTag href="/employees" class='btn btn-primary ${empty filter ? "disabled" : ""}'>
-            All Employees
-        </my:extraTag>
-        <my:extraTag href="/employees/below" class='btn btn-primary ${filter.equals("below") ? "disabled" : ""}'>
+        <div class="btn-group">
+            <my:extraTag href="/employees" class='btn btn-primary ${empty filter ? "disabled" : ""}'>
+                All Employees
+            </my:extraTag>
+            <my:extraTag href="/employees/below"
+                         class='btn btn-primary ${filter.equals("below") ? "disabled" : ""}'>
             Employees Below Salary
-        </my:extraTag>
+            </my:extraTag>
+        </div>
     </div>
     
     <c:if test="${not empty filter}">
         <form:form method="post" style="margin-top: 5px;">
             <input type="number" name="filterValue" step="1000"/>
             <button type="submit" class="btn btn-primary">
-                    Set Salary Filter
+                Set Salary Filter
             </button>
          </form:form>
     </c:if>
@@ -48,15 +52,15 @@
                 <td><c:out value="${employee.name}"/></td>
                 <td><c:out value="${employee.surname}"/></td>
                 <td>
-                    <c:out value="${employee.address.street} ${employee.address.number}, ${employee.address.city}"/>
+                    <c:out
+                        value="${employee.address.street} ${employee.address.number}, ${employee.address.city}"/>
                 </td>
                 <td><c:out value="${employee.salary}"/></td>
                 <td><c:out value="${employee.phoneNumber}"/></td>
                 <td>
                     <my:extraTag href="/employees/edit/${employee.id}" class='btn btn-primary'>
                         <span class="glyphicon glyphicon-edit">
-                            Edit
-                        </span>
+                        </span> Edit
                     </my:extraTag>
                 </td>
             </tr>
