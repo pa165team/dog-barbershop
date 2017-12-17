@@ -14,12 +14,16 @@
     </my:extraTag>
     <div style="margin-top: 10px;">
         Show:&nbsp;
-        <my:extraTag href="/dogs/all" class='btn btn-primary ${filter.equalsIgnoreCase("all") ? "disabled" : ""}'>
-            All Dogs
-        </my:extraTag>
-        <my:extraTag href="/dogs/males" class='btn btn-primary ${filter.equalsIgnoreCase("males") ? "disabled" : ""}'>
-            Males Only
-        </my:extraTag>
+        <span style="margin-right: -5px;">
+            <my:extraTag href="/dogs/all" class='btn btn-primary ${filter.equalsIgnoreCase("all") ? "disabled" : ""}'>
+                All Dogs
+            </my:extraTag>
+        </span>
+        <span style="margin-right: -5px;">
+            <my:extraTag href="/dogs/males" class='btn btn-primary ${filter.equalsIgnoreCase("males") ? "disabled" : ""}'>
+                Males Only
+            </my:extraTag>
+        </span>
         <my:extraTag href="/dogs/females" class='btn btn-primary ${filter.equalsIgnoreCase("females") ? "disabled" : ""}'>
             Females Only
         </my:extraTag>
