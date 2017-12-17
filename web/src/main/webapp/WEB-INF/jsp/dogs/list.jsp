@@ -52,11 +52,6 @@
                             Edit
                         </span>
                     </my:extraTag>
-                    <my:extraTag href="/dogs/delete/${dog.id}" class='btn btn-danger'>
-                         <span class="glyphicon glyphicon-remove">
-                            Delete
-                         </span>
-                    </my:extraTag>
                 </td>
             </tr>
         </c:forEach>
