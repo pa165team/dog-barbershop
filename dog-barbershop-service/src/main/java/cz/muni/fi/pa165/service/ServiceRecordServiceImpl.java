@@ -65,4 +65,14 @@ public class ServiceRecordServiceImpl implements ServiceRecordService {
         }
         return turnover;
     }
+
+    @Override
+    public List<ServiceRecord> getAll() {
+        return serviceRecordDao.findAll();
+    }
+
+    @Override
+    public ServiceRecord getById(Long id) {
+        return serviceRecordDao.findById(id);
+    }
 }
