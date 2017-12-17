@@ -8,6 +8,30 @@
 <my:pagetemplate title="Employees">
 <jsp:attribute name="body">
     <h1>Employees</h1>
+    <my:extraTag href="/employees/new" class="btn btn-default" style="margin-top: 10px;">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Register Employee
+    </my:extraTag>
+    <div style="margin-top: 10px;">
+        <h3>Filter:</h3>
+        <my:extraTag href="/employees" class='btn btn-primary ${empty filter ? "disabled" : ""}'>
+            All Employees
+        </my:extraTag>
+        <my:extraTag href="/employees/below" class='btn btn-primary ${filter.equals("below") ? "disabled" : ""}'>
+            Employees Below Salary
+        </my:extraTag>
+    </div>
+    
+    <c:if test="${not empty filter}">
+        <form:form method="post" style="margin-top: 5px;">
+            <input type="number" name="filterValue" step="1000"/>
+            <button type="submit" class="btn btn-primary">
+                    Set Salary Filter
+            </button>
+         </form:form>
+    </c:if>
+    
+    
     <table class="table">
         <thead>
         <tr>
@@ -28,14 +52,16 @@
                 </td>
                 <td><c:out value="${employee.salary}"/></td>
                 <td><c:out value="${employee.phoneNumber}"/></td>
+                <td>
+                    <my:extraTag href="/employees/edit/${employee.id}" class='btn btn-primary'>
+                        <span class="glyphicon glyphicon-edit">
+                            Edit
+                        </span>
+                    </my:extraTag>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    
-    <my:extraTag href="/employees/new" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        Register Employee
-    </my:extraTag>
 </jsp:attribute>
 </my:pagetemplate>
