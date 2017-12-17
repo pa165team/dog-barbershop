@@ -26,7 +26,7 @@
             <form:input path="pricePerHour" cssClass="form-control"/>
             <form:errors path="pricePerHour"/>
         </div>
-        <button type="submit" class="btn btn-default">Update</button>
+        <button type="submit" class="btn btn-default">Create</button>
     </form:form>
 </jsp:attribute>
 </my:pagetemplate>
