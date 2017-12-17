@@ -42,7 +42,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/pa165">Home</a></li>
                         <li><a href="/pa165/customers">Customers</a></li>
-                        <li><a href="/pa165/dogs">Dogs</a></li>
+                        <li><a href="/pa165/dogs/all">Dogs</a></li>
                         <li><a href="/pa165/services">Services</a></li>
                         <li><a href="/pa165/employees">Employees</a></li>
                     </ul>

@@ -2,6 +2,7 @@ package cz.muni.fi.pa165.facade;
 
 import cz.muni.fi.pa165.dao.CustomerDao;
 import cz.muni.fi.pa165.dao.DogDao;
+import cz.muni.fi.pa165.dto.customer.CustomerDTO;
 import cz.muni.fi.pa165.dto.dog.DogCreateDTO;
 import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.entity.Customer;
@@ -170,11 +171,12 @@ public class DogFacadeTest extends AbstractTransactionalTestNGSpringContextTests
         final Long dogId = 8L;
         Customer customerMock = mock(Customer.class);
 
-        DogDTO dogDTO = new DogDTO(dog1.getName(), dog1.getBreed(), dog1.getDateOfBirth(), dog1.getGender(), dog1.getHasDiscount(), dog1.getOwner().getId());
+        CustomerDTO owner = beanMappingService.mapTo(dog1.getOwner(), CustomerDTO.class);
+        DogDTO dogDTO = new DogDTO(dog1.getName(), dog1.getBreed(), dog1.getDateOfBirth(), dog1.getGender(), dog1.getHasDiscount(), owner);
         dogDTO.setId(dogId);
 
-        when(beanMappingServiceMock.mapTo(dogDTO, Dog.class)).thenReturn(dog1);
-        when(customerServiceMock.getOwnerOfDog(dogId)).thenReturn(customerMock);
+        when(dogServiceMock.findById(dogDTO.getId())).thenReturn(dog1);
+        when(customerServiceMock.findById(dogDTO.getOwner().getId())).thenReturn(customerMock);
 
         dogFacadeWithMocks.removeDog(dogDTO);
 
@@ -184,15 +186,15 @@ public class DogFacadeTest extends AbstractTransactionalTestNGSpringContextTests
 
     @Test
     public void testUpdateDog() {
-        DogDTO dogDTO = new DogDTO(dog1.getName(), dog1.getBreed(), dog1.getDateOfBirth(), dog1.getGender(), dog1.getHasDiscount(), dog1.getOwner().getId());
+        CustomerDTO owner = beanMappingService.mapTo(dog1.getOwner(), CustomerDTO.class);
+        DogDTO dogDTO = new DogDTO(dog1.getName(), dog1.getBreed(), dog1.getDateOfBirth(), dog1.getGender(), dog1.getHasDiscount(), owner);
         dogDTO.setBreed("Golden Retriever");
         Long dogId = 5L;
         dogDTO.setId(dogId);
 
-        when(beanMappingServiceMock.mapTo(dogDTO, Dog.class)).thenReturn(dog1);
+        when(dogServiceMock.findById(dogId)).thenReturn(dog1);
 
         Long dogIdReturned = dogFacadeWithMocks.updateDog(dogDTO);
-        verify(dogServiceMock).update(dog1);
         Assert.assertEquals(dogId, dogIdReturned);
     }
 
