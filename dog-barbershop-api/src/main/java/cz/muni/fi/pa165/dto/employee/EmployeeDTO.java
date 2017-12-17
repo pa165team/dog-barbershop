@@ -6,17 +6,32 @@ import cz.muni.fi.pa165.utils.Address;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author Jan Kalfus
  */
 public class EmployeeDTO {
     private Long id;
+    @NotNull
+    @Size(min = 2, max = 30)
     private String name;
+
+    @NotNull
+    @Size(min = 2, max = 30)
     private String surname;
+
+    @NotNull
     private Address address;
+
+    @NotNull
     private BigDecimal salary;
+
+    @NotNull
+    @Size(min = 7, max = 13)
     private String phoneNumber;
+    
     private List<ServiceRecordDTO> serviceRecords;
 
     public Long getId() {
