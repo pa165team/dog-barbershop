@@ -47,7 +47,7 @@
                 <form:select path="ownerId" cssClass="form-control">
                     <form:option value="NONE" label="--- Select Owner ---"/>
                     <c:forEach items="${allCustomers}" var="cust">
-                        <form:option value="${cust.id}">${cust.name} ${cust.surname}</form:option>
+                        <form:option value="${cust.id}">${cust.name} ${cust.surname}, Phone#: ${cust.phoneNumber}</form:option>
                     </c:forEach>
                 </form:select>
             </div>

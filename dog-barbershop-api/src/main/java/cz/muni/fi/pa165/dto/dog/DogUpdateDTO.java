@@ -4,14 +4,15 @@ import cz.muni.fi.pa165.enums.Gender;
 
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
-import java.sql.Date;
 import javax.validation.constraints.Size;
+import java.sql.Date;
+import java.util.Objects;
 
 /**
  * @author Martin Kuchar 433499
  */
 
-public class DogCreateDTO {
+public class DogUpdateDTO {
 
     @NotNull
     @Size(min = 2, max = 30, message = "Name must be 2 to 30 characters long.")
@@ -28,18 +29,14 @@ public class DogCreateDTO {
     @NotNull(message = "Please, select gender.")
     private Gender gender;
 
-    @NotNull(message = "Please, select owner of this dog.")
-    private Long ownerId;
-
-    public DogCreateDTO() {
+    public DogUpdateDTO() {
     }
 
-    public DogCreateDTO(String name, String breed, Date dateOfBirth, Gender gender, Long ownerId) {
+    public DogUpdateDTO(String name, String breed, Date dateOfBirth, Gender gender) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.ownerId = ownerId;
     }
 
     public String getName() {
@@ -74,43 +71,19 @@ public class DogCreateDTO {
         this.gender = gender;
     }
 
-    public Long getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Long ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    @Override
-    public String toString(){
-        return "DogCreateDTO[name: "+this.getName()+
-            ", breed: "+this.getBreed()+
-            ", dateOfBirth: "+this.getDateOfBirth()+
-            ", gender: "+this.getGender()+"];";
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
-        DogCreateDTO that = (DogCreateDTO) o;
-
-        if (!getName().equals(that.getName())) return false;
-        if (!getBreed().equals(that.getBreed())) return false;
-        if (!getDateOfBirth().equals(that.getDateOfBirth())) return false;
-        if (!getGender().equals(that.getGender())) return false;
-        return getOwnerId().equals(that.getOwnerId());
+        DogUpdateDTO that = (DogUpdateDTO) o;
+        return Objects.equals(getName(), that.getName()) &&
+            Objects.equals(getBreed(), that.getBreed()) &&
+            Objects.equals(getDateOfBirth(), that.getDateOfBirth()) &&
+            getGender() == that.getGender();
     }
 
     @Override
     public int hashCode() {
-        int result = getName().hashCode();
-        result = 31 * result + getBreed().hashCode();
-        result = 31 * result + getDateOfBirth().hashCode();
-        result = 31 * result + getGender().hashCode();
-        result = 31 * result + getOwnerId().hashCode();
-        return result;
+        return Objects.hash(getName(), getBreed(), getDateOfBirth(), getGender());
     }
 }

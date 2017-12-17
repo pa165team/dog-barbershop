@@ -3,6 +3,7 @@ package cz.muni.fi.pa165.mvc.controllers;
 
 import cz.muni.fi.pa165.dto.dog.DogCreateDTO;
 import cz.muni.fi.pa165.dto.dog.DogDTO;
+import cz.muni.fi.pa165.dto.dog.DogUpdateDTO;
 import cz.muni.fi.pa165.enums.Gender;
 import cz.muni.fi.pa165.facade.CustomerFacade;
 import cz.muni.fi.pa165.facade.DogFacade;
@@ -120,7 +121,10 @@ public class DogController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable long id, Model model) {
-        model.addAttribute("dogEdit", dogFacade.getDogById(id));
+        DogDTO dog = dogFacade.getDogById(id);
+        DogUpdateDTO updateDTO = new DogUpdateDTO(dog.getName(), dog.getBreed(), dog.getDateOfBirth(), dog.getGender());
+        model.addAttribute("dogToUpdate", updateDTO);
+        model.addAttribute("dogId", dog.getId());
         model.addAttribute("genders", allGenders());
         model.addAttribute("allCustomers", customerFacade.getAllCustomers());
         return "dogs/edit";
@@ -128,7 +132,7 @@ public class DogController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String edit(
-        @Valid @ModelAttribute("dogEdit") DogDTO dogEdit,
+        @Valid @ModelAttribute("dogToUpdate") DogUpdateDTO dogEdit,
         BindingResult bindingResult,
         Model model,
         RedirectAttributes redirectAttributes,
@@ -136,9 +140,10 @@ public class DogController {
         @PathVariable long id)
     {
         DogDTO originalDog = dogFacade.getDogById(id);
-        dogEdit.setId(id);
-        dogEdit.setOwner(originalDog.getOwner());
-        dogEdit.setHasDiscount(originalDog.getHasDiscount());
+        originalDog.setName(dogEdit.getName());
+        originalDog.setBreed(dogEdit.getBreed());
+        originalDog.setDateOfBirth(dogEdit.getDateOfBirth());
+        originalDog.setGender(dogEdit.getGender());
 
         if (bindingResult.hasErrors()) {
             for (FieldError fe : bindingResult.getFieldErrors()) {
@@ -146,31 +151,8 @@ public class DogController {
             }
             return "dogs/edit";
         }
-        dogEdit.setId(id);
-        dogFacade.updateDog(dogEdit);
+        dogFacade.updateDog(originalDog);
         redirectAttributes.addFlashAttribute("alert_success", "Dog was successfully updated.");
-        return "redirect:" + uriComponentsBuilder.path("/dogs/all").build().encode().toUriString();
-    }
-
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable long id, Model model) {
-        model.addAttribute("dogToDelete", dogFacade.getDogById(id));
-        return "dogs/confirmDelete";
-    }
-
-    @RequestMapping(value = "/confirmedDelete/{id}", method = RequestMethod.GET)
-    public String delete(
-        @Valid @ModelAttribute("dogToDelete") DogDTO dogToDelete,
-        BindingResult bindingResult,
-        Model model,
-        RedirectAttributes redirectAttributes,
-        UriComponentsBuilder uriComponentsBuilder,
-        @PathVariable long id)
-    {
-        DogDTO originalDog = dogFacade.getDogById(id);
-
-        dogFacade.removeDog(originalDog);
-        redirectAttributes.addFlashAttribute("alert_success", "Dog was successfully removed.");
         return "redirect:" + uriComponentsBuilder.path("/dogs/all").build().encode().toUriString();
     }
 

@@ -76,7 +76,6 @@ public class DogFacadeImpl implements DogFacade {
         Dog originalDog = dogService.findById(dog.getId());
         owner.removeDog(originalDog);
         dogService.remove(originalDog);
-        customerService.update(owner);
     }
 
     @Override
