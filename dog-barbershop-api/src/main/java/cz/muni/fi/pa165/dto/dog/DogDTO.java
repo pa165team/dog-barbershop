@@ -1,7 +1,9 @@
 package cz.muni.fi.pa165.dto.dog;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import cz.muni.fi.pa165.dto.customer.CustomerDTO;
 import cz.muni.fi.pa165.enums.Gender;
+
 import java.sql.Date;
 
 /**
@@ -22,6 +24,7 @@ public class DogDTO {
 
     private Boolean hasDiscount;
 
+    @JsonIgnore
     private CustomerDTO owner;
 
     public DogDTO() {
