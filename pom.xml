@@ -62,7 +62,7 @@
     <module>dog-barbershop-service</module>
     <module>web</module>
     <module>dog-barbershop-shared</module>
-    <module>dog-barbershop-rest</module>
+    <module>rest</module>
   </modules>
 
 
