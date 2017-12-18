@@ -27,7 +27,7 @@
         <div class="form-group ${dateOfBirth_error?'has-error':''}">
             <form:label path="dateOfBirth" cssClass="col-sm-2 control-label">Date Of Birth</form:label>
             <div class="col-sm-10">
-                <form:input path="dateOfBirth" cssClass="form-control"/>
+                <form:input path="dateOfBirth" placeholder="2000-2-28" cssClass="form-control"/>
                 <form:errors path="dateOfBirth" cssClass="help-block"/>
             </div>
         </div>
