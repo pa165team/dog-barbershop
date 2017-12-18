@@ -134,5 +134,24 @@ public class CustomersController {
         return customerFacade.getAllDogsOfCustomer(customerId);
     }
 
-    
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public final CustomerDTO updateCustomer(@PathVariable("id") Long id, @RequestBody CustomerCreateDTO customer) throws Exception {
+
+        logger.debug("rest createCustomer()");
+        
+        CustomerDTO cust = new CustomerDTO();
+        cust.setId(id);
+        cust.setAddress(customer.getAddress());
+        cust.setName(customer.getName());
+        cust.setPhoneNumber(customer.getPhoneNumber());
+        cust.setSurname(customer.getSurname());
+        
+        try {
+            Long customerId = customerFacade.updateCustomer(cust);
+            return customerFacade.getCustomerById(customerId);
+        } catch (Exception ex) {
+            throw new ResourceAlreadyExistingException();
+        }
+    }
 }
