@@ -31,6 +31,7 @@
             <web-resource-name>Authentication for URLs that only employer is able to access
             </web-resource-name>
             <url-pattern>/employees/*</url-pattern>
+            <url-pattern>/finance/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>employer</role-name>
