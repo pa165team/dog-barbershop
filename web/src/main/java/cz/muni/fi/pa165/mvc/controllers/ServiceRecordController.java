@@ -77,6 +77,7 @@ public class ServiceRecordController {
         log.debug("create(formBean={})", formBean);
         //in case of validation error forward back to the the form
         if (bindingResult.hasErrors()) {
+            
             for (ObjectError ge : bindingResult.getGlobalErrors()) {
                 log.trace("ObjectError: {}", ge);
             }
@@ -84,6 +85,12 @@ public class ServiceRecordController {
                 model.addAttribute(fe.getField() + "_error", true);
                 log.trace("FieldError: {}", fe);
             }
+            DogDTO dog = dogFacade.getDogById(dogId);
+            //model.addAttribute("recordCreate", new ServiceRecordCreateDTO());
+            model.addAttribute("allEmployees", employeeFacade.getAllEmployees());
+            model.addAttribute("allServiceTypes", serviceTypeFacade.getAllServiceTypes());
+            //model.addAttribute("dogName", dog.getName());
+            //model.addAttribute("dogId", dogId);
             return "serviceRecords/create";
         }
 
