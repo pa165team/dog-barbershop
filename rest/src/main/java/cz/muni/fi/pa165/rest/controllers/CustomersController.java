@@ -134,7 +134,6 @@ public class CustomersController {
         return customerFacade.getAllDogsOfCustomer(customerId);
     }
 
-    
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public final CustomerDTO updateCustomer(@PathVariable("id") Long id, @RequestBody CustomerCreateDTO customer) throws Exception {
