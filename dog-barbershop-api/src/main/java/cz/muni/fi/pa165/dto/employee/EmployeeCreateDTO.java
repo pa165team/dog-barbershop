@@ -1,5 +1,6 @@
 package cz.muni.fi.pa165.dto.employee;
 
+import cz.muni.fi.pa165.ValidationMessages;
 import cz.muni.fi.pa165.utils.Address;
 
 import javax.validation.constraints.NotNull;
@@ -12,21 +13,21 @@ import java.util.Objects;
  */
 public class EmployeeCreateDTO {
     @NotNull
-    @Size(min = 2, max = 30, message = "Please enter a name at least 2 characters long")
+    @Size(min = 2, max = 30, message = ValidationMessages.NAME)
     private String name;
 
     @NotNull
-    @Size(min = 2, max = 30, message = "Please enter a surname at least 2 cahracters long")
+    @Size(min = 2, max = 30, message = ValidationMessages.SURNAME)
     private String surname;
 
-    @NotNull(message = "Please enter an address")
+    @NotNull(message = ValidationMessages.ADDRESS)
     private Address address;
 
-    @NotNull(message = "Please enter a salary")
+    @NotNull(message = ValidationMessages.SALARY)
     private BigDecimal salary;
 
     @NotNull
-    @Size(min = 7, max = 13, message = "Please enter a phone number")
+    @Size(min = 7, max = 13, message = ValidationMessages.PHONE)
     private String phoneNumber;
 
     public EmployeeCreateDTO() {

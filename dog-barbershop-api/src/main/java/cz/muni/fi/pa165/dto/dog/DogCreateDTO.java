@@ -1,11 +1,12 @@
 package cz.muni.fi.pa165.dto.dog;
 
+import cz.muni.fi.pa165.ValidationMessages;
 import cz.muni.fi.pa165.enums.Gender;
 
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
-import java.sql.Date;
 import javax.validation.constraints.Size;
+import java.sql.Date;
 
 /**
  * @author Martin Kuchar 433499
@@ -14,21 +15,21 @@ import javax.validation.constraints.Size;
 public class DogCreateDTO {
 
     @NotNull
-    @Size(min = 2, max = 30, message = "Name must be 2 to 30 characters long.")
+    @Size(min = 2, max = 30, message = ValidationMessages.NAME)
     private String name;
 
     @NotNull
-    @Size(min = 1, max = 30, message = "Breed must contain between 1 and 30 characters.")
+    @Size(min = 1, max = 30, message = ValidationMessages.BREED)
     private String breed;
 
-    @NotNull(message = "Please insert date of birth in yyyy-MM-dd format.")
+    @NotNull(message = ValidationMessages.DOB)
     private Date dateOfBirth;
 
     @Enumerated
-    @NotNull(message = "Please, select gender.")
+    @NotNull(message = ValidationMessages.GENDER)
     private Gender gender;
 
-    @NotNull(message = "Please, select owner of this dog.")
+    @NotNull(message = ValidationMessages.OWNER_SELECT)
     private Long ownerId;
 
     public DogCreateDTO() {

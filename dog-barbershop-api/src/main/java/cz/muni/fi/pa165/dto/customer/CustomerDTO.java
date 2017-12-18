@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.dto.customer;
 
 
+import cz.muni.fi.pa165.ValidationMessages;
 import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.utils.Address;
 
@@ -17,18 +18,18 @@ public class CustomerDTO {
     private Long id;
 
     @NotNull
-    @Size(min = 2, max = 30, message = "Please enter a name at least 2 characters long")
+    @Size(min = 2, max = 30, message = ValidationMessages.NAME)
     private String name;
 
     @NotNull
-    @Size(min = 2, max = 30, message = "Please enter a surname at least 2 cahracters long")
+    @Size(min = 2, max = 30, message = ValidationMessages.SURNAME)
     private String surname;
 
-    @NotNull(message = "Please enter an address in format [Street] [House No.], [City]")
+    @NotNull(message = ValidationMessages.ADDRESS)
     private Address address;
 
     @NotNull
-    @Size(min = 7, max = 13, message = "Please enter a phone number")
+    @Size(min = 7, max = 13, message = ValidationMessages.PHONE)
     private String phoneNumber;
 
     private List<DogDTO> dogs;

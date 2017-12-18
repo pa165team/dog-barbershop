@@ -25,7 +25,7 @@
             </form:label>
             <div class="col-sm-10">
                 <form:select path="employeeId" cssClass="form-control">
-                    <form:option value="NONE" label="--- Select Employee ---"/>
+                    <form:option value="" label="--- Select Employee ---"/>
                     <c:forEach items="${allEmployees}" var="emp">
                         <form:option value="${emp.id}">${emp.name} ${emp.surname}</form:option>
                     </c:forEach>
@@ -39,7 +39,7 @@
             </form:label>
             <div class="col-sm-10">
                 <form:select path="serviceTypeId" cssClass="form-control">
-                    <form:option value="NONE" label="--- Select Type ---"/>
+                    <form:option value="" label="--- Select Type ---"/>
                     <c:forEach items="${allServiceTypes}" var="st">
                         <form:option value="${st.id}">${st.name}</form:option>
                     </c:forEach>
