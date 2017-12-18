@@ -93,24 +93,26 @@ public class DogCreateDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof DogCreateDTO)) return false;
 
         DogCreateDTO that = (DogCreateDTO) o;
 
-        if (!getName().equals(that.getName())) return false;
-        if (!getBreed().equals(that.getBreed())) return false;
-        if (!getDateOfBirth().equals(that.getDateOfBirth())) return false;
-        if (!getGender().equals(that.getGender())) return false;
-        return getOwnerId().equals(that.getOwnerId());
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        if (getBreed() != null ? !getBreed().equals(that.getBreed()) : that.getBreed() != null) return false;
+        if (getDateOfBirth() != null ? !getDateOfBirth().equals(that.getDateOfBirth()) : that.getDateOfBirth() != null) {
+            return false;
+        }
+        if (getGender() != that.getGender()) return false;
+        return getOwnerId() != null ? getOwnerId().equals(that.getOwnerId()) : that.getOwnerId() == null;
     }
 
     @Override
     public int hashCode() {
-        int result = getName().hashCode();
-        result = 31 * result + getBreed().hashCode();
-        result = 31 * result + getDateOfBirth().hashCode();
-        result = 31 * result + getGender().hashCode();
-        result = 31 * result + getOwnerId().hashCode();
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = 31 * result + (getBreed() != null ? getBreed().hashCode() : 0);
+        result = 31 * result + (getDateOfBirth() != null ? getDateOfBirth().hashCode() : 0);
+        result = 31 * result + (getGender() != null ? getGender().hashCode() : 0);
+        result = 31 * result + (getOwnerId() != null ? getOwnerId().hashCode() : 0);
         return result;
     }
 }
