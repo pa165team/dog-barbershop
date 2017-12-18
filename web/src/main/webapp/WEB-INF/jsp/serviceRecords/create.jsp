@@ -7,7 +7,7 @@
 <fmt:setBundle basename="Texts"/>
 <my:pagetemplate title="Make an order for ${dogName}:">
 <jsp:attribute name="body">
-
+    <h1>Create new service record</h1>
     <form:form method="post" action="${pageContext.request.contextPath}/records/create/${dogId}"
                modelAttribute="recordCreate" cssClass="form-horizontal">
         <div class="form-group ${lengthMinutes_error?'has-error':''}">

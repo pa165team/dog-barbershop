@@ -7,7 +7,7 @@
 <fmt:setBundle basename="Texts"/>
 <my:pagetemplate title="New employee">
 <jsp:attribute name="body">
-
+    <h1>Create new employee</h1>
     <form:form method="post" action="${pageContext.request.contextPath}/employees/create"
                modelAttribute="employeeCreate" cssClass="form-horizontal">
         <div class="form-group ${name_error?'has-error':''}">
@@ -27,7 +27,7 @@
         <div class="form-group ${address_error?'has-error':''}">
             <form:label path="address" cssClass="col-sm-2 control-label">Address</form:label>
             <div class="col-sm-10">
-                <form:input path="address" cssClass="form-control"/>
+                <form:input path="address" placeholder="Street Name 123, City Name" cssClass="form-control"/>
                 <form:errors path="address" cssClass="help-block"/>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 <form:errors path="phoneNumber" cssClass="help-block"/>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">Confirm Registration</button>
+        <button class="btn btn-primary" type="submit">Create</button>
     </form:form>
 
 </jsp:attribute>

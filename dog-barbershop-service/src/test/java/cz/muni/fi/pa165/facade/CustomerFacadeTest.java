@@ -143,7 +143,7 @@ public class CustomerFacadeTest extends AbstractTransactionalTestNGSpringContext
         customerDTO.setAddress(customer.getAddress());
         customerDTO.setPhoneNumber(customer.getPhoneNumber());
         customerDTO.setId(customer.getId());
-        customerDTO.setServiceRecords(new ArrayList<>());
+        customerDTO.setDogs(new ArrayList<>());
         return customerDTO;
     }
 

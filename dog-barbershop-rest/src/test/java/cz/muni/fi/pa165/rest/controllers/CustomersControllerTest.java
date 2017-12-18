@@ -129,7 +129,7 @@ public class CustomersControllerTest extends AbstractTestNGSpringContextTests {
         c1.setSurname("Mrkvicka");
         c1.setAddress(new Address("City", "Street", 47));
         c1.setPhoneNumber("123456789");
-        c1.setServiceRecords(new ArrayList<>());
+        c1.setDogs(new ArrayList<>());
 
         CustomerDTO c2 = new CustomerDTO();
         c2.setId(2L);
@@ -137,7 +137,7 @@ public class CustomersControllerTest extends AbstractTestNGSpringContextTests {
         c2.setSurname("Jozinova");
         c2.setAddress(new Address("Village", "WithoutStreets", 69));
         c2.setPhoneNumber("987654321");
-        c2.setServiceRecords(new ArrayList<>());
+        c2.setDogs(new ArrayList<>());
 
         return Arrays.asList(c1, c2);
     }

@@ -14,4 +14,6 @@ public interface ServiceRecordFacade {
     List<ServiceRecordDTO> getServiceRecordsByDog(Long dogId);
     List<ServiceRecordDTO> getServiceRecordsFromLastWeek();
     BigDecimal getTurnoverForLastMonth();
+    List<ServiceRecordDTO> getAll();
+    ServiceRecordDTO getById(Long id);
 }

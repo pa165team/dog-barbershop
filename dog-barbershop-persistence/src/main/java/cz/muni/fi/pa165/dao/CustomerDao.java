@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.dao;
 
 import cz.muni.fi.pa165.entity.Customer;
+import cz.muni.fi.pa165.entity.Dog;
 
 import java.util.List;
 
@@ -64,4 +65,7 @@ public interface CustomerDao {
      * @return List of customers matching given phone number.
      */
     List<Customer> getAllMatchingPhoneNumber(String phoneNumber);
+
+
+    List<Dog> getAllDogsOfCustomer(Long customerId);
 }

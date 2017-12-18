@@ -3,6 +3,7 @@ package cz.muni.fi.pa165.mvc.controllers;
 
 import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.dto.servicerecord.ServiceRecordCreateDTO;
+import cz.muni.fi.pa165.dto.servicerecord.ServiceRecordDTO;
 import cz.muni.fi.pa165.facade.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * SpringMVC Controller for administrating dogs.
@@ -65,11 +67,11 @@ public class ServiceRecordController {
     @RequestMapping(value = "/create/{dogId}", method = RequestMethod.POST)
     public String create(
         @Valid @ModelAttribute("recordCreate") ServiceRecordCreateDTO formBean,
-        @PathVariable long dogId,
         BindingResult bindingResult,
         Model model,
         RedirectAttributes redirectAttributes,
-        UriComponentsBuilder uriBuilder
+        UriComponentsBuilder uriBuilder,
+        @PathVariable long dogId
     ) {
         formBean.setDogId(dogId);
         log.debug("create(formBean={})", formBean);
@@ -92,6 +94,28 @@ public class ServiceRecordController {
         redirectAttributes.addFlashAttribute(
             "alert_success", "Service " + id + " was successfully ordered for " +
                 dogOfThisRecord.getName() + ".");
-        return "redirect:" + uriBuilder.path("/dogs/detail/"+dogOfThisRecord.getId()).toUriString();
+        return "redirect:" + uriBuilder.path("/dogs/detail/" + dogOfThisRecord.getId()).toUriString();
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String getFromLastWeek(Model model) {
+        List<ServiceRecordDTO> records = serviceRecordFacade.getServiceRecordsFromLastWeek();
+        model.addAttribute("records", records);
+        return "serviceRecords/list";
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public String getAll(Model model) {
+        List<ServiceRecordDTO> records = serviceRecordFacade.getAll();
+        model.addAttribute("records", records);
+        model.addAttribute("all", true);
+        return "serviceRecords/list";
+    }
+
+    @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+    public String get(@PathVariable long id, Model model) {
+        ServiceRecordDTO record = serviceRecordFacade.getById(id);
+        model.addAttribute("record", record);
+        return "serviceRecords/detail";
     }
 }

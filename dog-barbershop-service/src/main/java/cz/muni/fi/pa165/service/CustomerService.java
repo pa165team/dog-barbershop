@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.service;
 
 import cz.muni.fi.pa165.entity.Customer;
+import cz.muni.fi.pa165.entity.Dog;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public interface CustomerService {
     List<Customer> findAll();
     List<Customer> getAllMatchingSurname(String surname);
     List<Customer> getAllMatchingPhoneNumber(String phoneNumber);
+    List<Dog> getAllDogsOfCustomer(Long customerId);
     Customer getOwnerOfDog(Long dogId);
 
 }

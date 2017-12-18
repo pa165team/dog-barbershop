@@ -64,6 +64,11 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
+    public List<Dog> getAllDogsOfCustomer(Long customerId) {
+        return customerDao.getAllDogsOfCustomer(customerId);
+    }
+
+    @Override
     public Customer getOwnerOfDog(Long dogId) {
         Dog dog = dogDao.findById(dogId);
         return customerDao.findById(dog.getOwner().getId());
