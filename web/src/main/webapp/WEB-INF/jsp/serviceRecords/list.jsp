@@ -29,7 +29,7 @@
                 <td><c:out value="${record.dog.owner.surname}, ${record.dog.owner.name}"/></td>
                 <td><c:out value="${record.dog.name}"/></td>
                 <td><c:out value="${record.actualPrice}"/></td>
-                <td><c:out value="${record.dateProvided}"/></td>
+                <td><fmt:formatDate type="date" value="${record.dateProvided}"/></td>
             </tr>
         </c:forEach>
         </tbody>

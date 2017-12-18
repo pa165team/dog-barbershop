@@ -45,4 +45,9 @@
             <form-error-page>/WEB-INF/jsp/login-failed.jsp</form-error-page>
         </form-login-config>
     </login-config>
+    
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/jsp/403.jsp</location>
+    </error-page>
 </web-app>

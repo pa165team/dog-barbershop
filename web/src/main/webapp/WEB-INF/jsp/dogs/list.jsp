@@ -43,7 +43,7 @@
                 <td><c:out value="${dog.name}"/></td>
                 <td><c:out value="${dog.breed}"/></td>
                 <td>
-                    <c:out value="${dog.dateOfBirth.toLocalDate()}"/>
+                    <fmt:formatDate type="date" value="${dog.dateOfBirth}"/>
                 </td>
                 <td><c:out value="${dog.gender}"/></td>
                 <td><c:out value="${dog.owner.name} ${dog.owner.surname}"/></td>
