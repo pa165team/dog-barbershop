@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" trimDirectiveWhitespaces="false" session="false" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" trimDirectiveWhitespaces="false"
+         session="false" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -9,12 +10,27 @@
 <jsp:attribute name="body">
     <h1>Customer ${customer.name} ${customer.surname}</h1>
     <h3>Info about ${customer.name} ${customer.surname}</h3>
-    <div>
-        <span>Name: ${customer.name}</span><br/>
-        <span>Surname: ${customer.surname}</span><br/>
-        <span>Address: ${customer.address.street} ${customer.address.number}, ${customer.address.city}</span><br/>
-        <span>Phone number: ${customer.phoneNumber}</span><br/>
-    </div>
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Name</th>
+            <td>${customer.name}</td>
+        </tr>
+
+        <tr>
+            <th>Surname</th>
+            <td>${customer.surname}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>${customer.address.street} ${customer.address.number}, ${customer.address.city}</td>
+        </tr>
+        <tr>
+            <th>Phone number</th>
+            <td>${customer.phoneNumber}</td>
+        </tr>
+        </tbody>
+    </table>
     <my:extraTag href="/customers" class="btn btn-default">
         <span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
         All Customers
@@ -35,7 +51,7 @@
             <tr onclick="window.location='/pa165/dogs/detail/${dog.id}'" style="cursor: pointer;">
                 <td><c:out value="${dog.name}"/></td>
                 <td><c:out value="${dog.breed}"/></td>
-                <td><c:out value="${dog.dateOfBirth}"/></td>
+                <td><fmt:formatDate type="date" value="${dog.dateOfBirth}"/></td>
                 <td><c:out value="${dog.gender}"/></td>
             </tr>
         </c:forEach>

@@ -1,5 +1,7 @@
 package cz.muni.fi.pa165.dto.servicerecord;
 
+import cz.muni.fi.pa165.ValidationMessages;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
@@ -9,17 +11,17 @@ import java.util.Objects;
  */
 public class ServiceRecordCreateDTO {
 
-    @NotNull
-    @Min(0)
+    @NotNull(message = ValidationMessages.LENGTH)
+    @Min(value = 0, message = ValidationMessages.LENGTH)
     private Integer lengthMinutes;
 
     @NotNull
     private Long dogId;
 
-    @NotNull
+    @NotNull(message = ValidationMessages.EMPLOYEE_SELECT)
     private Long employeeId;
 
-    @NotNull
+    @NotNull(message = ValidationMessages.TYPE_SELECT)
     private Long serviceTypeId;
 
     public Integer getLengthMinutes() {

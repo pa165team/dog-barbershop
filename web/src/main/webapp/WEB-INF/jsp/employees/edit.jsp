@@ -10,7 +10,7 @@
 <jsp:attribute name="body">
     <h1>Update Employee Information</h1>
     <form:form method="post" action="${pageContext.request.contextPath}/employees/edit/${employeeEdit.id}"
-               modelAttribute="employeeEdit">
+               modelAttribute="employeeEdit" cssClass="form-horizontal">
         <div class="form-group ${name_error?'has-error':''}">
             <form:label path="name" cssClass="col-sm-2 control-label">Name</form:label>
             <div class="col-sm-10">
@@ -28,7 +28,7 @@
         <div class="form-group ${address_error?'has-error':''}">
             <form:label path="address" cssClass="col-sm-2 control-label">Address</form:label>
             <div class="col-sm-10">
-                <form:input path="address" placeholder="Street Name 123, City Name" cssClass="form-control"/>
+                <form:input path="address" placeholder="Street 123, City Name" cssClass="form-control"/>
                 <form:errors path="address" cssClass="help-block"/>
             </div>
         </div>

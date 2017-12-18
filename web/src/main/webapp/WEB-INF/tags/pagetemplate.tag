@@ -46,6 +46,7 @@
                         <li><a href="/pa165/services">Services</a></li>
                         <li><a href="/pa165/records">Service records</a></li>
                         <li><a href="/pa165/employees">Employees</a></li>
+                        <li><a href="/pa165/finance">Finance</a></li>
                     </ul>
                 </div>
             </div>

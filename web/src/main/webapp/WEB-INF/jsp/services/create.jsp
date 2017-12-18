@@ -12,19 +12,19 @@
     <form:form method="post" action="${pageContext.request.contextPath}/services/create"
                modelAttribute="serviceTypeCreate">
         <div class="form-group ${name_error ? 'has-error' : ''}">
-            <form:label path="name">Name</form:label>
+            <form:label path="name" cssClass="control-label">Name</form:label>
             <form:input path="name" cssClass="form-control"/>
-            <form:errors path="name"/>
+            <form:errors path="name" cssClass="help-block"/>
         </div>
         <div class="form-group ${description_error ? 'has-error' : ''}">
-            <form:label path="description">Description</form:label>
+            <form:label path="description" cssClass="control-label">Description</form:label>
             <form:textarea path="description" cssClass="form-control"/>
-            <form:errors path="description"/>
+            <form:errors path="description" cssClass="help-block"/>
         </div>
         <div class="form-group ${pricePerHour_error ? 'has-error' : ''}">
-            <form:label path="pricePerHour">Price per hour</form:label>
+            <form:label path="pricePerHour" cssClass="control-label">Price per hour</form:label>
             <form:input path="pricePerHour" cssClass="form-control"/>
-            <form:errors path="pricePerHour"/>
+            <form:errors path="pricePerHour" cssClass="help-block"/>
         </div>
         <button class="btn btn-primary" type="submit">Create</button>
     </form:form>
