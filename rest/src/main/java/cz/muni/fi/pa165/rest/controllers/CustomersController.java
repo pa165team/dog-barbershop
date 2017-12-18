@@ -92,12 +92,11 @@ public class CustomersController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public final void deleteCustomer(@PathVariable("id") long id) throws Exception {
         logger.debug("rest deleteCustomer({})", id);
-
-        CustomerDTO cust = customerFacade.getCustomerById(id);
-        if (cust == null) {
+        try {
+            customerFacade.deleteCustomer(customerFacade.getCustomerById(id));
+        } catch (Exception ex) {
             throw new ResourceNotFoundException();
         }
-        customerFacade.deleteCustomer(cust);
     }
 
     /**
@@ -134,6 +133,7 @@ public class CustomersController {
         logger.debug("rest getAllDogsOfCustomer({})", customerId);
         return customerFacade.getAllDogsOfCustomer(customerId);
     }
+
     
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -155,6 +155,4 @@ public class CustomersController {
             throw new ResourceAlreadyExistingException();
         }
     }
-
-    
 }
