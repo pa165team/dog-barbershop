@@ -50,6 +50,7 @@
                         <form:option value="${cust.id}">${cust.name} ${cust.surname}, Phone#: ${cust.phoneNumber}</form:option>
                     </c:forEach>
                 </form:select>
+                        <form:errors path="ownerId" cssClass="help-block"/>
             </div>
         </div>
         <button class="btn btn-primary" type="submit">Create</button>
