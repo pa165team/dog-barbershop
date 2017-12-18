@@ -7,7 +7,7 @@
 <fmt:setBundle basename="Texts"/>
 <my:pagetemplate title="Make an order for ${dogName}:">
 <jsp:attribute name="body">
-    <h1>Create new service record</h1>
+    <h1>New service record for ${dogName}</h1>
     <form:form method="post" action="${pageContext.request.contextPath}/records/create/${dogId}"
                modelAttribute="recordCreate" cssClass="form-horizontal">
         <div class="form-group ${lengthMinutes_error?'has-error':''}">
@@ -30,6 +30,7 @@
                         <form:option value="${emp.id}">${emp.name} ${emp.surname}</form:option>
                     </c:forEach>
                 </form:select>
+                <form:errors path="employeeId" cssClass="help-block"/>
             </div>
         </div>
         <div class="form-group ${serviceTypeId_error?'has-error':''}">
@@ -43,7 +44,9 @@
                         <form:option value="${st.id}">${st.name}</form:option>
                     </c:forEach>
                 </form:select>
+                <form:errors path="serviceTypeId" cssClass="help-block"/>
             </div>
+            
         </div>
         <button class="btn btn-primary" type="submit">Confirm Order</button>
     </form:form>

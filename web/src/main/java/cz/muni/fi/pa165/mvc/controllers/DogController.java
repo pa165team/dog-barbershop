@@ -103,7 +103,9 @@ public class DogController {
         log.debug("create(formBean={})", formBean);
         //in case of validation error forward back to the the form
         if (bindingResult.hasErrors()) {
+            //model.addAttribute("dogCreate", new DogCreateDTO());
             model.addAttribute("allCustomers", customerFacade.getAllCustomers());
+            model.addAttribute("genders", allGenders());
             for (ObjectError ge : bindingResult.getGlobalErrors()) {
                 log.trace("ObjectError: {}", ge);
             }
