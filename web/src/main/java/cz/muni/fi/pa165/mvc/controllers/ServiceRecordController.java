@@ -67,11 +67,11 @@ public class ServiceRecordController {
     @RequestMapping(value = "/create/{dogId}", method = RequestMethod.POST)
     public String create(
         @Valid @ModelAttribute("recordCreate") ServiceRecordCreateDTO formBean,
-        @PathVariable long dogId,
         BindingResult bindingResult,
         Model model,
         RedirectAttributes redirectAttributes,
-        UriComponentsBuilder uriBuilder
+        UriComponentsBuilder uriBuilder,
+        @PathVariable long dogId
     ) {
         formBean.setDogId(dogId);
         log.debug("create(formBean={})", formBean);
