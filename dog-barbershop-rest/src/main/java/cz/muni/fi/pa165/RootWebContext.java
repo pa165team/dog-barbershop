@@ -4,13 +4,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import cz.fi.muni.pa165.sampledata.DogBarbershopWithSampleDataConfiguration;
 import cz.muni.fi.pa165.service.config.MappingServiceConfiguration;
 import org.springframework.context.annotation.*;
-
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Locale;
-
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -18,13 +14,17 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Locale;
+
 /**
  * @author Martin Kuchar 433499
  */
 
 @EnableWebMvc
 @Configuration
-@Import({MappingServiceConfiguration.class})
+@Import({MappingServiceConfiguration.class,DogBarbershopWithSampleDataConfiguration.class})
 @ComponentScan(basePackages = {"cz.muni.fi.pa165.rest.controllers"})
 public class RootWebContext extends WebMvcConfigurerAdapter {
 
