@@ -82,19 +82,24 @@ public class ServiceTypeFacadeImpl implements ServiceTypeFacade {
     @Override
     public ServiceTypeDTO getMostProfitableServiceTypeUntilNow(){
         List<ServiceType> allTypes = serviceTypeService.findAll();
-        List<Double> sumOfPrices = new ArrayList<>();
+        List<Double> sumOfPrices = calculateSumOfPrices(allTypes);
 
+        Double maxPrice = getMaxValueInPricesArray(sumOfPrices);
+        ServiceType bestType = allTypes.get(sumOfPrices.indexOf(maxPrice));
+        return beanMappingService.mapTo(bestType, ServiceTypeDTO.class);
+    }
+
+    private List<Double> calculateSumOfPrices(List<ServiceType> list){
+        List<Double> sumOfPrices = new ArrayList<>();
         Double sumOfActual;
-        for (ServiceType type : allTypes) {
+        for (ServiceType type : list) {
             sumOfActual = 0d;
             for (ServiceRecord record : type.getServiceRecords()) {
                 sumOfActual += record.getActualPrice().doubleValue();
             }
             sumOfPrices.add(sumOfActual);
         }
-        Double maxPrice = getMaxValueInPricesArray(sumOfPrices);
-        ServiceType bestType = allTypes.get(sumOfPrices.indexOf(maxPrice));
-        return beanMappingService.mapTo(bestType, ServiceTypeDTO.class);
+        return sumOfPrices;
     }
 
     private Double getMaxValueInPricesArray(List<Double> list){
