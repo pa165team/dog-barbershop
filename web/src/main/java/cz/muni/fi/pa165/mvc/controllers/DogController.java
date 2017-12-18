@@ -103,6 +103,7 @@ public class DogController {
         log.debug("create(formBean={})", formBean);
         //in case of validation error forward back to the the form
         if (bindingResult.hasErrors()) {
+            model.addAttribute("allCustomers", customerFacade.getAllCustomers());
             for (ObjectError ge : bindingResult.getGlobalErrors()) {
                 log.trace("ObjectError: {}", ge);
             }
@@ -146,6 +147,7 @@ public class DogController {
         originalDog.setGender(dogEdit.getGender());
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("dogId", id);
             for (FieldError fe : bindingResult.getFieldErrors()) {
                 model.addAttribute(fe.getField() + "_error", true);
             }
