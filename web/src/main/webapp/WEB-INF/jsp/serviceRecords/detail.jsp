@@ -34,7 +34,7 @@
         </tr>
         <tr>
             <th>Provided</th>
-            <td>${record.dateProvided}</td>
+            <td><fmt:formatDate type="date" value="${record.dateProvided}"/></td>
         </tr>
         </tbody>
     </table>
