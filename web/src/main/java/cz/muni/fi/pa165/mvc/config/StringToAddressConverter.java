@@ -19,23 +19,30 @@ public class StringToAddressConverter implements Converter<String, Address> {
         try {
             newAddress = new Address();
             String[] commaSplit = address.split(",");
-            String[] spaceSplit;
+            String[] streetSplit;
             if (commaSplit.length == 2) {
-                spaceSplit = commaSplit[0].split(" ");
-                if (spaceSplit.length == 2) {
-                    newAddress.setStreet(spaceSplit[0]);
-                    newAddress.setNumber(Integer.parseInt(spaceSplit[1])); //can throw NumberFormatException
+                streetSplit = commaSplit[0].split(" ");
+                if (streetSplit.length >= 2) {
+                    newAddress.setNumber(Integer.parseInt(streetSplit[streetSplit.length-1])); //can throw NumberFormatException
+                    StringBuilder streetName = new StringBuilder(streetSplit[0]);
+                    for (int i = 1; i < streetSplit.length-1; i++) {
+                        streetName.append(" ").append(streetSplit[i]);
+                    }
+                    newAddress.setStreet(streetName.toString());
                     newAddress.setCity(commaSplit[1]);
                     return newAddress;
                 } else {
-                    throw new IllegalArgumentException("Street and house no. must be separated by a space.");
+                    //throw new IllegalArgumentException("Street and house no. must be separated by a space.");
+                    return null;
                 }
             } else {
-                throw new IllegalArgumentException("Wrong address format! Correct address format: [Street] [House No.], [City]");
+                //throw new IllegalArgumentException("Wrong address format! Correct address format: [Street] [House No.], [City]");
+                return null;
             }
             
         } catch (Exception e) {
-            throw new IllegalArgumentException(e);
+            return null;
+            //throw new IllegalArgumentException(e);
         }
     }
 }
