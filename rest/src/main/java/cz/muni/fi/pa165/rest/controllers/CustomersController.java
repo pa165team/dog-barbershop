@@ -92,11 +92,12 @@ public class CustomersController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public final void deleteCustomer(@PathVariable("id") long id) throws Exception {
         logger.debug("rest deleteCustomer({})", id);
-        try {
-            customerFacade.deleteCustomer(customerFacade.getCustomerById(id));
-        } catch (Exception ex) {
+
+        CustomerDTO cust = customerFacade.getCustomerById(id);
+        if (cust == null) {
             throw new ResourceNotFoundException();
         }
+        customerFacade.deleteCustomer(cust);
     }
 
     /**
@@ -132,6 +133,27 @@ public class CustomersController {
     public final List<DogDTO> getAllDogsOfCustomer(@PathVariable("customerId") Long customerId) {
         logger.debug("rest getAllDogsOfCustomer({})", customerId);
         return customerFacade.getAllDogsOfCustomer(customerId);
+    }
+    
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public final CustomerDTO updateCustomer(@PathVariable("id") Long id, @RequestBody CustomerCreateDTO customer) throws Exception {
+
+        logger.debug("rest createCustomer()");
+        
+        CustomerDTO cust = new CustomerDTO();
+        cust.setId(id);
+        cust.setAddress(customer.getAddress());
+        cust.setName(customer.getName());
+        cust.setPhoneNumber(customer.getPhoneNumber());
+        cust.setSurname(customer.getSurname());
+        
+        try {
+            Long customerId = customerFacade.updateCustomer(cust);
+            return customerFacade.getCustomerById(customerId);
+        } catch (Exception ex) {
+            throw new ResourceAlreadyExistingException();
+        }
     }
 
     
