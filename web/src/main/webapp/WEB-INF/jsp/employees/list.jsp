@@ -44,6 +44,7 @@
             <th>Address</th>
             <th>Salary</th>
             <th>Phone Number</th>
+            <th><!--Button Column--></th>
         </tr>
         </thead>
         <tbody>

@@ -18,7 +18,7 @@
         </tr>
         <tr>
             <th>Dog</th>
-            <td>${record.dog.name}, ${record.dog.breed}</td>
+            <td>${record.dog.name},&nbsp;${record.dog.breed}</td>
         </tr>
         <tr>
             <th>Service</th>

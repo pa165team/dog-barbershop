@@ -20,6 +20,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Price per hour</th>
+            <th><!--Button Column--></th>
         </tr>
         </thead>
         <tbody>

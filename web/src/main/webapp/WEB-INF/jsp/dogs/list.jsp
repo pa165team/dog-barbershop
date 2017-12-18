@@ -34,7 +34,7 @@
             <th>Date Of Birth</th>
             <th>Gender</th>
             <th>Owner</th>
-            <th><!--Buttons Column--></th>
+            <th><!--Button Column--></th>
         </tr>
         </thead>
         <tbody>
