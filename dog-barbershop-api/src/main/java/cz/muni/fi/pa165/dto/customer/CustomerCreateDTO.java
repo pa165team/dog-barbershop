@@ -3,6 +3,7 @@ package cz.muni.fi.pa165.dto.customer;
 import cz.muni.fi.pa165.utils.Address;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author Lucie Kolarikova
@@ -11,15 +12,18 @@ import javax.validation.constraints.NotNull;
 public class CustomerCreateDTO {
 
     @NotNull
+    @Size(min = 2, max = 30, message = "Name must be 2 to 30 characters long.")
     private String name;
 
     @NotNull
+    @Size(min = 2, max = 30, message = "Surname must be 2 to 30 characters long.")
     private String surname;
 
-    @NotNull
+    @NotNull(message = "Address must be in format [Street] [House No.], [City]")
     private Address address;
 
     @NotNull
+    @Size(min = 7, max = 13, message = "Phone number must be 7 to 13 characters long.")
     private String phoneNumber;
 
     public CustomerCreateDTO() {

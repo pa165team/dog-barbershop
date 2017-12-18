@@ -126,7 +126,7 @@ public class DogController {
         model.addAttribute("dogToUpdate", updateDTO);
         model.addAttribute("dogId", dog.getId());
         model.addAttribute("genders", allGenders());
-        model.addAttribute("allCustomers", customerFacade.getAllCustomers());
+        //model.addAttribute("allCustomers", customerFacade.getAllCustomers());
         return "dogs/edit";
     }
 

@@ -2,6 +2,7 @@ package cz.muni.fi.pa165.facade;
 
 import cz.muni.fi.pa165.dto.customer.CustomerCreateDTO;
 import cz.muni.fi.pa165.dto.customer.CustomerDTO;
+import cz.muni.fi.pa165.dto.dog.DogDTO;
 import cz.muni.fi.pa165.entity.Customer;
 import cz.muni.fi.pa165.service.BeanMappingService;
 import cz.muni.fi.pa165.service.CustomerService;
@@ -71,6 +72,11 @@ public class CustomerFacadeImpl implements CustomerFacade {
     @Override
     public List<CustomerDTO> getAllCustomersMatchingPhoneNumber(String phoneNumber) {
         return beanMappingService.mapTo(customerService.getAllMatchingPhoneNumber(phoneNumber), CustomerDTO.class);
+    }
+
+    @Override
+    public List<DogDTO> getAllDogsOfCustomer(Long customerId) {
+        return beanMappingService.mapTo(customerService.getAllDogsOfCustomer(customerId), DogDTO.class);
     }
 
 }

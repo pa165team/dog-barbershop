@@ -11,7 +11,7 @@
     <h1>Employees</h1>
     <my:extraTag href="/employees/new" class="btn btn-default" style="margin-top: 10px;">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        Register Employee
+        Add New Employee
     </my:extraTag>
     <div style="margin-top: 10px;">
         <h3>Filter:</h3>

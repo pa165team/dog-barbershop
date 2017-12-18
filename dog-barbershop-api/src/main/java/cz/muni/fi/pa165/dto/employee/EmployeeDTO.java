@@ -22,7 +22,7 @@ public class EmployeeDTO {
     @Size(min = 2, max = 30, message = "Please enter a surname at least 2 cahracters long")
     private String surname;
 
-    @NotNull(message = "Please enter an address")
+    @NotNull(message = "Please enter an address in format [Street] [House No.], [City]")
     private Address address;
 
     @NotNull(message = "Please enter a salary")
