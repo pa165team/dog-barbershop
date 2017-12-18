@@ -4,6 +4,7 @@ import cz.muni.fi.pa165.dto.servicetype.DescriptionChangeDTO;
 import cz.muni.fi.pa165.dto.servicetype.PricePerHourChangeDTO;
 import cz.muni.fi.pa165.dto.servicetype.ServiceTypeCreateDTO;
 import cz.muni.fi.pa165.dto.servicetype.ServiceTypeDTO;
+import cz.muni.fi.pa165.entity.ServiceRecord;
 import cz.muni.fi.pa165.entity.ServiceType;
 import cz.muni.fi.pa165.service.BeanMappingService;
 import cz.muni.fi.pa165.service.DogBarbershopServiceException;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,5 +77,36 @@ public class ServiceTypeFacadeImpl implements ServiceTypeFacade {
         ServiceType serviceType = serviceTypeService.findById(dto.getId());
         serviceType.setDescription(dto.getDescription());
         serviceType.setPricePerHour(dto.getPricePerHour());
+    }
+
+    @Override
+    public ServiceTypeDTO getMostProfitableServiceTypeUntilNow(){
+        List<ServiceType> allTypes = serviceTypeService.findAll();
+        List<Double> sumOfPrices = calculateSumOfPrices(allTypes);
+
+        Double maxPrice = getMaxValueInPricesArray(sumOfPrices);
+        ServiceType bestType = allTypes.get(sumOfPrices.indexOf(maxPrice));
+        return beanMappingService.mapTo(bestType, ServiceTypeDTO.class);
+    }
+
+    private List<Double> calculateSumOfPrices(List<ServiceType> list){
+        List<Double> sumOfPrices = new ArrayList<>();
+        Double sumOfActual;
+        for (ServiceType type : list) {
+            sumOfActual = 0d;
+            for (ServiceRecord record : type.getServiceRecords()) {
+                sumOfActual += record.getActualPrice().doubleValue();
+            }
+            sumOfPrices.add(sumOfActual);
+        }
+        return sumOfPrices;
+    }
+
+    private Double getMaxValueInPricesArray(List<Double> list){
+        Double max = 0d;
+        for (Double price: list) {
+            max = Math.max(max, price);
+        }
+        return max;
     }
 }

@@ -21,6 +21,7 @@
             <th>Surname</th>
             <th>Address</th>
             <th>Phone Number</th>
+            <th><!--Button Column--></th>
         </tr>
         </thead>
         <tbody>

@@ -23,4 +23,6 @@ public interface ServiceTypeFacade {
     ServiceTypeDTO getServiceType(long id);
 
     void update(ServiceTypeDTO dto);
+
+    ServiceTypeDTO getMostProfitableServiceTypeUntilNow();
 }

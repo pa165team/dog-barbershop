@@ -8,8 +8,10 @@
 <fmt:setBundle basename="Texts"/>
 <my:pagetemplate>
 <jsp:attribute name="body">
-    <h1>Finance</h1>
+    <h1>Finance Statistics</h1>
     <h2>Turnover</h2>
-    <p>Turnover for last month: ${turnover} CZK</p>
+    <p>Turnover for last month: <b>${turnover} CZK</b></p>
+    <h2>Best Service Type</h2>
+    <p>Most valuable service type in earnings up until now: <b>${bestServiceType.name}</b></p>
 </jsp:attribute>
 </my:pagetemplate>

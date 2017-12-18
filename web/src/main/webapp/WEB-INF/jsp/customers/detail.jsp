@@ -53,7 +53,6 @@
                 <td><c:out value="${dog.breed}"/></td>
                 <td><fmt:formatDate type="date" value="${dog.dateOfBirth}"/></td>
                 <td><c:out value="${dog.gender}"/></td>
-                <td></td>
             </tr>
         </c:forEach>
         </tbody>
