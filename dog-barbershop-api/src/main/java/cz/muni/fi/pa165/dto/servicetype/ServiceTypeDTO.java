@@ -1,5 +1,7 @@
 package cz.muni.fi.pa165.dto.servicetype;
 
+import cz.muni.fi.pa165.ValidationMessages;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -12,13 +14,13 @@ import java.util.Objects;
 public class ServiceTypeDTO {
     private Long id;
 
-    @NotNull
-    @Size(min = 3, max = 50)
+    @NotNull(message = ValidationMessages.NAME)
+    @Size(min = 2, max = 50, message = ValidationMessages.NAME)
     private String name;
     private String description;
 
-    @NotNull
-    @Min(0)
+    @NotNull(message = ValidationMessages.PRICE)
+    @Min(value = 0, message = ValidationMessages.PRICE)
     private BigDecimal pricePerHour;
 
     public Long getId() {
